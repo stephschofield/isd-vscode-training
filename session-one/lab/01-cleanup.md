@@ -18,6 +18,7 @@ You should have:
 
 - VS Code open (you already did the intro session).
 - GitHub Copilot signed in (your facilitator confirmed this at the door).
+- **Git installed** on your laptop — VS Code's built-in `Git: Clone` command shells out to it. If you don't have it, install from [git-scm.com/downloads](https://git-scm.com/downloads), or ask your facilitator for the pre-cloned folder fallback.
 - This file open in **preview mode** on the right side of your screen.
 
 **Open this file in preview:** click the small "Open Preview" icon in the top-right of the editor tab (it looks like a magnifying glass over a page). Or press `Ctrl+Shift+V` (Windows/Linux) / `⌘+Shift+V` (macOS). Preview makes the formatting nicer to read while you work.
