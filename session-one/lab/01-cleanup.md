@@ -71,7 +71,9 @@ Click `data/raw_submissions.csv` in the **Explorer** (left sidebar). VS Code wil
 
 Press `Ctrl+Alt+I` (Windows/Linux) / `⌘+Alt+I` (macOS).
 
-A chat panel opens. Make sure the mode dropdown at the top of the chat says **Agent** (not Ask). Agent mode is what lets Copilot actually edit files when you ask it to. If you only see Ask mode, that's fine for now — the facilitator will switch you over when needed.
+A chat panel opens. Make sure the mode dropdown at the top of the chat says **Agent** (not Ask). Agent mode is what lets Copilot actually edit files when you ask it to.
+
+> 🛑 **Hard requirement.** Every prompt from Part 2 onward assumes Agent mode. If your dropdown only shows **Ask**, your Copilot license doesn't include Agent — flag the facilitator now. Pair up with someone who does have Agent mode for the rest of the session; you'll still see the workflow, just from a peer's screen.
 
 ### What to look for
 - Three things visible at once: walkthrough, data, chat.
