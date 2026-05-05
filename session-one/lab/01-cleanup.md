@@ -95,7 +95,7 @@ This is the strategist move. Before you change anything, you ask your "+1" what 
 
 ### Try this prompt
 
-In Copilot Chat, type `#` then `data/raw_submissions.csv` to attach the file. Then paste:
+In Copilot Chat, type `#file` and pick `data/raw_submissions.csv` from the picker that appears (or type `#file:data/raw_submissions.csv` directly). You should see the file attached as a chip in the chat input. Then paste:
 
 ```text
 Look at the attached CSV. In plain English, tell me:
