@@ -265,12 +265,14 @@ Easy mess (Part 2) and exact duplicates (Part 3) have obvious right answers. Thi
 
 ### Step 1 — Conflicting session lengths
 
-Some talks have multiple submissions with different `session_length_min` values (`30`, `45`, `60`). Pick a rule: **the most recent submission_date wins.**
+Some talks have multiple submissions with different `session_length_min` values (`30`, `45`, `60`). Pick a rule: **the most recent submission_date wins — but only when it's the same speaker conflicting with themselves.** When two different speakers happen to propose the same talk title, those are independent submissions and you should leave each one's chosen length alone.
 
 ```text
-In data/raw_submissions.csv, find every talk_title that has more than one distinct session_length_min value across rows.
+In data/raw_submissions.csv, find every case where the SAME speaker_name has more than one distinct session_length_min for the SAME talk_title across rows.
 
 For each one, recommend which length to keep — use the most recent submission_date as the tiebreaker. Show me the list before changing anything.
+
+If a talk_title appears under different speakers with different session_length_min values, that's a valid distinct submission — leave those alone.
 
 Also: convert any non-numeric length values (like "30 min", "thirty", "1 hour") into pure numbers (30, 45, 60). All values should end up as 30, 45, or 60.
 ```
