@@ -224,10 +224,16 @@ For each one:
 
 Copilot should find ~6 speakers. Look at its proposal. Real call: usually you'd keep the email that appears most often, or the simpler one (no `.work` or `.consulting` suffix).
 
-When you're happy with the picks:
+When you're happy with the picks, run **two separate prompts** (don't shortcut to one — autonomous deletion needs a review gate):
 
 ```text
-OK, apply those choices. Update every row for those speakers to use the canonical email, and remove rows that become exact duplicates after the email change.
+Update every row for those speakers to use the canonical email. Show me the changes first; don't apply yet.
+```
+
+Review the proposed edits, then:
+
+```text
+Now remove rows that became exact duplicates after the email change. "Exact duplicate" means all 12 columns are identical, case-sensitive. Show me which rows you'd delete before removing them.
 ```
 
 ### Step 2 — Duplicate talk submissions
