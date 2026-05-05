@@ -22,7 +22,7 @@ Both CSVs share the same 12 columns:
 | `speaker_name` | Full name. Raw has case drift, trailing whitespace, and `Dr.` / `Dr` prefix variants. |
 | `speaker_email` | Primary contact email. Raw has ~6 speakers with two different emails (dup signal). |
 | `company` | Speaker's company. Raw has inconsistent capitalization and abbreviations. |
-| `talk_title` | Proposed talk title. Raw has ~5 duplicate talk submissions and ~5 talks with conflicting session lengths. |
+| `talk_title` | Proposed talk title. Raw has 13–15 duplicate submission rows across ~5 distinct talks, some appearing under 3 different `submission_id`s. There are also 6 `(revised)` re-submissions paired with `.work` email variants. |
 | `topic_tag` | Free-text topic. Raw has ~26 surface forms across 6 canonical topics (`AI`, `Cloud`, `Data`, `Security`, `DevOps`, `Leadership`). |
 | `track_preference` | `Technical Deep Dive` / `Strategy` / `Workshop`. Raw has typos and blank fields. |
 | `session_length_min` | `30`, `45`, or `60`. Raw has `"30 min"`, `"thirty"`, `"1 hour"`, etc. |
@@ -36,8 +36,8 @@ Both CSVs share the same 12 columns:
 The raw dataset deliberately includes every kind of mess you'd realistically
 find in a submissions inbox:
 
-1. ~6 speakers submitting under two different emails (same person, different `speaker_email`).
-2. ~5 duplicate talk submissions (same `talk_title`, same speaker, two `submission_id`s).
+1. ~6 speakers submitting under two different emails (same person, different `speaker_email`). One of each pair uses a `.work` suffix variant.
+2. 13–15 duplicate talk submission rows across ~5 distinct talks (e.g., Aarav Patel has 4 talks each appearing under 3 submission_ids; Bianca Rossi's "What Our Last Incident Taught Us" has 3 submissions). 6 of those are `(revised)` re-submissions tied to the `.work` email variants in #1 — Part 3 dedup needs to handle them explicitly.
 3. Mixed date formats — ISO, US slash, and long-form all coexist.
 4. ~26 topic surface forms collapsing down to 6 canonical topics.
 5. ~24 rows (across the seeded duplicates) where `session_length_min` conflicts for the same `talk_title`.
