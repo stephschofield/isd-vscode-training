@@ -2,6 +2,12 @@
 
 > Populated using `from-previous-session/theme-session-map.csv` and the
 > recommended option in `from-previous-session/options-memo.md`.
+>
+> Session titles in this canonical timeline are **abbreviated** for
+> table readability — the full conference-program titles live in the
+> CSV's `session_title` column. Session IDs and speaker names are
+> verbatim; only the title is trimmed. Lab attendees should follow the
+> same convention (see `lab/03-briefing.md` Part 4 step 2).
 
 | Time         | Track A: Platform engineering pragmatism                          | Track B: Production AI that survives contact with reality           | Track C: Reliability and security as everyday practice              |
 |--------------|-------------------------------------------------------------------|---------------------------------------------------------------------|---------------------------------------------------------------------|
