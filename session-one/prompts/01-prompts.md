@@ -110,10 +110,22 @@ For each one:
 
 ### "Apply the canonical email choices"
 
-> Use this after you've reviewed Copilot's email picks and agree.
+> Use this **after** you've reviewed Copilot's email picks and agree.
+> Run as the first of two prompts — never bundle the email rewrite and
+> the dedup pass into one. Autonomous deletion needs a review gate.
 
 ```text
-OK, apply those choices. Update every row for those speakers to use the canonical email, and remove rows that become exact duplicates after the email change.
+OK, apply those choices. Update every row for those speakers to use the canonical email. Show me the changes first; don't apply yet.
+```
+
+### "Remove the rows that became exact duplicates after the email change"
+
+> Use this **after** the email rewrite is reviewed and applied. This is
+> the second half of the lab Part 3 Step 1 workflow — the review gate
+> between rewrite and delete is load-bearing.
+
+```text
+Now remove rows that became exact duplicates after the email change. "Exact duplicate" means all 12 columns are identical, case-sensitive. Show me which rows you'd delete before removing them.
 ```
 
 ### "Find duplicate talk submissions"
@@ -133,12 +145,16 @@ For each duplicate set, suggest which row to keep — usually the most complete 
 ### "Reconcile conflicting session lengths"
 
 > Use this in Part 4 to pick one session length per talk and convert
-> non-numeric values to numbers.
+> non-numeric values to numbers. Scope is the same speaker submitting
+> the same talk twice with different lengths — different speakers who
+> happened to propose the same talk title are independent submissions.
 
 ```text
-In data/raw_submissions.csv, find every talk_title that has more than one distinct session_length_min value across rows.
+In data/raw_submissions.csv, find every case where the SAME speaker_name has more than one distinct session_length_min for the SAME talk_title across rows.
 
 For each one, recommend which length to keep — use the most recent submission_date as the tiebreaker. Show me the list before changing anything.
+
+If a talk_title appears under different speakers with different session_length_min values, that's a valid distinct submission — leave those alone.
 
 Also: convert any non-numeric length values (like "30 min", "thirty", "1 hour") into pure numbers (30, 45, 60). All values should end up as 30, 45, or 60.
 ```
