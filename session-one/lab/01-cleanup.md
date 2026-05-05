@@ -65,7 +65,11 @@ You want three things visible:
 2. **The messy data** (`data/raw_submissions.csv`) in the editor on the left.
 3. **Copilot Chat** open in a panel.
 
-Click `data/raw_submissions.csv` in the **Explorer** (left sidebar). VS Code will open it as a table — that's the built-in CSV preview. Drag this walkthrough's tab to the right side of the screen if it isn't already there.
+Click `data/raw_submissions.csv` in the **Explorer** (left sidebar). VS Code will open it as plain text — comma-separated values in the editor. That's expected; stock VS Code doesn't render CSVs as a table.
+
+> **Optional, nicer view.** If you want a real spreadsheet-style view, install the **Rainbow CSV** extension (`mechatroner.rainbow-csv`) from the Extensions sidebar — it colors each column and adds an inline table preview. Not required for the lab; the prompts work fine against plain-text CSV.
+
+Drag this walkthrough's tab to the right side of the screen if it isn't already there.
 
 ### Step 3 — Open Copilot Chat
 
@@ -77,7 +81,7 @@ A chat panel opens. Make sure the mode dropdown at the top of the chat says **Ag
 
 ### What to look for
 - Three things visible at once: walkthrough, data, chat.
-- The CSV looks like a table, not a wall of commas.
+- The CSV is open in the editor (plain comma-separated text is fine — or a colored table if you installed Rainbow CSV).
 - Copilot Chat has a blinking cursor in its input box.
 
 ### ✅ Win
