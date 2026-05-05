@@ -8,7 +8,7 @@
 > on your laptop, and a working mental model of what it feels like to do
 > real strategy work alongside AI.
 >
-> **Time:** 75–90 minutes. Five short parts. Each ends with a visible win.
+> **Time:** 75–90 minutes. Six short parts. Each ends with a visible win.
 
 ---
 
