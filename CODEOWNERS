@@ -1,0 +1,4 @@
+# Default code owner for the training repo.
+# Per the session-two publication plan, a single owner is acceptable for now.
+# Revisit when a co-lead joins so PRs cannot be self-merged.
+* @stephschofield
