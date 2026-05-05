@@ -1,0 +1,31 @@
+submission_id,speaker_name,session_title,primary_theme,secondary_theme,confidence,duration_minutes,format
+S001,Priya Ramaswamy,Scaling event-driven systems past 10k req/s,Platform engineering pragmatism,Reliability and security as everyday practice,High,45,Talk
+S002,Marcus Bell,From dashboards to decisions: closing the analytics loop,Production AI that survives contact with reality,Developer experience that compounds,Medium,45,Talk
+S003,Yuki Tanaka,Building an internal developer platform without a year of runway,Platform engineering pragmatism,Developer experience that compounds,High,45,Talk
+S004,Alejandro Ortiz,Threat modeling for product teams who don't want to do threat modeling,Reliability and security as everyday practice,,High,45,Talk
+S005,Hana Eriksson,Production-grade RAG pipelines that don't rot in 6 weeks,Production AI that survives contact with reality,Reliability and security as everyday practice,High,45,Talk
+S006,Noah Wright,Migrating off a 12-year-old monolith without a 3-year project,Platform engineering pragmatism,,High,45,Talk
+S007,Sofia Karras,Measuring developer productivity without becoming the enemy,Developer experience that compounds,Engineering leadership in non-hypergrowth orgs,High,45,Talk
+S008,Ravi Subramanian,Incident reviews that change behavior,Reliability and security as everyday practice,Engineering leadership in non-hypergrowth orgs,High,45,Talk
+S009,Linnea Brandt,The honest case for and against microservices,Platform engineering pragmatism,,Medium,45,Talk
+S010,Ethan Park,Feature stores that the data team will actually use,Production AI that survives contact with reality,Developer experience that compounds,High,45,Talk
+S011,Aisha Mohammed,Shipping AI features without overpromising,Production AI that survives contact with reality,,High,30,Talk
+S012,Daniel Kowalski,Cost-aware engineering: what changes when finance is at the table,Platform engineering pragmatism,Engineering leadership in non-hypergrowth orgs,Medium,30,Talk
+S013,Mei Lin,Engineering org design after the hypergrowth ended,Engineering leadership in non-hypergrowth orgs,,High,45,Talk
+S014,Tomás Reyes,SLO-driven development for teams that hate SLOs,Reliability and security as everyday practice,,High,45,Talk
+S015,Rebecca Wu,Multi-region active-active without losing your weekends,Reliability and security as everyday practice,Platform engineering pragmatism,Medium,45,Talk
+S016,Femi Adebayo,Designing APIs that survive 5 years of customers,Developer experience that compounds,,High,45,Talk
+S017,Jenna Hoffman,Coaching staff engineers in flat orgs,Engineering leadership in non-hypergrowth orgs,,High,30,Talk
+S018,Karthik Iyer,Migrating from on-prem Postgres to managed without a maintenance window,Platform engineering pragmatism,Reliability and security as everyday practice,High,45,Talk
+S019,Elise Park,Evaluating LLMs for clinical-adjacent workflows,Production AI that survives contact with reality,Reliability and security as everyday practice,High,45,Talk
+S020,Bjorn Kettlewell,Domain-driven design for teams who don't want a religion,Developer experience that compounds,,Medium,45,Talk
+S021,Claudia Vega,Adopting platform engineering in a non-tech-first company,Platform engineering pragmatism,Engineering leadership in non-hypergrowth orgs,High,45,Talk
+S022,Ines Almeida,Secrets management for teams who keep losing their secrets,Reliability and security as everyday practice,,High,30,Talk
+S023,Hiroshi Watanabe,Chaos engineering in regulated environments,Reliability and security as everyday practice,,Medium,45,Talk
+S024,Maya Goldstein,Data contracts that data producers actually agree to,Developer experience that compounds,Production AI that survives contact with reality,Medium,45,Talk
+S025,Theo Jansen,Refactoring legacy frontends without freezing the roadmap,Developer experience that compounds,Platform engineering pragmatism,High,45,Talk
+S026,Olivia Kang,Product engineering in a research-first company,Engineering leadership in non-hypergrowth orgs,,Medium,30,Talk
+S027,Samir Hadid,Internal AI platforms that aren't a graveyard of POCs,Production AI that survives contact with reality,Platform engineering pragmatism,High,45,Talk
+S028,Nora Czerny,Production-readiness reviews that don't slow you down,Reliability and security as everyday practice,Developer experience that compounds,High,30,Talk
+S029,Walter Frye,Reducing time-to-first-PR to under a day,Developer experience that compounds,,High,45,Talk
+S030,Imani Brooks,Putting model monitoring in front of the people who can act on it,Production AI that survives contact with reality,Reliability and security as everyday practice,High,45,Talk
