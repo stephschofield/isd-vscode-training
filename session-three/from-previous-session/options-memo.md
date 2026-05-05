@@ -37,7 +37,7 @@ Reliability, Developer experience, and Engineering leadership.
 
 - **Pros:** Surfaces strong sessions that don't fit a single-theme
   track. More flexible for content that crosses themes.
-- **Cons:** The mixed track is harder to wayfinding-tag in the program
+- **Cons:** The mixed track is harder to label cleanly in the program
   and risks feeling like leftovers. Cognitive load for attendees.
 
 ### Option C — Outcome-based tracks (not theme-based)
@@ -56,8 +56,8 @@ Re-cut tracks around audience outcomes: "Ship faster," "Sleep at night,"
 **Go with Option A.** Three tracks — **Platform engineering pragmatism**,
 **Production AI that survives contact with reality**, and **Reliability
 and security as everyday practice** — with a 30-minute lightning-talk
-block in the late afternoon for the strongest Developer-experience and
-Engineering-leadership sessions.
+block in the late afternoon for the strongest Developer experience and
+Engineering leadership sessions.
 
 ### Why
 
