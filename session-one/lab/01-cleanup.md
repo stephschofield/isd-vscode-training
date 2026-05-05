@@ -377,7 +377,7 @@ Read Copilot's report. If it surfaces something real you missed, go fix it. If i
 Press `Ctrl+S` (Windows/Linux) / `⌘+S` (macOS) to save the file. That's it. Nothing to push, nothing to publish. You walk away with this folder on your laptop.
 
 ### Make it your own (optional stretch)
-Ask Copilot to suggest 3 follow-up questions a program manager should ask about the cleaned dataset — questions about balance, gaps, or risks the data might be hiding. The exact prompt is in the **stretch** section of [`../prompts/01-prompts.md`](../prompts/01-prompts.md).
+Ask Copilot to suggest 5 follow-up questions a program manager should ask about the cleaned dataset — questions about balance, gaps, or risks the data might be hiding. The exact prompt is in the **stretch** section of [`../prompts/01-prompts.md`](../prompts/01-prompts.md).
 
 ### ✅ Final Win
 You did real cleanup work in VS Code, with Copilot, on a real-shaped dataset. You decided what to keep, what to change, what to flag. You can describe in your own words what "AI as my +1" actually feels like.
