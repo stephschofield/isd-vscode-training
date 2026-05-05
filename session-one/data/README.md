@@ -53,10 +53,11 @@ scroll — you'll see the problem space immediately when you open the file.
 This dataset was generated once during prep using GitHub Copilot in agent
 mode against a deterministic prompt (see the appendix below). It is
 committed to the repo as a frozen, stable starting point for the lab.
-Please don't modify the source files in this folder during the session —
-the walkthrough has you point Copilot at them and propose changes, and
-you can always discard or revert anything you don't like via the Source
-Control panel.
+
+During the session, you **will** modify `raw_submissions.csv` in place —
+that's the whole point of the lab. Don't modify `clean_submissions.csv`;
+it's the reference answer used in Part 5. Everything is git-tracked, so
+you can revert any change you don't like via the Source Control panel.
 
 ## Generation prompt (the one we'd use with Copilot)
 
