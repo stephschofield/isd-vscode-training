@@ -108,13 +108,20 @@ Replace the placeholder in your template with the sharpened version.
 
 ---
 
-## Part 3 — Build the Why-this-program-shape narrative (15 min)
+## Part 3 — Build the Why-this-program-shape narrative (18 min)
 
 This is the most important section of the briefing — and the most
 common one to get wrong. The instinct is to make it a bullet list.
 **Don't.** Executives skip bulleted "why" sections because they don't
 tell a story. Yours will be three short paragraphs of prose, written
 one at a time.
+
+**Per-loop budget: ~6 min each** (2–3 min drafting bullets, 1–2 min for
+the Copilot round-trip, 2 min reading aloud and assessing fidelity).
+If you fall behind, compress bullet drafting (fewer bullets, rougher
+phrasing) — but do **not** skip the read-aloud step. That step is where
+you learn to edit AI output instead of accepting it; the rest of Part 3
+is arrangement around it.
 
 **Set up a scratch area first.** At the bottom of
 `templates/briefing-template.md`, add a line break and a heading
@@ -190,7 +197,10 @@ Name the audience the track serves. No jargon, no marketing voice.
 **Timeline.** Open `from-previous-session/theme-session-map.csv` in
 VS Code (click it in the file explorer — it opens as a plain text view
 with comma-separated columns; that's fine). Use VS Code's **Find**
-(Ctrl/Cmd + F) to filter rows by your three track themes.
+(Ctrl/Cmd + F) to **search** for your three track themes — Find will
+highlight matching rows but won't hide the others. Note the session IDs
+as you scan through the highlighted hits, or open the CSV in a
+spreadsheet tool if you'd rather have a true filtered view.
 
 Then open `templates/timeline-template.md` and:
 
@@ -198,16 +208,35 @@ Then open `templates/timeline-template.md` and:
    themes from the recommendation.
 2. Fill each empty cell with a session ID, speaker name, and short
    title from the CSV (e.g., `S003 Yuki Tanaka — IDP without a year of
-   runway`).
+   runway`). **Constraint:** all regular session slots are 45 minutes,
+   so when picking from the CSV, filter to `duration_minutes=45`. The
+   six 30-minute sessions (S011, S012, S017, S022, S026, S028) are
+   designed for the lightning block, not the main tracks. **Style note:**
+   the CSV ships with full conference-program titles; the canonical
+   `final/timeline.md` and `final/briefing.md` use **abbreviated** titles
+   for table readability. You should do the same — keep the session ID
+   and speaker name verbatim, but trim the title to the shortest form
+   that still says what the session is about.
 3. **Add a lightning block row** before the closing recap, e.g.,
-   `| 16:00–16:30 | Lightning block (all-hands) — DX & Eng Leadership: 3 × 10 min | (all-hands) | (all-hands) |`,
-   and **shift the closing row to 16:30–17:00**. (GFM tables don't
-   support colspan — write the full label in Track A and `(all-hands)`
-   in Tracks B and C, matching the keynote and closing rows already in
-   the template.) The lightning block is in the recommendation but not
-   in the template — you're adding it.
-4. Pull 3 lightning-block speakers from `theme-session-map.csv` whose
-   primary theme is Developer experience or Engineering leadership.
+   `| 16:00–16:30 | Lightning block (all-hands) — DX & Eng Leadership: 3 × 10 min | (all-hands) | (all-hands) |`.
+   (GFM tables don't support colspan — write the full label in Track A
+   and `(all-hands)` in Tracks B and C, matching the keynote and
+   closing rows already in the template.) The lightning block is in
+   the recommendation but not in the template — you're adding it.
+4. **Shift the existing closing recap row** from `16:00–17:00` to
+   `16:30–17:00`. The template ships with the closing row at
+   `16:00–17:00`; if you only do step 3 and skip this step, you'll
+   end up with two overlapping rows and Markdown will silently render
+   both.
+5. Pull 3 lightning-block speakers from `theme-session-map.csv` whose
+   primary theme is Developer experience or Engineering leadership
+   **AND** whose `duration_minutes` is 45 (so they fit a 10-minute
+   lightning slot without re-pacing). Among the remaining candidates,
+   prioritize speakers whose titles best represent the breadth of those
+   themes — onboarding, APIs, team structure, productivity. The
+   canonical picks Karras (S007), Adebayo (S016), and Lin (S013); other
+   defensible picks exist, and you should be able to defend yours when
+   you compare to canonical in Part 6.
 
 When the timeline is filled, copy the table into the **Event timeline**
 section of the briefing. (Don't link to it — paste it inline. Alex won't

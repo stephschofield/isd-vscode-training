@@ -23,7 +23,7 @@ This is **the third and final lab** in the series:
 Open that file in VS Code, hit **Ctrl/Cmd + K**, then **V** to render the
 preview side-by-side with the source. (Don't use **Ctrl/Cmd + Shift + V** —
 that opens the preview in the same pane and hides your draft.) Then follow
-the steps. The whole lab takes about **75–90 minutes**.
+the steps. The whole lab takes about **80–95 minutes**.
 
 By the end of the session you'll walk out with a **polished, executive-ready
 briefing in Markdown** about the Meridian Innovation Summit — something you
