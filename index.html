@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ISD · VS Code Training</title>
+  <meta name="description" content="Three guided labs. From messy data to executive story. Open each session in VS Code and follow along." />
+  <meta name="color-scheme" content="dark" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0f'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='Georgia,serif' font-size='38' fill='%23e9e8ff'%3EI%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:        #0a0a0f;
+      --bg-elev:   #14141c;
+      --fg:        #f4f3ff;
+      --muted:     #8a8aa3;
+      --line:      #232333;
+
+      --accent-01: #b388ff; /* violet  — Clean        */
+      --accent-02: #ffb86b; /* amber   — Synthesize   */
+      --accent-03: #5eead4; /* teal    — Tell         */
+
+      --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, ui-sans-serif, sans-serif;
+
+      --space-section: clamp(3rem, 4vw + 1rem, 6rem);
+      --radius:        18px;
+      --radius-lg:     28px;
+
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.55;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+
+      background-image:
+        radial-gradient(1100px 700px at 12% -10%, rgba(179, 136, 255, 0.14), transparent 60%),
+        radial-gradient(900px 600px at 92% 110%, rgba(94, 234, 212, 0.10), transparent 60%),
+        radial-gradient(700px 500px at 70% 30%, rgba(255, 184, 107, 0.06), transparent 60%);
+      background-attachment: fixed;
+    }
+
+    /* Subtle grain — pure CSS, no asset */
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      mix-blend-mode: overlay;
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(1.25rem, 2.5vw, 2rem) clamp(1.25rem, 4vw, 3rem) var(--space-section);
+    }
+
+    /* ───────────── Top bar ───────────── */
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.5rem 0 var(--space-section);
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .topbar .mark {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      color: var(--fg);
+    }
+    .topbar .mark .dot {
+      width: 8px; height: 8px; border-radius: 999px;
+      background: var(--accent-01);
+      box-shadow: 0 0 12px var(--accent-01);
+    }
+    .topbar a:hover { color: var(--fg); }
+
+    /* ───────────── Hero ───────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding-bottom: var(--space-section);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero .eyebrow {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(2.4rem, 6vw + 0.5rem, 5.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 500;
+      background: linear-gradient(100deg, var(--accent-01), var(--accent-02) 50%, var(--accent-03));
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent;
+    }
+    .hero .lede {
+      margin: 0;
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: clamp(1rem, 0.6vw + 0.9rem, 1.15rem);
+    }
+
+    /* ───────────── Bento grid ───────────── */
+    .bento {
+      display: grid;
+      gap: 1rem;
+      margin-top: var(--space-section);
+      grid-template-columns: 1fr;
+      grid-auto-rows: minmax(220px, auto);
+    }
+
+    @media (min-width: 880px) {
+      .bento {
+        grid-template-columns: 1.15fr 1fr;
+        grid-template-areas:
+          "one two"
+          "one three";
+        gap: 1.25rem;
+      }
+      .tile--01 { grid-area: one;   min-height: 540px; }
+      .tile--02 { grid-area: two;   min-height: 260px; }
+      .tile--03 { grid-area: three; min-height: 260px; }
+    }
+
+    /* ───────────── Tile ───────────── */
+    .tile {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: clamp(1.5rem, 2.5vw, 2.5rem);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform 320ms var(--ease), border-color 320ms var(--ease), box-shadow 320ms var(--ease);
+    }
+    .tile::before {
+      content: "";
+      position: absolute; inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(140deg, var(--tile-accent), transparent 55%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+              mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .tile::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -40% auto;
+      width: 70%; aspect-ratio: 1 / 1;
+      background: radial-gradient(closest-side, var(--tile-accent), transparent 70%);
+      opacity: 0.18;
+      filter: blur(20px);
+      z-index: 0;
+      transition: opacity 400ms var(--ease), transform 400ms var(--ease);
+    }
+    .tile > * { position: relative; z-index: 1; }
+
+    .tile:hover,
+    .tile:focus-within {
+      transform: translateY(-3px);
+      border-color: color-mix(in oklab, var(--tile-accent) 45%, var(--line));
+      box-shadow: 0 30px 80px -40px var(--tile-accent);
+    }
+    .tile:hover::after,
+    .tile:focus-within::after {
+      opacity: 0.32;
+      transform: scale(1.05);
+    }
+
+    .tile--01 { --tile-accent: var(--accent-01); }
+    .tile--02 { --tile-accent: var(--accent-02); }
+    .tile--03 { --tile-accent: var(--accent-03); }
+
+    .tile .head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 1rem;
+    }
+    .tile .numeral {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(4rem, 9vw, 8rem);
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      color: transparent;
+      -webkit-text-stroke: 1px color-mix(in oklab, var(--tile-accent) 70%, transparent);
+    }
+    .tile--01 .numeral {
+      color: color-mix(in oklab, var(--tile-accent) 90%, white 0%);
+      -webkit-text-stroke: 0;
+    }
+    .tile .pill {
+      align-self: start;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .tile[data-status="ready"] .pill {
+      color: var(--tile-accent);
+      border-color: color-mix(in oklab, var(--tile-accent) 50%, var(--line));
+      background: color-mix(in oklab, var(--tile-accent) 10%, transparent);
+    }
+
+    .tile .verb {
+      margin: 0;
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--tile-accent);
+    }
+    .tile h2 {
+      margin: 0.4rem 0 0;
+      font-family: var(--font-display);
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      line-height: 1.05;
+      font-size: clamp(1.5rem, 1.4vw + 1rem, 2.2rem);
+      max-width: 22ch;
+    }
+    .tile--01 h2 { font-size: clamp(1.8rem, 2vw + 1.2rem, 2.8rem); }
+
+    .tile .lede {
+      margin: 0.85rem 0 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 46ch;
+    }
+
+    .cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      align-self: flex-start;
+      padding: 0.85rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid color-mix(in oklab, var(--tile-accent) 55%, var(--line));
+      color: var(--fg);
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      transition: background 220ms var(--ease), transform 220ms var(--ease), border-color 220ms var(--ease);
+      background: color-mix(in oklab, var(--tile-accent) 10%, transparent);
+    }
+    .cta:hover,
+    .cta:focus-visible {
+      background: color-mix(in oklab, var(--tile-accent) 22%, transparent);
+      border-color: var(--tile-accent);
+      transform: translateY(-1px);
+    }
+    .cta:focus-visible {
+      outline: 2px solid var(--tile-accent);
+      outline-offset: 3px;
+    }
+    .cta .arrow { transition: transform 220ms var(--ease); }
+    .cta:hover .arrow,
+    .cta:focus-visible .arrow { transform: translateX(3px); }
+
+    /* Coming-soon tiles desaturate slightly */
+    .tile[data-status="coming-soon"] .numeral {
+      opacity: 0.85;
+    }
+
+    /* ───────────── How-to strip ───────────── */
+    .howto {
+      margin-top: var(--space-section);
+      padding: 1.5rem clamp(1rem, 2vw, 2rem);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.02);
+      display: grid;
+      gap: 0.75rem 2rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 760px) {
+      .howto { grid-template-columns: repeat(3, 1fr); }
+    }
+    .howto h3 {
+      margin: 0 0 0.25rem;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: -0.005em;
+    }
+    .howto p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .howto .step .num {
+      display: inline-block;
+      width: 1.6rem; height: 1.6rem;
+      line-height: 1.6rem;
+      text-align: center;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-right: 0.5rem;
+    }
+
+    /* ───────────── Footer ───────────── */
+    footer {
+      margin-top: var(--space-section);
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer a:hover { color: var(--fg); }
+
+    /* ───────────── Reduced motion ───────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0ms !important;
+        animation-duration: 0ms !important;
+      }
+      .tile:hover, .tile:focus-within { transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="topbar">
+      <span class="mark"><span class="dot" aria-hidden="true"></span> ISD · VS Code Training</span>
+      <a href="https://github.com/stephschofield/isd-vscode-training" target="_blank" rel="noopener">View on GitHub ↗</a>
+    </div>
+
+    <header class="hero">
+      <p class="eyebrow">Three sessions</p>
+      <h1>Turn messy data into an <em>executive story</em>.</h1>
+      <p class="lede">A guided, hands-on lab series in VS Code. Pick your session, open it in the browser, and follow along — no setup required.</p>
+    </header>
+
+    <main class="bento" aria-label="Training sessions">
+
+      <article class="tile tile--01" data-status="ready">
+        <div class="head">
+          <span class="numeral">01</span>
+          <span class="pill">Available now</span>
+        </div>
+        <div>
+          <p class="verb">Clean</p>
+          <h2>Turn Messy Data into a Clean Foundation</h2>
+          <p class="lede">Wrangle raw inputs into a clean, trustworthy dataset you can actually reason about. The foundation every later session builds on.</p>
+        </div>
+        <a class="cta" href="https://vscode.dev/github/stephschofield/isd-vscode-training/tree/main/session-one" target="_blank" rel="noopener" aria-label="Open Session 01 in VS Code for the web">
+          Open in VS Code <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </article>
+
+      <article class="tile tile--02" data-status="coming-soon">
+        <div class="head">
+          <span class="numeral">02</span>
+          <span class="pill">Coming soon</span>
+        </div>
+        <div>
+          <p class="verb">Synthesize</p>
+          <h2>Find the Signal. Shape the Strategy.</h2>
+          <p class="lede">Pull themes out of the noise and turn them into a strategy you can defend.</p>
+        </div>
+        <a class="cta" href="https://vscode.dev/github/stephschofield/isd-vscode-training/tree/main/session-two" target="_blank" rel="noopener" aria-label="Open Session 02 in VS Code for the web">
+          Open in VS Code <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </article>
+
+      <article class="tile tile--03" data-status="coming-soon">
+        <div class="head">
+          <span class="numeral">03</span>
+          <span class="pill">Coming soon</span>
+        </div>
+        <div>
+          <p class="verb">Tell</p>
+          <h2>From Strategy to Executive Story</h2>
+          <p class="lede">Translate the strategy into a crisp, executive-ready narrative — the version that actually lands.</p>
+        </div>
+        <a class="cta" href="https://vscode.dev/github/stephschofield/isd-vscode-training/tree/main/session-three" target="_blank" rel="noopener" aria-label="Open Session 03 in VS Code for the web">
+          Open in VS Code <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </article>
+
+    </main>
+
+    <section class="howto" aria-label="How to follow along">
+      <div class="step"><h3><span class="num">1</span>Pick your session</h3><p>Click <em>Open in VS Code</em> on the tile for today's lab.</p></div>
+      <div class="step"><h3><span class="num">2</span>Edit in the browser</h3><p>vscode.dev opens the folder live — no install, no clone.</p></div>
+      <div class="step"><h3><span class="num">3</span>Follow the README</h3><p>Each session has a short README that walks you through it.</p></div>
+    </section>
+
+    <footer>
+      <span>© ISD · VS Code Training</span>
+      <span><a href="https://github.com/stephschofield/isd-vscode-training" target="_blank" rel="noopener">stephschofield/isd-vscode-training</a></span>
+    </footer>
+
+  </div>
+</body>
+</html>
