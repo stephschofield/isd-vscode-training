@@ -44,9 +44,6 @@ HERE = Path(__file__).parent
 RAW = HERE / "raw_submissions.csv"
 CLEAN = HERE / "clean_submissions.csv"
 
-CANONICAL_TOPICS = ["AI", "Cloud", "Data", "Security", "DevOps", "Leadership"]
-CANONICAL_TRACKS = ["Technical Deep Dive", "Strategy", "Workshop"]
-
 # Topic surface form -> canonical (Part 2 Step 1)
 TOPIC_MAP = {
     "ai": "AI",
