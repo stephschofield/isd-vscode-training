@@ -220,10 +220,16 @@ Re-run `wc -l` until you hit 193.
   Otherwise the steps below work fine in plain text.)
 - Group sessions by theme. With Rainbow CSV: right-click the
   `assigned_theme` column → *Sort by column*. In plain text: in the
-  VS Code terminal run `cut -d, -f3 outputs/theme-session-map.csv |
-  sort | uniq -c | sort -rn`. Either way: does each theme have
-  *enough* sessions to fill a track? (Rule of thumb: 6+ to be a real
-  direction.)
+  VS Code terminal run a CSV-aware one-liner so quoted commas inside
+  `talk_title` and `assigned_theme` don't split mid-field:
+
+  ```bash
+  python3 -c "import csv,sys; [print(r[2]) for r in csv.reader(open('outputs/theme-session-map.csv')) if r and r[0]!='submission_id']" \
+    | sort | uniq -c | sort -rn
+  ```
+
+  Either way: does each theme have *enough* sessions to fill a track?
+  (Rule of thumb: 6+ to be a real direction.)
 - Look at the `unassigned` rows. Are there 5+ in any single topic that
   Copilot didn't surface as a theme? That might be a theme you missed.
 - Watch out for themes that look strong on quotes but weak on
