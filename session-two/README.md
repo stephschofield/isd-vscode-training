@@ -106,9 +106,9 @@ in Lab 1.
 
 ## What you need
 
-- A **GitHub account** — sign up free at
+- A **GitHub account** — sign up for free at
   [github.com/signup](https://github.com/signup) if you don't have one
-  yet. Everything in this lab is gated on it.
+  yet. Everything in this lab requires it.
 - VS Code with **GitHub Copilot** already signed in (set up before Lab 1).
 - This repo cloned to your machine.
 - About **60 minutes** of focus and a willingness to argue with Copilot.
