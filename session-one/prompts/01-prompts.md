@@ -6,9 +6,10 @@
 >
 > **For maintainers:** these prompts are the same words used in
 > [`../lab/01-cleanup.md`](../lab/01-cleanup.md). If you change a prompt
-> there, change it here too. The dry-run script in
-> [`../scripts/check_prompt_parity.py`](../scripts/check_prompt_parity.py)
-> verifies the two files agree.
+> there, change it here too. The dry-run parity check (`check_prompt_parity.py`)
+> lives in the upstream source repo
+> ([stephschofield/isd-vscode-session1](https://github.com/stephschofield/isd-vscode-session1))
+> and verifies the two files agree.
 
 How to use a prompt: click the small **copy** button in the top-right of
 the code block, then paste it into Copilot Chat. If the prompt mentions a

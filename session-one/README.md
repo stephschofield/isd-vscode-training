@@ -37,7 +37,7 @@ Keep that file open in VS Code's preview pane on one side, and the data file (`d
 | [`lab/`](lab/) | Your step-by-step walkthrough for today |
 | [`data/`](data/) | The messy submissions file you'll clean, plus a "good answer" reference |
 | [`prompts/`](prompts/) | A copy/paste bank of every Copilot prompt used in the session |
-| [`facilitator/`](facilitator/) | Notes for whoever is leading the session — you can ignore this |
+| [`solutions/`](solutions/) | The cleaned reference dataset (the "good answer" used in Part 5) |
 
 ## I missed Lab 1 — I'm here for Lab 2
 

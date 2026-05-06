@@ -38,13 +38,13 @@ The raw CSV (and the cleaned CSV in `../solutions/`) share the same 12 columns:
 
 ## Mess injected into raw
 
-The raw dataset deliberately includes every mess category from
-[`../docs/plans/2026-04-30-001-feat-session-1-data-cleanup-lab-plan.md`](../docs/plans/2026-04-30-001-feat-session-1-data-cleanup-lab-plan.md)
-Unit 2. The numbers below are the actual counts in the current dataset;
-the plan's `~N` figures are guidance, and
-[`../scripts/verify_dataset.py`](../scripts/verify_dataset.py) is the
-authoritative contract (it asserts "at least N" thresholds for each
-category).
+The raw dataset deliberately includes every mess category from the
+Session 1 data-cleanup lab plan (Unit 2). The numbers below are the
+actual counts in the current dataset; the plan's `~N` figures are
+guidance, and the `verify_dataset.py` script in the upstream source
+repo ([stephschofield/isd-vscode-session1](https://github.com/stephschofield/isd-vscode-session1))
+is the authoritative contract (it asserts "at least N" thresholds for
+each category).
 
 1. ~6 speakers submitting under two different emails (same person, different `speaker_email`).
 2. ~5 duplicate talk submissions (same `talk_title`, same speaker, two `submission_id`s).
@@ -61,12 +61,13 @@ scroll — attendees see the problem space immediately when they open the file.
 ## How this was generated
 
 Both CSVs (`data/raw_submissions.csv` and `solutions/clean_submissions.csv`)
-are produced by a deterministic generator in
-[`../scripts/generate_dataset.py`](../scripts/generate_dataset.py) using a
-fixed seed (`SEED = 20260430`). They are committed to `main` so attendees
-work from a known, stable starting point.
+are produced by a deterministic generator (`generate_dataset.py`, fixed
+seed `SEED = 20260430`) that lives in the upstream source repo
+([stephschofield/isd-vscode-session1](https://github.com/stephschofield/isd-vscode-session1)).
+They are committed to `main` here so attendees work from a known, stable
+starting point.
 
-To regenerate:
+To regenerate, clone the source repo and run its `scripts/`:
 
 ```bash
 python3 scripts/generate_dataset.py
@@ -78,9 +79,9 @@ Attendees should see the same data as the dry-run validated against.
 
 ## How this is verified
 
-[`../scripts/verify_dataset.py`](../scripts/verify_dataset.py) is the prep-time
-acceptance check for the leads. It reads `data/raw_submissions.csv` and
-`solutions/clean_submissions.csv` and asserts:
+The `verify_dataset.py` script in the upstream source repo is the
+prep-time acceptance check for the leads. It reads `data/raw_submissions.csv`
+and `solutions/clean_submissions.csv` and asserts:
 
 - Raw row count is 150–250
 - Every injected mess category is present at the expected magnitude
