@@ -351,7 +351,7 @@ In the Explorer, click `data/clean_submissions.csv`. Open it side-by-side with y
 
 ### Check four things
 
-1. **Row count.** Yours should be within ~10% of the canonical's row count (canonical is 162 rows, so ~146–178). If your count lands in the 168–174 range, that's also fine — a few `(revised)` resubmissions legitimately survive dedup and account for the difference.
+1. **Row count.** Yours should be within ~10% of the canonical's row count (canonical is **168 rows**, so anywhere from ~151 to ~185 is fine). The canonical lands at 168 because a few `(revised)` resubmissions legitimately survive dedup — they share neither an exact duplicate row nor an identical `(speaker_name, talk_title)` key with the originals, so neither dedup pass collapses them.
 2. **Column names and order.** Identical to the canonical.
 3. **Standardized formats.** All dates ISO. All topics in the canonical 6. All `requires_av` is `Yes` or `No`.
 4. **No obvious duplicates.** No two rows share a `speaker_name` + `talk_title` pair.

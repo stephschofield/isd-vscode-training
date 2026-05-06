@@ -10,7 +10,8 @@ This folder contains the synthetic speaker submissions dataset used in Lab 1.
 | File | Purpose |
 |------|---------|
 | `raw_submissions.csv` | The intentionally messy starting dataset. ~177 rows. This is what attendees clean. |
-| `clean_submissions.csv` | The canonical "good answer" — what the dataset looks like after cleanup. ~162 rows. Used as the Part 5 sanity-check reference and as the handoff into Session 2. |
+| `clean_submissions.csv` | The canonical "good answer" — what the dataset looks like after cleanup. **168 rows** — a few `(revised)` resubmissions legitimately survive dedup, exactly as called out in the lab's Part 5 "168–174 range is also fine" hint. Used as the Part 5 sanity-check reference and as the handoff into Session 2. |
+| `regenerate_clean.py` | Deterministic regenerator that produces `clean_submissions.csv` from `raw_submissions.csv` by applying **only** the cleanup steps the lab walkthrough teaches — nothing more. Run `python3 regenerate_clean.py` after any change to the lab's teaching to keep canonical aligned. |
 
 ## Schema
 
@@ -37,7 +38,7 @@ The raw dataset deliberately includes every kind of mess you'd realistically
 find in a submissions inbox:
 
 1. ~6 speakers submitting under two different emails (same person, different `speaker_email`). One of each pair uses a `.work` suffix variant.
-2. 13–15 duplicate talk submission rows across ~5 distinct talks (e.g., Aarav Patel has 4 talks each appearing under 3 submission_ids; Bianca Rossi's "What Our Last Incident Taught Us" has 3 submissions). 6 of those duplicates are `(revised)` re-submissions tied to the `.work` email variants in #1 — Part 3 dedup will catch them once the email-canonicalization step collapses the `.work` variant onto the canonical address and the row becomes an exact duplicate. The lab does not teach a separate `(revised)` merge pass.
+2. 13–15 duplicate talk submission rows across ~5 distinct talks (e.g., Aarav Patel has 4 talks each appearing under 3 submission_ids; Bianca Rossi's "What Our Last Incident Taught Us" has 3 submissions). 6 of those duplicates are `(revised)` re-submissions tied to the `.work` email variants in #1 — these survive both dedup passes (the `(revised)` suffix in `talk_title` keeps them from being exact-duplicate rows after email canonicalization, and it also keeps them out of the same-speaker-same-title pass), so they intentionally remain in the canonical 168-row file. The lab does not teach a separate `(revised)` merge pass — they're treated as legitimately distinct revisions of the original talk.
 3. Mixed date formats — ISO, US slash, and long-form all coexist.
 4. ~26 topic surface forms collapsing down to 6 canonical topics.
 5. ~24 rows (across the seeded duplicates) where `session_length_min` conflicts for the same `talk_title`.
@@ -50,9 +51,37 @@ scroll — you'll see the problem space immediately when you open the file.
 
 ## How this was generated
 
-This dataset was generated once during prep using GitHub Copilot in agent
-mode against a deterministic prompt (see the appendix below). It is
-committed to the repo as a frozen, stable starting point for the lab.
+**`raw_submissions.csv`** was generated once during prep using GitHub
+Copilot in agent mode against a deterministic prompt (see the appendix
+below). It is committed to the repo as a frozen, stable starting point
+for the lab.
+
+**`clean_submissions.csv`** is regenerated deterministically from
+`raw_submissions.csv` by `regenerate_clean.py`, which applies only the
+cleanup steps that `lab/01-cleanup.md` actually teaches:
+
+- Topic-tag normalization (Part 2 Step 1) → the 6 canonical topics.
+- Date normalization (Part 2 Step 2) → ISO `YYYY-MM-DD`. Out-of-window
+  2025 dates are **kept**, not silently dropped (Part 4 Step 3).
+- Speaker name tidy (Part 2 Step 3) → trimmed, title-cased, `Dr. `
+  prefix preserved with period and space.
+- Email canonicalization + exact-duplicate dedup (Part 3 Step 1).
+- Same-speaker-same-title dedup (Part 3 Step 2).
+- Conflicting session lengths (Part 4 Step 1) → most recent date wins;
+  word forms (`forty-five`, `1 hour`) become numeric.
+- Missing track / experience (Part 4 Step 2) → marked `Unknown` rather
+  than guessed.
+- `requires_av` standardization (Part 4 Step 4) → `Yes` / `No`; blanks
+  default to `No`.
+
+It does **not** touch the `company` or `bio_short` columns — the lab
+never asks attendees to clean those.
+
+If the lab's teaching changes, re-run the regenerator:
+
+```bash
+python3 session-one/data/regenerate_clean.py
+```
 
 During the session, you **will** modify `raw_submissions.csv` in place —
 that's the whole point of the lab. Don't modify `clean_submissions.csv`;
