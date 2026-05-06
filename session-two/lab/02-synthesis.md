@@ -4,6 +4,12 @@
 > VS Code &nbsp;|&nbsp; **Output:** `outputs/themes.md`,
 > `outputs/theme-session-map.csv`, and `outputs/options-memo.md`
 
+> **Two folders, two purposes.** You'll write your own work into
+> `outputs/` (it gets created during the lab — Lab 3 will pick it up).
+> The canonical reference answers live in
+> [`../solutions/`](../solutions/) — **don't open them until Part 6
+> tells you to**, then use them to compare against what you produced.
+
 In Lab 1, you used Copilot for the work humans hate doing — cleanup,
 dedup, normalization. Today is different. Today you'll use Copilot for
 the work humans usually claim only humans can do: pulling themes out of
@@ -116,8 +122,10 @@ Then try this:**
 > Using only the attached files, identify 5–8 themes for the Meridian
 > Innovation Summit. For each theme, give me:
 >
-> 1. A short, specific name (5 words or fewer — no "AI", no "Cloud",
->    something that means something)
+> 1. A short, specific name (5 words or fewer — avoid generic
+>    one-word labels like "AI" or "Cloud" on their own; the words
+>    can appear if the phrase actually means something, e.g. "AI in
+>    workflows" not just "AI")
 > 2. Why it matters, in one sentence, grounded in a stakeholder need
 > 3. 1–2 direct quotes from the transcripts or notes that support it
 > 4. The number of speaker submissions in `clean_submissions.csv`
@@ -145,6 +153,14 @@ Then try this:**
 **Make it your own:** Pick the theme you find most surprising. Ask
 Copilot: "convince me this theme isn't real." See if its own evidence
 holds up under attack.
+
+**Save your themes:** Once you're happy with the theme set, **switch
+Copilot Chat to Agent mode** and ask:
+
+> Save the themes block above to `outputs/themes.md`, exactly as
+> formatted, in the workspace root.
+
+You'll edit this file in Part 4 and reference it in Parts 5 and 6.
 
 ---
 
@@ -333,11 +349,14 @@ Better to find the holes here.
 
 1. Save `outputs/themes.md`, `outputs/theme-session-map.csv`, and
    `outputs/options-memo.md`.
-2. Compare your outputs to the canonical files in `outputs/` (which
-   were committed before this session). Where do you agree? Where do
-   you differ? *Different is allowed.* The canonical answer isn't the
-   only good answer; it's *an* answer that survived its own pressure-
-   test.
+2. Compare your outputs to the canonical files in
+   [`../solutions/`](../solutions/) (which were committed before this
+   session): [`solutions/themes.md`](../solutions/themes.md),
+   [`solutions/theme-session-map.csv`](../solutions/theme-session-map.csv),
+   and [`solutions/options-memo.md`](../solutions/options-memo.md).
+   Where do you agree? Where do you differ? *Different is allowed.*
+   The canonical answer isn't the only good answer; it's *an* answer
+   that survived its own pressure-test.
 3. Read `outputs/options-memo.md` aloud. Does it make a recommendation
    you'd actually defend in a leadership meeting? If yes, you're done.
 
@@ -363,5 +382,9 @@ you practiced the muscle of asking for the disagreement on purpose.
 Take that home with you. Next time someone shows you "what Copilot
 said," ask: *"did you ask it to argue back?"*
 
-Lab 3 picks up from your `outputs/` folder. Don't worry about
-polishing — your themes, map, and memo go to the next session as-is.
+Lab 3 reads canonical Lab 2 outputs from
+`session-three/from-previous-session/` so the room stays in sync. If
+you want to carry your own work forward instead, replace those files
+with the ones in your `outputs/` folder before starting Lab 3. Either
+way, don't worry about polishing — your themes, map, and memo go to
+the next session as-is.
