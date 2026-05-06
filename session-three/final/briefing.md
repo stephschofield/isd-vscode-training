@@ -38,11 +38,10 @@ inside tracks — which we considered — adds cognitive load without
 surfacing more content than the lightning block already does.
 Outcome-based tracks are interesting on paper but require re-tagging
 every session, and the mapping is contestable enough that the curation
-risk outweighs the upside this year.
-
-What we'll learn by running this shape is which of the three themes
-draws the strongest day-of attendance, and whether the lightning block
-is the right home for cross-cutting content. Both inform Year 2.
+risk outweighs the upside this year. Running this shape will also tell
+us which of the three themes draws the strongest day-of attendance, and
+whether the lightning block is the right home for cross-cutting content
+— both inform Year 2.
 
 ## Themes (program tracks)
 
