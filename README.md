@@ -21,11 +21,11 @@ runs end-to-end across all three labs.
 Each session is fully self-contained inside its own folder. Open the
 folder for the session you're attending — that's all you need.
 
-| Lab | Theme                                    | Verb            | Folder | Open in browser |
-|-----|------------------------------------------|-----------------|--------|-----------------|
-| 1   | Turn Messy Data into a Clean Foundation  | **Clean**       | [`session-one/`](session-one/) | [Open in Codespaces ↗](https://codespaces.new/stephschofield/isd-vscode-training/tree/main?devcontainer_path=session-one/.devcontainer/devcontainer.json&quickstart=1) |
-| 2   | Find the Signal. Shape the Strategy.     | **Synthesize**  | [`session-two/`](session-two/) | [Open in Codespaces ↗](https://codespaces.new/stephschofield/isd-vscode-training/tree/main?devcontainer_path=session-two/.devcontainer/devcontainer.json&quickstart=1) |
-| 3   | From Strategy to Executive Story         | **Communicate** | [`session-three/`](session-three/) | [Open in Codespaces ↗](https://codespaces.new/stephschofield/isd-vscode-training/tree/main?devcontainer_path=session-three/.devcontainer/devcontainer.json&quickstart=1) |
+| Lab | Theme                                     | Verb            | Folder                             | Open in browser                                                                                                                                                          |
+|-----|-------------------------------------------|-----------------|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1   | Turn Messy Data into a Clean Foundation   | **Clean**       | [`session-one/`](session-one/)     | [Open in Codespaces ↗](https://codespaces.new/stephschofield/isd-vscode-training/tree/main?devcontainer_path=session-one/.devcontainer/devcontainer.json&quickstart=1)   |
+| 2   | Find the Signal. Shape the Strategy.      | **Synthesize**  | [`session-two/`](session-two/)     | [Open in Codespaces ↗](https://codespaces.new/stephschofield/isd-vscode-training/tree/main?devcontainer_path=session-two/.devcontainer/devcontainer.json&quickstart=1)   |
+| 3   | From Strategy to Executive Story          | **Communicate** | [`session-three/`](session-three/) | [Open in Codespaces ↗](https://codespaces.new/stephschofield/isd-vscode-training/tree/main?devcontainer_path=session-three/.devcontainer/devcontainer.json&quickstart=1) |
 
 The fastest way in is the [training hub](https://stephschofield.github.io/isd-vscode-training/) — one click per session.
 
