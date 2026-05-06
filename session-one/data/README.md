@@ -42,9 +42,9 @@ The raw dataset deliberately includes every mess category from the
 Session 1 data-cleanup lab plan (Unit 2). The numbers below are the
 actual counts in the current dataset; the plan's `~N` figures are
 guidance, and the `verify_dataset.py` script in the upstream source
-repo ([stephschofield/isd-vscode-session1](https://github.com/stephschofield/isd-vscode-session1))
-is the authoritative contract (it asserts "at least N" thresholds for
-each category).
+repo (`stephschofield/isd-vscode-session1`, private) is the
+authoritative contract (it asserts "at least N" thresholds for each
+category).
 
 1. ~6 speakers submitting under two different emails (same person, different `speaker_email`).
 2. ~5 duplicate talk submissions (same `talk_title`, same speaker, two `submission_id`s).
@@ -63,9 +63,8 @@ scroll — attendees see the problem space immediately when they open the file.
 Both CSVs (`data/raw_submissions.csv` and `solutions/clean_submissions.csv`)
 are produced by a deterministic generator (`generate_dataset.py`, fixed
 seed `SEED = 20260430`) that lives in the upstream source repo
-([stephschofield/isd-vscode-session1](https://github.com/stephschofield/isd-vscode-session1)).
-They are committed to `main` here so attendees work from a known, stable
-starting point.
+(`stephschofield/isd-vscode-session1`, private). They are committed to
+`main` here so attendees work from a known, stable starting point.
 
 To regenerate, clone the source repo and run its `scripts/`:
 
