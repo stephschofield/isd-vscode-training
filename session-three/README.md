@@ -10,7 +10,7 @@
 > Edit lab content here, then **manually republish** to the training repo
 > after edits land. Do not point attendees at this repo.
 
-**Lab 3 — From Strategy to Executive Story**
+## Lab 3 — From Strategy to Executive Story
 
 Part of the **ISD +1 Campaign** hands-on lab series:
 

@@ -93,7 +93,7 @@ Until republished, attendees see stale content vs the canonical labs.
 
 ### Diff Summary (computed by `diff -rq`)
 
-**session-one**
+#### session-one
 
 - `README.md`, `data/README.md`, `lab/01-cleanup.md`,
   `prompts/01-prompts.md` — content drift.
@@ -102,7 +102,7 @@ Until republished, attendees see stale content vs the canonical labs.
 - New `solutions/README.md`, `solutions/clean_submissions.csv` from
   upstream.
 
-**session-two**
+#### session-two
 
 - `README.md`, `lab/02-synthesis.md`, `prompts/02-prompts.md`,
   `from-previous-session/README.md`,
@@ -113,7 +113,7 @@ Until republished, attendees see stale content vs the canonical labs.
   `solutions/README.md` (not in upstream — drop).
 - Empty `data/` upstream — nothing to copy.
 
-**session-three**
+#### session-three
 
 - `README.md`, `final/briefing.md`, `final/deck-outline.md`,
   `from-previous-session/options-memo.md`, `lab/03-briefing.md`,
