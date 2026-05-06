@@ -5,16 +5,16 @@ read gets you fully equipped to participate in Lab 2.
 
 ## What happened in Lab 1
 
-The Innovation Summit speaker submissions arrived as a mess: ~200 rows of
-duplicates, inconsistent topic tags ("AI", "A.I.", "Artificial
+The Innovation Summit speaker submissions arrived as a mess: hundreds of
+rows of duplicates, inconsistent topic tags ("AI", "A.I.", "Artificial
 Intelligence"), mixed date formats, conflicting session lengths for the
 same talks, and rogue out-of-window dates. Attendees used Copilot Chat as
 a junior analyst — prompting it to surface duplicates, normalize the topic
-taxonomy down to six canonical categories, standardize dates and session
-lengths, and surface the two-or-three out-of-window submissions for human
+taxonomy down to a small set of canonical categories, standardize dates
+and session lengths, and surface the out-of-window submissions for human
 review rather than silently dropping them. After review, the out-of-window
-rows were excluded from the cleaned snapshot you see here — they are not
-present in `clean_submissions.csv`.
+rows were excluded from the cleaned snapshot — they are not present in
+`clean_submissions.csv`.
 
 The lesson: AI is great at the *mechanical* work humans hate doing (dedup,
 normalization, format wrangling) — *if* the human stays in the loop and
@@ -22,12 +22,18 @@ reviews each proposed change.
 
 ## What you're inheriting
 
-[`clean_submissions.csv`](clean_submissions.csv) — the result of Lab 1,
-checked in here verbatim. It contains the deduplicated, normalized speaker
-submissions: one row per unique talk submission, six canonical topic tags,
-ISO-formatted dates, integer session lengths in minutes, and a clean
-boolean for the AV requirement. This is your **source of truth** for
-today. Treat it as finished.
+[`clean_submissions.csv`](clean_submissions.csv) — the cleaned dataset for
+today. Each row is one unique talk submission, with normalized topic
+tags, ISO-formatted dates, integer session lengths, and a clean boolean
+for the AV requirement. This is your **source of truth** for Lab 2.
+Treat it as finished.
+
+> **Note for Lab 1 returners:** the cleaned snapshot here is *not*
+> byte-identical to the one you produced in Lab 1 — Lab 2 uses a richer,
+> wider tag taxonomy (e.g. *AI in Workflows*, *Customer Stories*,
+> *Developer Experience*) and a larger row count to give the synthesis
+> exercise more material to work with. Same lab, same shape, more
+> texture. Use this file as canonical for today.
 
 ## What you need to know today
 

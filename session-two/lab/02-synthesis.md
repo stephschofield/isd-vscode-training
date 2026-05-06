@@ -192,13 +192,44 @@ map makes both visible.
 > Be honest about `unassigned`. If a talk doesn't fit, say so. Do not
 > force-fit.
 
+**Verify the file is complete before moving on.** Agent mode
+sometimes truncates large outputs without warning. Run this in the
+VS Code terminal:
+
+```bash
+wc -l outputs/theme-session-map.csv
+```
+
+You should see **193** (1 header + 192 submissions). If the count is
+short, ask Copilot in the same chat:
+
+> The CSV stopped at row N. Continue mapping from `submission_id`
+> [paste the last `submission_id` you see in the file] through the
+> end of `clean_submissions.csv`. Append rows — don't rewrite what's
+> already there.
+
+Re-run `wc -l` until you hit 193.
+
 **What to look for:**
 
-- Open `outputs/theme-session-map.csv` in VS Code's CSV preview (right-
-  click → Open With → CSV Preview, or use the editor's default
-  rendering).
-- Sort by `assigned_theme`. Does each theme have *enough* sessions to
-  fill a track? (Rule of thumb: 6+ to be a real direction.)
+- Open `outputs/theme-session-map.csv` in VS Code. (VS Code has no
+  built-in CSV grid view; the editor renders it as plain text. If you
+  want a sortable grid, install the **Rainbow CSV** or **Edit csv**
+  extension from the Extensions sidebar — both are free and add
+  right-click → *Open Preview* / sort-by-column on `.csv` files.
+  Otherwise the steps below work fine in plain text.)
+- Group sessions by theme. With Rainbow CSV: right-click the
+  `assigned_theme` column → *Sort by column*. In plain text: in the
+  VS Code terminal run a CSV-aware one-liner so quoted commas inside
+  `talk_title` and `assigned_theme` don't split mid-field:
+
+  ```bash
+  python3 -c "import csv,sys; [print(r[2]) for r in csv.reader(open('outputs/theme-session-map.csv')) if r and r[0]!='submission_id']" \
+    | sort | uniq -c | sort -rn
+  ```
+
+  Either way: does each theme have *enough* sessions to fill a track?
+  (Rule of thumb: 6+ to be a real direction.)
 - Look at the `unassigned` rows. Are there 5+ in any single topic that
   Copilot didn't surface as a theme? That might be a theme you missed.
 - Watch out for themes that look strong on quotes but weak on
