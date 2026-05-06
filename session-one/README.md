@@ -36,4 +36,4 @@ Welcome. You don't need to do this lab to keep up. The cleaned dataset for Lab 2
 
 ## A note on the scenario
 
-Meridian Solutions, the Innovation Summit, the speakers, the talks, and the companies are all made up. Any resemblance to real people or events is coincidental. The mess in the data, however, is depressingly realistic.
+Meridian Solutions, the Innovation Summit, the speakers, the talks, and the companies are all made up. Any resemblance to real people or events is coincidental.
