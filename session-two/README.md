@@ -24,7 +24,7 @@ This is **the second lab** in the series:
 
 Open that file in VS Code, hit **Ctrl/Cmd + K**, then **V** to render the
 preview side-by-side with the source. Then follow the steps. The whole
-lab takes about **75–90 minutes**.
+lab takes **60 minutes**.
 
 You're here to do the work that, until recently, only humans could do:
 take a pile of noisy stakeholder input, pull real themes out of it, and
@@ -106,4 +106,10 @@ in Lab 1.
 
 ## What you need
 
-- VS Code with **GitHub Copilot** already signed in (set up before Lab 1)
+- A **GitHub account** — sign up free at
+  [github.com/signup](https://github.com/signup) if you don't have one
+  yet. Everything in this lab is gated on it.
+- VS Code with **GitHub Copilot** already signed in (set up before Lab 1).
+- This repo cloned to your machine.
+- About **60 minutes** of focus and a willingness to argue with Copilot.
+

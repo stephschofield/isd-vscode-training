@@ -1,6 +1,6 @@
 # Lab 2 — Find the Signal: Theme Synthesis & Strategic Pressure-Testing
 
-> **Time:** 75–90 minutes &nbsp;|&nbsp; **Tool:** GitHub Copilot Chat in
+> **Time:** 60 minutes &nbsp;|&nbsp; **Tool:** GitHub Copilot Chat in
 > VS Code &nbsp;|&nbsp; **Output:** `outputs/themes.md`,
 > `outputs/theme-session-map.csv`, and `outputs/options-memo.md`
 
@@ -22,7 +22,7 @@ that on purpose.
 
 ---
 
-## Part 0 — Set up your workspace (5 min)
+## Part 0 — Set up your workspace (3 min)
 
 **What you're doing:** Get the repo open, the inputs in front of you,
 and Copilot Chat ready to receive files.
@@ -55,7 +55,7 @@ read carefully — just get a sense of who said what.
 
 ---
 
-## Part 1 — Get oriented: what did stakeholders actually say? (10 min)
+## Part 1 — Get oriented: what did stakeholders actually say? (8 min)
 
 **What you're doing:** Ask Copilot to summarize each transcript and
 surface the *implicit* asks — the things stakeholders didn't say
@@ -97,7 +97,7 @@ with evidence. Both are useful signals.
 
 ---
 
-## Part 2 — Extract themes — *grounded*, not invented (15 min)
+## Part 2 — Extract themes — *grounded*, not invented (12 min)
 
 **What you're doing:** Generate a draft list of 5–8 program themes for
 the Summit, with evidence quotes and submission counts attached.
@@ -164,7 +164,7 @@ You'll edit this file in Part 4 and reference it in Parts 5 and 6.
 
 ---
 
-## Part 3 — Map themes to sessions (10–15 min)
+## Part 3 — Map themes to sessions (10 min)
 
 **What you're doing:** For every speaker submission, decide which
 theme it belongs to (or flag it as `unassigned`). Output is a CSV.
@@ -210,7 +210,7 @@ it, or cut it?"
 
 ---
 
-## Part 4 — Pressure-test your themes (10–15 min)
+## Part 4 — Pressure-test your themes (10 min)
 
 **What you're doing:** Ask Copilot to argue *against* the themes you
 just produced. Then refine.
@@ -261,7 +261,7 @@ argument" line in `outputs/themes.md`.
 
 ---
 
-## Part 5 — Draft 2–3 program directions (options memo) (15 min)
+## Part 5 — Draft 2–3 program directions (options memo) (10 min)
 
 **What you're doing:** Turn the themes into 2–3 *programs* — actual
 shapes you could pitch to leadership tomorrow. One page total.
@@ -316,7 +316,7 @@ You may be more convinced by the second pitch than the first.
 
 ---
 
-## Part 6 — Pressure-test your options + finalize (10 min)
+## Part 6 — Pressure-test your options + finalize (7 min)
 
 **What you're doing:** One more adversarial pass. Then commit.
 
