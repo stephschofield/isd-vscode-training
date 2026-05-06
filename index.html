@@ -254,6 +254,19 @@
       border-color: color-mix(in oklab, var(--tile-accent) 50%, var(--line));
       background: color-mix(in oklab, var(--tile-accent) 10%, transparent);
     }
+    a.pill {
+      transition: background 220ms var(--ease), border-color 220ms var(--ease), color 220ms var(--ease);
+    }
+    a.pill:hover,
+    a.pill:focus-visible {
+      background: color-mix(in oklab, var(--tile-accent) 22%, transparent);
+      border-color: var(--tile-accent);
+      color: var(--fg);
+    }
+    a.pill:focus-visible {
+      outline: 2px solid var(--tile-accent);
+      outline-offset: 3px;
+    }
 
     .tile .verb {
       margin: 0;
@@ -391,7 +404,7 @@
       <article class="tile tile--01" data-status="ready">
         <div class="head">
           <span class="numeral">01</span>
-          <span class="pill">Available now</span>
+          <a class="pill" href="https://vscode.dev/github/stephschofield/isd-vscode-training/tree/main/session-one" target="_blank" rel="noopener" aria-label="Open Session One in VS Code for the web">Session One ↗</a>
         </div>
         <div>
           <p class="verb">Clean</p>
@@ -406,7 +419,7 @@
       <article class="tile tile--02" data-status="ready">
         <div class="head">
           <span class="numeral">02</span>
-          <span class="pill">Available now</span>
+          <a class="pill" href="https://vscode.dev/github/stephschofield/isd-vscode-training/tree/main/session-two" target="_blank" rel="noopener" aria-label="Open Session Two in VS Code for the web">Session Two ↗</a>
         </div>
         <div>
           <p class="verb">Synthesize</p>
@@ -421,7 +434,7 @@
       <article class="tile tile--03" data-status="ready">
         <div class="head">
           <span class="numeral">03</span>
-          <span class="pill">Available now</span>
+          <a class="pill" href="https://vscode.dev/github/stephschofield/isd-vscode-training/tree/main/session-three" target="_blank" rel="noopener" aria-label="Open Session Three in VS Code for the web">Session Three ↗</a>
         </div>
         <div>
           <p class="verb">Tell</p>
