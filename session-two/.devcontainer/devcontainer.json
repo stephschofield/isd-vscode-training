@@ -1,6 +1,6 @@
 {
   "name": "Meridian Summit — Session 2 (Synthesize)",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}/session-two",
   "customizations": {
     "vscode": {
