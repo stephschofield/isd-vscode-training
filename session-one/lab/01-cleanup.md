@@ -16,10 +16,9 @@
 
 You should have:
 
-- A **GitHub account** — sign up free at [github.com/signup](https://github.com/signup) if you don't have one yet. You need it to sign in to Copilot. (Cloning this public repo with `Git: Clone` works without an account, but Copilot won't.)
+- A **GitHub account** — sign up free at [github.com/signup](https://github.com/signup) if you don't have one yet. It's how Copilot signs you in and how VS Code's `Git: Clone` reaches this repo.
 - VS Code open (you already did the intro session).
 - GitHub Copilot signed in (your facilitator confirmed this at the door).
-- **Git installed** on your laptop — VS Code's built-in `Git: Clone` command shells out to it. If you don't have it, install from [git-scm.com/downloads](https://git-scm.com/downloads), or ask your facilitator for the pre-cloned folder fallback.
 - This file open in **preview mode** on the right side of your screen.
 
 **Open this file in preview:** click the small "Open Preview" icon in the top-right of the editor tab (it looks like a magnifying glass over a page). Or press `Ctrl+Shift+V` (Windows/Linux) / `⌘+Shift+V` (macOS). Preview makes the formatting nicer to read while you work.
@@ -30,7 +29,7 @@ If anything in this list isn't true, raise your hand — the facilitator will ge
 
 ## Part 0 — Set up your workspace
 
-**Time:** ~7 minutes
+**Time:** ~8 minutes
 
 ### What you're doing
 Getting this folder onto your laptop, opening it in VS Code, and getting Copilot Chat ready in a side panel.
@@ -44,20 +43,11 @@ In VS Code:
 
 1. Press `Ctrl+Shift+P` (Windows/Linux) / `⌘+Shift+P` (macOS) to open the **Command Palette**.
 2. Type `Git: Clone` and pick it.
-3. Paste this URL: `https://github.com/stephschofield/isd-vscode-training.git`
+3. Paste this URL: `https://github.com/stephschofield/isd-vscode-session1.git`
 4. Pick a folder on your laptop to clone into (Documents is fine).
 5. When VS Code asks "Open the cloned repository?", click **Open**.
 
 > **No git, no terminal, no problem.** This is the only "git" thing you'll do today. Everything else is point-and-click.
-
-**One more step before Step 2:** the repo you just cloned holds all three sessions. For today, you want VS Code to focus on the Session 1 folder so the file paths in this walkthrough line up.
-
-- In VS Code, click **File → Open Folder…** (or press `Ctrl+K Ctrl+O` / `⌘+K ⌘+O`).
-- Navigate into the cloned `isd-vscode-training` folder, then pick the `session-one` folder inside it.
-- Click **Open**. VS Code reloads with `session-one/` as the workspace root.
-- After the reload, open this file again from the Explorer: `lab/01-cleanup.md`.
-
-From here on, every path in this walkthrough (like `data/raw_submissions.csv`) is relative to the `session-one` folder you just opened.
 
 ### Step 2 — Open the right files side by side
 
@@ -67,23 +57,17 @@ You want three things visible:
 2. **The messy data** (`data/raw_submissions.csv`) in the editor on the left.
 3. **Copilot Chat** open in a panel.
 
-Click `data/raw_submissions.csv` in the **Explorer** (left sidebar). VS Code will open it as plain text — comma-separated values in the editor. That's expected; stock VS Code doesn't render CSVs as a table.
-
-> **Optional, nicer view.** If you want a real spreadsheet-style view, install the **Rainbow CSV** extension (`mechatroner.rainbow-csv`) from the Extensions sidebar — it colors each column and adds an inline table preview. Not required for the lab; the prompts work fine against plain-text CSV.
-
-Drag this walkthrough's tab to the right side of the screen if it isn't already there.
+Click `data/raw_submissions.csv` in the **Explorer** (left sidebar). VS Code will open it as a table — that's the built-in CSV preview. Drag this walkthrough's tab to the right side of the screen if it isn't already there.
 
 ### Step 3 — Open Copilot Chat
 
 Press `Ctrl+Alt+I` (Windows/Linux) / `⌘+Alt+I` (macOS).
 
-A chat panel opens. Make sure the mode dropdown at the top of the chat says **Agent** (not Ask). Agent mode is what lets Copilot actually edit files when you ask it to.
-
-> 🛑 **Hard requirement.** Every prompt from Part 2 onward assumes Agent mode. If your dropdown only shows **Ask**, your Copilot license doesn't include Agent — flag the facilitator now. Pair up with someone who does have Agent mode for the rest of the session; you'll still see the workflow, just from a peer's screen.
+A chat panel opens. Make sure the mode dropdown at the top of the chat says **Agent** (not Ask). Agent mode is what lets Copilot actually edit files when you ask it to. If you only see Ask mode, that's fine for now — the facilitator will switch you over when needed.
 
 ### What to look for
 - Three things visible at once: walkthrough, data, chat.
-- The CSV is open in the editor (plain comma-separated text is fine — or a colored table if you installed Rainbow CSV).
+- The CSV looks like a table, not a wall of commas.
 - Copilot Chat has a blinking cursor in its input box.
 
 ### ✅ Win
@@ -103,7 +87,7 @@ This is the strategist move. Before you change anything, you ask your "+1" what 
 
 ### Try this prompt
 
-In Copilot Chat, type `#file` and pick `data/raw_submissions.csv` from the picker that appears (or type `#file:data/raw_submissions.csv` directly). You should see the file attached as a chip in the chat input. Then paste:
+In Copilot Chat, type `#` then `data/raw_submissions.csv` to attach the file. Then paste:
 
 ```text
 Look at the attached CSV. In plain English, tell me:
@@ -232,16 +216,10 @@ For each one:
 
 Copilot should find ~6 speakers. Look at its proposal. Real call: usually you'd keep the email that appears most often, or the simpler one (no `.work` or `.consulting` suffix).
 
-When you're happy with the picks, run **two separate prompts** (don't shortcut to one — autonomous deletion needs a review gate):
+When you're happy with the picks:
 
 ```text
-Update every row for those speakers to use the canonical email. Show me the changes first; don't apply yet.
-```
-
-Review the proposed edits, then:
-
-```text
-Now remove rows that became exact duplicates after the email change. "Exact duplicate" means all 12 columns are identical, case-sensitive. Show me which rows you'd delete before removing them.
+OK, apply those choices. Update every row for those speakers to use the canonical email, and remove rows that become exact duplicates after the email change.
 ```
 
 ### Step 2 — Duplicate talk submissions
@@ -279,14 +257,12 @@ Easy mess (Part 2) and exact duplicates (Part 3) have obvious right answers. Thi
 
 ### Step 1 — Conflicting session lengths
 
-Some talks have multiple submissions with different `session_length_min` values (`30`, `45`, `60`). Pick a rule: **the most recent submission_date wins — but only when it's the same speaker conflicting with themselves.** When two different speakers happen to propose the same talk title, those are independent submissions and you should leave each one's chosen length alone.
+Some talks have multiple submissions with different `session_length_min` values (`30`, `45`, `60`). Pick a rule: **the most recent submission_date wins.**
 
 ```text
-In data/raw_submissions.csv, find every case where the SAME speaker_name has more than one distinct session_length_min for the SAME talk_title across rows.
+In data/raw_submissions.csv, find every talk_title that has more than one distinct session_length_min value across rows.
 
 For each one, recommend which length to keep — use the most recent submission_date as the tiebreaker. Show me the list before changing anything.
-
-If a talk_title appears under different speakers with different session_length_min values, that's a valid distinct submission — leave those alone.
 
 Also: convert any non-numeric length values (like "30 min", "thirty", "1 hour") into pure numbers (30, 45, 60). All values should end up as 30, 45, or 60.
 ```
@@ -338,7 +314,7 @@ The cleanup is essentially done. Time to sanity check.
 
 ## Part 5 — Sanity check + save
 
-**Time:** ~8 minutes
+**Time:** ~7 minutes
 
 ### What you're doing
 Comparing your cleaned file to the canonical "good answer" we shipped with this repo, and learning what *good* looks like — without expecting an exact match.
@@ -348,11 +324,11 @@ The point isn't "did you produce the same file as the answer key." The point is:
 
 ### Open the canonical file
 
-In the Explorer, click `data/clean_submissions.csv`. Open it side-by-side with your `data/raw_submissions.csv` (which is now your *cleaned* version).
+In the Explorer, click `solutions/clean_submissions.csv`. Open it side-by-side with your `data/raw_submissions.csv` (which is now your *cleaned* version).
 
 ### Check four things
 
-1. **Row count.** Yours should be within ~10% of the canonical's row count (canonical is **168 rows**, so anywhere from ~151 to ~185 is fine). The canonical lands at 168 because a few `(revised)` resubmissions legitimately survive dedup — they share neither an exact duplicate row nor an identical `(speaker_name, talk_title)` key with the originals, so neither dedup pass collapses them.
+1. **Row count.** Yours should be within ~5% of the canonical's row count.
 2. **Column names and order.** Identical to the canonical.
 3. **Standardized formats.** All dates ISO. All topics in the canonical 6. All `requires_av` is `Yes` or `No`.
 4. **No obvious duplicates.** No two rows share a `speaker_name` + `talk_title` pair.
@@ -360,7 +336,7 @@ In the Explorer, click `data/clean_submissions.csv`. Open it side-by-side with y
 ### Try this prompt
 
 ```text
-Compare data/raw_submissions.csv (which I just cleaned) against data/clean_submissions.csv (the reference answer).
+Compare data/raw_submissions.csv (which I just cleaned) against solutions/clean_submissions.csv (the reference answer).
 
 Tell me:
 1. How many rows each file has.
@@ -378,7 +354,7 @@ Read Copilot's report. If it surfaces something real you missed, go fix it. If i
 Press `Ctrl+S` (Windows/Linux) / `⌘+S` (macOS) to save the file. That's it. Nothing to push, nothing to publish. You walk away with this folder on your laptop.
 
 ### Make it your own (optional stretch)
-Ask Copilot to suggest 5 follow-up questions a program manager should ask about the cleaned dataset — questions about balance, gaps, or risks the data might be hiding. The exact prompt is in the **stretch** section of [`../prompts/01-prompts.md`](../prompts/01-prompts.md).
+Ask Copilot to suggest 3 follow-up questions a program manager should ask about the cleaned dataset — questions about balance, gaps, or risks the data might be hiding. The exact prompt is in the **stretch** section of [`../prompts/01-prompts.md`](../prompts/01-prompts.md).
 
 ### ✅ Final Win
 You did real cleanup work in VS Code, with Copilot, on a real-shaped dataset. You decided what to keep, what to change, what to flag. You can describe in your own words what "AI as my +1" actually feels like.

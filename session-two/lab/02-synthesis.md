@@ -1,14 +1,8 @@
 # Lab 2 — Find the Signal: Theme Synthesis & Strategic Pressure-Testing
 
 > **Time:** 60 minutes &nbsp;|&nbsp; **Tool:** GitHub Copilot Chat in
-> VS Code &nbsp;|&nbsp; **Output:** `outputs/themes.md`,
-> `outputs/theme-session-map.csv`, and `outputs/options-memo.md`
-
-> **Two folders, two purposes.** You'll write your own work into
-> `outputs/` (it gets created during the lab — Lab 3 will pick it up).
-> The canonical reference answers live in
-> [`../solutions/`](../solutions/) — **don't open them until Part 6
-> tells you to**, then use them to compare against what you produced.
+> VS Code &nbsp;|&nbsp; **Output:** `solutions/themes.md`,
+> `solutions/theme-session-map.csv`, and `solutions/options-memo.md`
 
 In Lab 1, you used Copilot for the work humans hate doing — cleanup,
 dedup, normalization. Today is different. Today you'll use Copilot for
@@ -122,10 +116,8 @@ Then try this:**
 > Using only the attached files, identify 5–8 themes for the Meridian
 > Innovation Summit. For each theme, give me:
 >
-> 1. A short, specific name (5 words or fewer — avoid generic
->    one-word labels like "AI" or "Cloud" on their own; the words
->    can appear if the phrase actually means something, e.g. "AI in
->    workflows" not just "AI")
+> 1. A short, specific name (5 words or fewer — no "AI", no "Cloud",
+>    something that means something)
 > 2. Why it matters, in one sentence, grounded in a stakeholder need
 > 3. 1–2 direct quotes from the transcripts or notes that support it
 > 4. The number of speaker submissions in `clean_submissions.csv`
@@ -154,14 +146,6 @@ Then try this:**
 Copilot: "convince me this theme isn't real." See if its own evidence
 holds up under attack.
 
-**Save your themes:** Once you're happy with the theme set, **switch
-Copilot Chat to Agent mode** and ask:
-
-> Save the themes block above to `outputs/themes.md`, exactly as
-> formatted, in the workspace root.
-
-You'll edit this file in Part 4 and reference it in Parts 5 and 6.
-
 ---
 
 ## Part 3 — Map themes to sessions (10 min)
@@ -176,7 +160,7 @@ map makes both visible.
 **Switch Copilot Chat to Agent mode** so it can write files. Then try:
 
 > Using the themes we just produced and `clean_submissions.csv`, create
-> `outputs/theme-session-map.csv` with these columns:
+> `solutions/theme-session-map.csv` with these columns:
 >
 > `submission_id, talk_title, assigned_theme, confidence, notes`
 >
@@ -192,44 +176,13 @@ map makes both visible.
 > Be honest about `unassigned`. If a talk doesn't fit, say so. Do not
 > force-fit.
 
-**Verify the file is complete before moving on.** Agent mode
-sometimes truncates large outputs without warning. Run this in the
-VS Code terminal:
-
-```bash
-wc -l outputs/theme-session-map.csv
-```
-
-You should see **193** (1 header + 192 submissions). If the count is
-short, ask Copilot in the same chat:
-
-> The CSV stopped at row N. Continue mapping from `submission_id`
-> [paste the last `submission_id` you see in the file] through the
-> end of `clean_submissions.csv`. Append rows — don't rewrite what's
-> already there.
-
-Re-run `wc -l` until you hit 193.
-
 **What to look for:**
 
-- Open `outputs/theme-session-map.csv` in VS Code. (VS Code has no
-  built-in CSV grid view; the editor renders it as plain text. If you
-  want a sortable grid, install the **Rainbow CSV** or **Edit csv**
-  extension from the Extensions sidebar — both are free and add
-  right-click → *Open Preview* / sort-by-column on `.csv` files.
-  Otherwise the steps below work fine in plain text.)
-- Group sessions by theme. With Rainbow CSV: right-click the
-  `assigned_theme` column → *Sort by column*. In plain text: in the
-  VS Code terminal run a CSV-aware one-liner so quoted commas inside
-  `talk_title` and `assigned_theme` don't split mid-field:
-
-  ```bash
-  python3 -c "import csv,sys; [print(r[2]) for r in csv.reader(open('outputs/theme-session-map.csv')) if r and r[0]!='submission_id']" \
-    | sort | uniq -c | sort -rn
-  ```
-
-  Either way: does each theme have *enough* sessions to fill a track?
-  (Rule of thumb: 6+ to be a real direction.)
+- Open `solutions/theme-session-map.csv` in VS Code's CSV preview (right-
+  click → Open With → CSV Preview, or use the editor's default
+  rendering).
+- Sort by `assigned_theme`. Does each theme have *enough* sessions to
+  fill a track? (Rule of thumb: 6+ to be a real direction.)
 - Look at the `unassigned` rows. Are there 5+ in any single topic that
   Copilot didn't surface as a theme? That might be a theme you missed.
 - Watch out for themes that look strong on quotes but weak on
@@ -288,7 +241,7 @@ framing, or evidence. If nothing changes, you didn't push hard enough.
 
 **Make it your own:** Pick the counter-argument that stung the most.
 Write it down — it's going to show up as the "Strongest counter-
-argument" line in `outputs/themes.md`.
+argument" line in `solutions/themes.md`.
 
 ---
 
@@ -303,7 +256,7 @@ they pick programs. The options memo is the bridge.
 **Try this prompt:**
 
 > Using the refined themes and the theme-session map, draft
-> `outputs/options-memo.md` as a one-page strategic options memo,
+> `solutions/options-memo.md` as a one-page strategic options memo,
 > roughly 400 words. Use this exact shape:
 >
 > ```markdown
@@ -357,7 +310,7 @@ Better to find the holes here.
 
 **Try this prompt:**
 
-> For each of the three options in `outputs/options-memo.md`, write the
+> For each of the three options in `solutions/options-memo.md`, write the
 > strongest case *against* it that a skeptical exec would make. Be
 > specific and a little hostile — the way a CFO might be when they
 > think the program team has under-thought the budget implications.
@@ -372,23 +325,20 @@ Better to find the holes here.
   trade-offs to consider"* is not.
 - If any option's counter has no credible response, *change the
   option* — don't paper over it.
-- Update `outputs/themes.md` to add a `Strongest counter-argument`
+- Update `solutions/themes.md` to add a `Strongest counter-argument`
   line under each theme based on what you learned. (At least 2 themes
   should have a non-empty counter-argument by the end.)
 
 **Finalize:**
 
-1. Save `outputs/themes.md`, `outputs/theme-session-map.csv`, and
-   `outputs/options-memo.md`.
-2. Compare your outputs to the canonical files in
-   [`../solutions/`](../solutions/) (which were committed before this
-   session): [`solutions/themes.md`](../solutions/themes.md),
-   [`solutions/theme-session-map.csv`](../solutions/theme-session-map.csv),
-   and [`solutions/options-memo.md`](../solutions/options-memo.md).
-   Where do you agree? Where do you differ? *Different is allowed.*
-   The canonical answer isn't the only good answer; it's *an* answer
-   that survived its own pressure-test.
-3. Read `outputs/options-memo.md` aloud. Does it make a recommendation
+1. Save `solutions/themes.md`, `solutions/theme-session-map.csv`, and
+   `solutions/options-memo.md`.
+2. Compare your outputs to the canonical files in `solutions/` (which
+   were committed before this session). Where do you agree? Where do
+   you differ? *Different is allowed.* The canonical answer isn't the
+   only good answer; it's *an* answer that survived its own pressure-
+   test.
+3. Read `solutions/options-memo.md` aloud. Does it make a recommendation
    you'd actually defend in a leadership meeting? If yes, you're done.
 
 ---
@@ -413,9 +363,5 @@ you practiced the muscle of asking for the disagreement on purpose.
 Take that home with you. Next time someone shows you "what Copilot
 said," ask: *"did you ask it to argue back?"*
 
-Lab 3 reads canonical Lab 2 outputs from
-`session-three/from-previous-session/` so the room stays in sync. If
-you want to carry your own work forward instead, replace those files
-with the ones in your `outputs/` folder before starting Lab 3. Either
-way, don't worry about polishing — your themes, map, and memo go to
-the next session as-is.
+Lab 3 picks up from your `solutions/` folder. Don't worry about
+polishing — your themes, map, and memo go to the next session as-is.

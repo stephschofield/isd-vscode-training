@@ -1,0 +1,6 @@
+# this folder holds:
+# 1. canonical "what good looks like" reference content
+#    (briefing.md, timeline.md, deck-outline.md, briefing.docx, deck.pptx)
+# 2. the attendee's converted output once they run scripts/build-deliverables.{sh,ps1}
+#    (overwrites the canonical .docx and .pptx locally — restore with
+#     `git restore final/briefing.docx final/deck.pptx`)

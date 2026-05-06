@@ -1,8 +1,11 @@
 # Build the Lab 3 deliverables: briefing.docx and deck.pptx
 #
 # Reads from templates\ (where attendees fill in their own content).
-# Writes to the project root by default. Late joiners can copy
-# final\briefing.md and final\deck-outline.md over the templates first.
+# Writes to final\ — overwrites the canonical baked-in copies of
+# briefing.docx and deck.pptx locally. Restore them with:
+#   git restore final/briefing.docx final/deck.pptx
+# Late joiners can copy final\briefing.md and final\deck-outline.md
+# over the templates first.
 #
 # Requires: pandoc (https://pandoc.org/installing.html)
 #
@@ -21,8 +24,8 @@ if (-not (Get-Command pandoc -ErrorAction SilentlyContinue)) {
 
 $BriefingSrc = 'templates\briefing-template.md'
 $DeckSrc     = 'templates\deck-outline-template.md'
-$BriefingOut = 'briefing.docx'
-$DeckOut     = 'deck.pptx'
+$BriefingOut = 'final\briefing.docx'
+$DeckOut     = 'final\deck.pptx'
 
 if (-not (Test-Path $BriefingSrc)) {
     Write-Error "$BriefingSrc not found. run from the repo root."

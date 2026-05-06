@@ -6,12 +6,6 @@
 > **Tip:** Always attach the relevant input files with `#file:` before
 > sending a synthesis prompt. Synthesis without sources is
 > hallucination.
->
-> **Two folders to keep straight:** prompts that write files target
-> `outputs/` — that's **your** working folder, created during the
-> lab, and what Lab 3 reads from. Canonical reference answers live in
-> [`../solutions/`](../solutions/); don't open them until Part 6 of
-> the lab walkthrough tells you to compare against them.
 
 ---
 
@@ -63,10 +57,8 @@ the whiteboard transcription, and `from-previous-session/clean_submissions.csv`.
 Using only the attached files, identify 5–8 themes for the Meridian
 Innovation Summit. For each theme, give me:
 
-1. A short, specific name (5 words or fewer — avoid generic one-word
-   labels like "AI" or "Cloud" on their own; the words can appear if
-   the phrase actually means something, e.g. "AI in workflows" not
-   just "AI")
+1. A short, specific name (5 words or fewer — no "AI", no "Cloud",
+   something that means something)
 2. Why it matters, in one sentence, grounded in a stakeholder need
 3. 1–2 direct quotes from the transcripts or notes that support it
 4. The number of speaker submissions in `clean_submissions.csv` that
@@ -96,7 +88,7 @@ context as the themes prompt above.
 
 ```
 Using the themes we just produced and `clean_submissions.csv`, create
-`outputs/theme-session-map.csv` with these columns:
+`solutions/theme-session-map.csv` with these columns:
 
 submission_id, talk_title, assigned_theme, confidence, notes
 
@@ -116,7 +108,7 @@ force-fit.
 ### Follow-up — surface gaps and orphans
 
 ```
-Now group `outputs/theme-session-map.csv` by `assigned_theme` and tell
+Now group `solutions/theme-session-map.csv` by `assigned_theme` and tell
 me:
 
 - Which themes have fewer than 6 sessions (too thin for a track)?
@@ -166,7 +158,7 @@ Run in Part 5. Themes and map should still be in the chat context.
 
 ```
 Using the refined themes and the theme-session map, draft
-`outputs/options-memo.md` as a one-page strategic options memo,
+`solutions/options-memo.md` as a one-page strategic options memo,
 roughly 400 words. Use this exact shape:
 
 # Innovation Summit — Program Directions
@@ -208,7 +200,7 @@ say so and tell me what changed your mind.
 Run in Part 6.
 
 ```
-For each of the three options in `outputs/options-memo.md`, write the
+For each of the three options in `solutions/options-memo.md`, write the
 strongest case against it that a skeptical exec would make. Be
 specific and a little hostile — the way a CFO might be when they
 think the program team has under-thought the budget implications.

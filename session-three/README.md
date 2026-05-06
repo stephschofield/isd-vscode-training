@@ -1,4 +1,16 @@
-# Session 3 — From Strategy to Executive Story
+# isd-vscode-session3
+
+> **🔒 INTERNAL repo.** This is the source-of-truth and planning workspace
+> for Lab 3 — facilitator script, planning docs, tests, and backlog live
+> here. The **attendee-facing copy** will be published to
+> [`stephschofield/isd-vscode-training/session-three/`](https://github.com/stephschofield/isd-vscode-training/tree/feat/initial-publish-session-three/session-three)
+> (currently on the `feat/initial-publish-session-three` branch, pending
+> merge of [`isd-vscode-training#1`](https://github.com/stephschofield/isd-vscode-training/pull/1);
+> the repo is also still private until the publish lands).
+> Edit lab content here, then **manually republish** to the training repo
+> after edits land. Do not point attendees at this repo.
+
+**Lab 3 — From Strategy to Executive Story**
 
 Part of the **ISD +1 Campaign** hands-on lab series:
 
@@ -20,21 +32,24 @@ This is **the third and final lab** in the series:
 
 ## Start here → [`lab/03-briefing.md`](lab/03-briefing.md)
 
-Open that file in VS Code, hit **Ctrl/Cmd + K**, then **V** to render the
-preview side-by-side with the source. (Don't use **Ctrl/Cmd + Shift + V** —
-that opens the preview in the same pane and hides your draft.) Then follow
-the steps. The whole lab takes **60 minutes**.
+Open that file in VS Code, then render the preview side-by-side with
+the source. **On Windows/Linux:** press **Ctrl+K**, release, then **V**.
+**On macOS:** press **⌘ K**, then **⌘ V** (keep ⌘ held for the second
+press too). (Don't use **Ctrl/Cmd + Shift + V** — that opens the preview
+in the same pane and hides your draft.) Then follow the steps. The whole
+lab takes **60 minutes**.
 
 By the end of the session you'll walk out with **two executive-ready
-deliverables on your machine** about the Meridian Innovation Summit:
+deliverables on your machine** about the Meridian Innovation Summit
+(both written into `final/` by the conversion script in Part 6):
 
-- **`briefing.docx`** — a Word overview your COO could read in 5 minutes
-- **`deck.pptx`** — a 7-slide PowerPoint deck you could hand to your
+- `final/briefing.docx` — a Word overview your COO could read in 5 minutes
+- `final/deck.pptx` — a 7-slide PowerPoint deck you could hand to your
   leadership team
 
 The Markdown briefing in `templates/briefing-template.md` is the
-**authoring intermediate** — what you write in VS Code, and what the
-conversion script in Part 6 turns into the two final files.
+**authoring intermediate** — it's what you write in VS Code, and it's
+what the conversion script in Part 6 turns into the two final files.
 
 ---
 
@@ -47,8 +62,7 @@ conversion script in Part 6 turns into the two final files.
 - Build a **structured event timeline** for the Innovation Summit
 - Map the briefing into a **7-slide deck outline** in
   `templates/deck-outline-template.md`
-- Run the conversion script (`scripts/build-deliverables.{sh,ps1}`)
-  to produce `briefing.docx` and `deck.pptx`
+- Run the conversion script to produce `final/briefing.docx` and `final/deck.pptx`
 - Read your finished briefing aloud and time it (target: 5 minutes)
 - Reflect on where you'd use this exact loop in your real job next week
 
@@ -56,13 +70,13 @@ conversion script in Part 6 turns into the two final files.
 
 ## Folder layout
 
-Everything you need for today is in this `session-three/` folder:
-
 ```
-session-three/
+isd-vscode-session3/
 ├── README.md                         ← you are here
 ├── lab/
 │   └── 03-briefing.md                ← attendee walkthrough (start here)
+├── facilitator/
+│   └── 03-briefing-guide.md          ← lead-facilitator script
 ├── prompts/
 │   └── 03-prompts.md                 ← copy-pasteable prompt library
 ├── scripts/
@@ -83,8 +97,8 @@ session-three/
     ├── briefing.md                   ← canonical "what good looks like"
     ├── timeline.md                   ← canonical timeline
     ├── deck-outline.md               ← canonical deck outline
-    ├── briefing.docx                 ← canonical Word output
-    └── deck.pptx                     ← canonical PowerPoint output
+    ├── briefing.docx                 ← canonical Word output (also where `scripts/build-deliverables.{sh,ps1}` writes the attendee version)
+    └── deck.pptx                     ← canonical PowerPoint output (also where `scripts/build-deliverables.{sh,ps1}` writes the attendee version)
 ```
 
 ---
@@ -104,27 +118,28 @@ Then jump into [`lab/03-briefing.md`](lab/03-briefing.md).
 
 **Pre-reqs (have these ready before you arrive):**
 
-- A **GitHub account** — sign up free at
-  [github.com/signup](https://github.com/signup) if you don't have one
-  yet. Everything in this lab is gated on it.
+- A **GitHub account** — sign up at <https://github.com/signup> if you
+  don't have one
 - **GitHub Copilot** access provisioned (you'll see the Copilot chat
-  icon in the VS Code sidebar — same setup as Labs 1 and 2)
-- The 1-hour intro **VS Code training** (sent separately before Lab 1)
+  icon in the VS Code sidebar)
+- The 1-hour intro **VS Code training** (sent separately)
 - **Pandoc** installed — download from
-  [pandoc.org/installing.html](https://pandoc.org/installing.html).
-  This is what turns your Markdown briefing into the `.docx` and
-  `.pptx` deliverables in Part 6. One install, no other tooling needed.
+  <https://pandoc.org/installing.html>. This is what turns your
+  Markdown briefing into the `.docx` and `.pptx` deliverables in
+  Part 6. One install, no other tooling needed.
 
 **Day-of setup:**
 
-1. **Clone this repo** to your machine and open the `session-three/`
-   folder in VS Code
-2. Confirm **GitHub Copilot Chat** is signed in (chat bubble icon in
+1. **Clone this repo** to your machine
+2. **Open it in VS Code**
+3. Confirm **GitHub Copilot Chat** is signed in (chat bubble icon in
    the **left sidebar** of VS Code)
-3. Open [`lab/03-briefing.md`](lab/03-briefing.md) and toggle the
-   Markdown preview side-by-side: press **Ctrl/Cmd + K**, release,
-   then press **V**. (If the shortcut doesn't work, right-click the
-   file in the file explorer and pick **Open Preview to the Side**.)
+4. Open [`lab/03-briefing.md`](lab/03-briefing.md) and toggle the
+   Markdown preview side-by-side. **On Windows/Linux:** press
+   **Ctrl+K**, release, then **V**. **On macOS:** press **⌘ K**, then
+   **⌘ V** (keep ⌘ held for the second press too). (If the shortcut
+   doesn't work, right-click the file in the file explorer and pick
+   **Open Preview to the Side**.)
 
 If your Copilot icon shows a red dot, ask one of the leads — that's a
 2-minute fix and it should not block you from starting.

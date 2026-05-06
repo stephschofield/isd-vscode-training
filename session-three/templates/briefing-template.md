@@ -20,11 +20,11 @@
 
 ## Why this program shape
 
-> [**Two** short paragraphs of prose (no bullets): (1) what the data
-> and stakeholders actually said; (2) why this shape best serves those
-> signals — close this paragraph with one sentence on what we'd learn
-> from running it. Target ~120–140 words total. Convert this to
-> **prose**, not bullets — Alex skips bulleted "why" sections.]
+> [Three short paragraphs covering: (1) what the data and stakeholders
+> actually said; (2) why this shape best serves those signals; (3) what
+> we would learn from running it that we don't already know.
+> Convert this to **prose**, not bullets — Alex skips bulleted "why"
+> sections.]
 
 ## Themes (program tracks)
 

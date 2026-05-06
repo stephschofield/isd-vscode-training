@@ -4,33 +4,33 @@
 - Briefing prepared for Alex Chen, COO
 - Decision requested: approve the one-day, three-track program shape
 
-## TL;DR
+# TL;DR
 
 - We recommend a one-day, three-track Innovation Summit
 - Three tracks anchor the highest-signal themes from speakers and stakeholders: Platform Engineering Pragmatism, Production AI, Reliability and Security
 - We need your approval and three named curators within two weeks to lock the program by quarter end
 
-## Recommendation
+# Recommendation
 
 - We recommend running the inaugural Innovation Summit as a single day with three parallel tracks
 - Each track is anchored to one of the three highest-signal themes from our submission and stakeholder synthesis
 - A 30-minute lightning-talk block in the late afternoon surfaces the strongest Developer Experience and Engineering Leadership content without forcing a fourth track
 - We are asking you to approve this program shape so curation can lock the final session list within two weeks
 
-## Why this program shape
+# Why this program shape
 
 - Submissions and stakeholders point the same way — two-thirds of the 30 cleaned submissions cluster into the three named themes, and stakeholder interviews named the same three
 - This shape matches how attendees actually wayfind — three theme-locked tracks let an attendee pick a track and stay; mixing themes inside tracks adds load without surfacing more content
 - Running it teaches us which of the three themes draws the strongest day-of attendance, and whether the lightning block is the right home for cross-cutting content — both inform Year 2
 
-## Themes (program tracks)
+# Themes (program tracks)
 
 - **Track A — Platform engineering pragmatism**: field-tested patterns for shipping internal platforms in realistic timelines (serves senior engineers and engineering leaders)
 - **Track B — Production AI that survives contact with reality**: evaluation, monitoring, drift, and cost for AI features in production (serves AI feature owners)
 - **Track C — Reliability and security as everyday practice**: small, continuous reliability and security work embedded in product teams (serves SREs and security engineers)
 - **Lightning block — Developer Experience + Engineering Leadership**: the strongest sessions on onboarding, internal APIs, refactoring, and leadership in non-hypergrowth orgs
 
-## Event timeline
+# Event timeline
 
 | Time         | Track A: Platform engineering | Track B: Production AI | Track C: Reliability and security |
 |--------------|-------------------------------|-------------------------|------------------------------------|
@@ -44,14 +44,14 @@
 | 16:00–16:30  | Lightning block (all-hands) — DX & Eng Leadership: Karras, Adebayo, Lin (3 × 10 min) | (all-hands) | (all-hands) |
 | 16:30–17:00  | Closing recap & next steps (all-hands) | (all-hands)        | (all-hands)                        |
 
-## Risks + What we need from you
+# Risks + What we need from you
 
-### Risks
+**Risks**
 
 - Under-serving Developer Experience and Engineering Leadership content beyond the lightning block — accepted tradeoff for Year 1
 - One day means hard curation choices: 15 slots vs ~30 strong submissions
 
-### What we need from you (Alex)
+**What we need from you (Alex)**
 
 - **Approve** the one-day, three-track program shape
 - **Assign** one curator per track by end of next week
