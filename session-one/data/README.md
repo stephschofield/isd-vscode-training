@@ -38,7 +38,7 @@ The raw dataset deliberately includes every kind of mess you'd realistically
 find in a submissions inbox:
 
 1. ~6 speakers submitting under two different emails (same person, different `speaker_email`). One of each pair uses a `.work` suffix variant.
-2. 13–15 duplicate talk submission rows across ~5 distinct talks (e.g., Aarav Patel has 4 talks each appearing under 3 submission_ids; Bianca Rossi's "What Our Last Incident Taught Us" has 3 submissions). 6 of those duplicates are `(revised)` re-submissions tied to the `.work` email variants in #1 — Part 3 dedup will catch them once the email-canonicalization step collapses the `.work` variant onto the canonical address and the row becomes an exact duplicate. The lab does not teach a separate `(revised)` merge pass.
+2. 13–15 duplicate talk submission rows across ~5 distinct talks (e.g., Aarav Patel has 4 talks each appearing under 3 submission_ids; Bianca Rossi's "What Our Last Incident Taught Us" has 3 submissions). 6 of those duplicates are `(revised)` re-submissions tied to the `.work` email variants in #1 — these survive both dedup passes (the `(revised)` suffix in `talk_title` keeps them from being exact-duplicate rows after email canonicalization, and it also keeps them out of the same-speaker-same-title pass), so they intentionally remain in the canonical 168-row file. The lab does not teach a separate `(revised)` merge pass — they're treated as legitimately distinct revisions of the original talk.
 3. Mixed date formats — ISO, US slash, and long-form all coexist.
 4. ~26 topic surface forms collapsing down to 6 canonical topics.
 5. ~24 rows (across the seeded duplicates) where `session_length_min` conflicts for the same `talk_title`.
