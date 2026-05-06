@@ -16,7 +16,7 @@
 
 You should have:
 
-- A **GitHub account** — sign up free at [github.com/signup](https://github.com/signup) if you don't have one yet. It's how Copilot signs you in and how VS Code's `Git: Clone` reaches this repo.
+- A **GitHub account** — sign up free at [github.com/signup](https://github.com/signup) if you don't have one yet. You need it to sign in to Copilot. (Cloning this public repo with `Git: Clone` works without an account, but Copilot won't.)
 - VS Code open (you already did the intro session).
 - GitHub Copilot signed in (your facilitator confirmed this at the door).
 - **Git installed** on your laptop — VS Code's built-in `Git: Clone` command shells out to it. If you don't have it, install from [git-scm.com/downloads](https://git-scm.com/downloads), or ask your facilitator for the pre-cloned folder fallback.

@@ -18,7 +18,7 @@ The whole lab takes **60 minutes**, in six short parts.
 
 ## What you need
 
-- A **GitHub account** — sign up free at [github.com/signup](https://github.com/signup) if you don't have one yet. Everything in this lab is gated on it (it's how you sign in to Copilot and how VS Code's `Git: Clone` reaches this repo).
+- A **GitHub account** — sign up free at [github.com/signup](https://github.com/signup) if you don't have one yet. You need it to sign in to Copilot. (Cloning this public repo with `Git: Clone` works without an account, but Copilot won't.)
 - **VS Code** installed.
 - **GitHub Copilot** extension installed and signed in. Parts 2–5 use **Agent mode**; Ask mode alone won't let Copilot edit files. If you only see Ask mode, flag your facilitator at the door.
 - **Git** installed locally (VS Code's `Git: Clone` shells out to it). If you don't have it, install from [git-scm.com/downloads](https://git-scm.com/downloads), or ask your facilitator for the pre-cloned folder fallback.
