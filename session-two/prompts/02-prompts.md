@@ -63,8 +63,10 @@ the whiteboard transcription, and `from-previous-session/clean_submissions.csv`.
 Using only the attached files, identify 5–8 themes for the Meridian
 Innovation Summit. For each theme, give me:
 
-1. A short, specific name (5 words or fewer — no "AI", no "Cloud",
-   something that means something)
+1. A short, specific name (5 words or fewer — avoid generic one-word
+   labels like "AI" or "Cloud" on their own; the words can appear if
+   the phrase actually means something, e.g. "AI in workflows" not
+   just "AI")
 2. Why it matters, in one sentence, grounded in a stakeholder need
 3. 1–2 direct quotes from the transcripts or notes that support it
 4. The number of speaker submissions in `clean_submissions.csv` that
