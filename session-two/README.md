@@ -71,6 +71,9 @@ session-two/
 ├── from-previous-session/
 │   ├── README.md
 │   └── clean_submissions.csv              ← Lab 1's cleaned dataset
+├── outputs/                                ← created during the lab; holds your
+│                                             deliverables (themes, map, memo)
+│                                             that Lab 3 picks up from
 └── solutions/                             ← don't open until the lab tells you to
     ├── README.md
     ├── themes.md
@@ -84,6 +87,7 @@ session-two/
 | [`inputs/`](inputs/) | Stakeholder transcripts, notes, and the whiteboard transcription |
 | [`from-previous-session/`](from-previous-session/) | Lab 1's cleaned dataset, plus a short README on what happened |
 | [`prompts/`](prompts/) | A copy/paste bank of every Copilot prompt used in the session |
+| `outputs/` | **Your** working folder — created during the lab; holds the themes, map, and memo you produce. Lab 3 picks up from here. |
 | [`solutions/`](solutions/) | Canonical answers — **don't open until the lab walkthrough tells you to** |
 
 ---
@@ -108,7 +112,7 @@ in Lab 1.
 
 ## A note on the scenario
 
-Meridian Solutions, the Innovation Summit, the speakers, and the
+Meridian, the Innovation Summit, the speakers, and the
 stakeholders are all made up. Any resemblance to real people or events
 is coincidental. The mess in the inputs, however, is depressingly
 realistic.
