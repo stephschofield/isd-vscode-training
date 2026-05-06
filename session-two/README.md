@@ -112,4 +112,3 @@ in Lab 1.
 - VS Code with **GitHub Copilot** already signed in (set up before Lab 1).
 - This repo cloned to your machine.
 - About **60 minutes** of focus and a willingness to argue with Copilot.
-

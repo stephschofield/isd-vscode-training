@@ -286,7 +286,7 @@ design. **Don't** add `##` headings inside a slide — Pandoc reads them
 as new slide breaks.
 
 **Step 6b — Run the conversion (3 min).** Open the integrated terminal
-in VS Code: **Ctrl/Cmd + ` ** (backtick). Run:
+in VS Code: **Ctrl/Cmd + backtick** (`` ` ``). Run:
 
 - **macOS / Linux:** `bash scripts/build-deliverables.sh`
 - **Windows:** `powershell -ExecutionPolicy Bypass -File scripts\build-deliverables.ps1`
