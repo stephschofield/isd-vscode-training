@@ -107,12 +107,3 @@ in Lab 1.
 ## What you need
 
 - VS Code with **GitHub Copilot** already signed in (set up before Lab 1)
-- This repo cloned to your laptop
-- 75–90 minutes and a willingness to argue with Copilot
-
-## A note on the scenario
-
-Meridian, the Innovation Summit, the speakers, and the
-stakeholders are all made up. Any resemblance to real people or events
-is coincidental. The mess in the inputs, however, is depressingly
-realistic.
