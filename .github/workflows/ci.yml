@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  markdown-lint:
+    name: Markdown lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DavidAnson/markdownlint-cli2-action@05f32210e84442804257b2a6f20b273450ec8265 # v16.0.0
+        with:
+          globs: "**/*.md"
+          config: ".markdownlint.jsonc"
+
+  markdown-links:
+    name: Markdown link check
+    runs-on: ubuntu-latest
+    # External network flakiness should not block PRs unrelated to link content.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress '**/*.md'
+          fail: true
+
+  python-lint:
+    name: Python lint (ruff)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff==0.14.5
+      - run: ruff check .
+
+  python-smoke:
+    name: Python script smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run regenerate_clean.py
+        working-directory: session-one/data
+        run: python regenerate_clean.py
+      - name: Verify clean_submissions.csv was produced
+        run: test -s session-one/data/clean_submissions.csv
