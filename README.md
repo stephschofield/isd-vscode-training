@@ -31,6 +31,21 @@ The fastest way in is the [training hub](https://stephschofield.github.io/isd-vs
 
 ---
 
+## Repo layout
+
+The sessions run in this order. (GitHub's file browser sorts folders
+alphabetically, so above you'll see `session-one`, `session-three`,
+`session-two` — the intended teaching order is below.)
+
+```
+isd-vscode-training/
+├── session-one/     ← Lab 1 · Clean
+├── session-two/     ← Lab 2 · Synthesize
+└── session-three/   ← Lab 3 · Communicate
+```
+
+---
+
 ## Before your first lab
 
 - Bring your own laptop with **GitHub Copilot** already provisioned
