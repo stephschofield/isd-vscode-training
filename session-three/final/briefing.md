@@ -38,11 +38,10 @@ inside tracks — which we considered — adds cognitive load without
 surfacing more content than the lightning block already does.
 Outcome-based tracks are interesting on paper but require re-tagging
 every session, and the mapping is contestable enough that the curation
-risk outweighs the upside this year.
-
-What we'll learn by running this shape is which of the three themes
-draws the strongest day-of attendance, and whether the lightning block
-is the right home for cross-cutting content. Both inform Year 2.
+risk outweighs the upside this year. Running this shape will also tell
+us which of the three themes draws the strongest day-of attendance, and
+whether the lightning block is the right home for cross-cutting content
+— both inform Year 2.
 
 ## Themes (program tracks)
 
@@ -66,12 +65,6 @@ leadership in non-hypergrowth orgs. Surfaces in the late-afternoon
 lightning block.
 
 ## Event timeline at a glance
-
-> Session titles below are **abbreviated** for table readability — the
-> full conference-program titles live in
-> `from-previous-session/clean_submissions.csv` (`session_title`
-> column) and `from-previous-session/theme-session-map.csv`. The
-> session ID and speaker name are verbatim; only the title is trimmed.
 
 | Time         | Track A: Platform engineering | Track B: Production AI | Track C: Reliability and security |
 |--------------|-------------------------------|-------------------------|------------------------------------|
