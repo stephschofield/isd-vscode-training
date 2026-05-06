@@ -35,8 +35,8 @@ Part 6 you'll convert it (plus a one-page slide outline) into a
    sidebar of VS Code).
 4. Open the Markdown preview for `templates/briefing-template.md`
    side-by-side. **On Windows/Linux:** press **Ctrl+K**, release, then
-   press **V**. **On macOS:** press **⌘ K**, then **⌘ V** (keep ⌘ held
-   for the second press too).
+   press **V**. **On macOS:** press **⌘ K**, release, then press **V**
+   (plain V — no modifier on the second press; ⌘V is Paste).
    (This is *not* the same as Ctrl/Cmd + Shift + V — that opens preview
    in the same pane and hides your draft.) If the keyboard shortcut
    doesn't work, right-click the file in the file explorer and pick
