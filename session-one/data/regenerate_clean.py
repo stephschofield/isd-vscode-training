@@ -36,6 +36,7 @@ from __future__ import annotations
 
 import csv
 import re
+import sys
 from collections import defaultdict
 from pathlib import Path
 
@@ -167,11 +168,17 @@ def normalize_name(value: str) -> str:
     has_dr_prefix = re.match(r"^dr\.?\s+", v, re.IGNORECASE)
     if has_dr_prefix:
         v = re.sub(r"^dr\.?\s+", "", v, flags=re.IGNORECASE)
-    # Title case while preserving common name particles
+    # Title case while preserving common name particles.
+    # Split on both '-' and "'" so multi-segment names like O'Sullivan,
+    # Mary-Anne, and D'Angelo capitalize every segment after the
+    # delimiter (Python's str.capitalize() lowercases everything after
+    # the first character, which would otherwise produce "O'sullivan").
     parts = []
     for word in v.split():
-        # Handle hyphens and apostrophes
-        parts.append("-".join(p.capitalize() for p in word.split("-")))
+        hyphen_pieces = []
+        for hp in word.split("-"):
+            hyphen_pieces.append("'".join(p.capitalize() for p in hp.split("'")))
+        parts.append("-".join(hyphen_pieces))
     titled = " ".join(parts)
     return f"Dr. {titled}" if has_dr_prefix else titled
 
@@ -194,11 +201,25 @@ def build_email_canonical_map(rows: list[dict]) -> dict[str, str]:
         name_key = re.sub(r"^dr\.\s+", "", name_norm)
         by_name[name_key].add(r["speaker_email"].strip().lower())
     mapping: dict[str, str] = {}
-    for emails in by_name.values():
+    for name_key, emails in by_name.items():
+        # Safety net: legitimate dual-email speakers in this dataset
+        # have exactly 2 variants. >2 strongly suggests two distinct
+        # speakers happen to share a name (e.g., two unrelated "Sarah
+        # Chen" rows). The current logic would silently merge their
+        # emails; warn so a regenerator notices before shipping.
+        if len(emails) > 2:
+            print(
+                f"WARNING: name_key '{name_key}' has {len(emails)} email "
+                "variants; possible distinct-speakers-with-same-name "
+                "collision \u2014 review raw input.",
+                file=sys.stderr,
+            )
         if len(emails) <= 1:
             continue
         non_work = [e for e in emails if ".work@" not in e]
-        canonical = non_work[0] if non_work else sorted(emails)[0]
+        # Sort both branches so output is fully deterministic regardless
+        # of PYTHONHASHSEED (set iteration order is undefined).
+        canonical = sorted(non_work)[0] if non_work else sorted(emails)[0]
         for e in emails:
             mapping[e] = canonical
     return mapping

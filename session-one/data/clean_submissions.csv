@@ -45,10 +45,10 @@ submission_id,speaker_name,speaker_email,company,talk_title,topic_tag,track_pref
 00000000-0000-0000-0000-00000000002c,Jonas Berg,jberg@example.com,Litware Capital,The Quiet Power of Skip-Levels,Leadership,Workshop,60,2026-01-07,"Builder, breaker, and recovering perfectionist.",Intermediate,Yes
 00000000-0000-0000-0000-00000000002d,Jonas Berg,jberg@example.com,Litware Capital,Avoiding the Top 5 AI Project Failures,AI,Workshop,30,2026-01-26,,Beginner,Yes
 00000000-0000-0000-0000-00000000002e,Jonas Berg,jberg@example.com,Litware,Multi-Cloud Without the Pain,Cloud,Unknown,45,2026-02-01,,Beginner,Yes
-00000000-0000-0000-0000-00000000002f,Kira O'sullivan,kosullivan@example.com,trey research,Multi-Cloud Without the Pain,Cloud,Strategy,60,2026-05-06,"Talks fast, ships faster.",Beginner,No
-00000000-0000-0000-0000-000000000030,Kira O'sullivan,kosullivan@example.com,TreyResearch,Refactoring Legacy Systems for the Cloud,Cloud,Workshop,30,2026-03-19,Hands-on leader who still reads the logs.,Beginner,Yes
-00000000-0000-0000-0000-000000000031,Kira O'sullivan,kosullivan@example.com,TreyResearch,When the Single Source of Truth Lies,Data,Technical Deep Dive,45,2026-02-12,"Builder, breaker, and recovering perfectionist.",Advanced,No
-00000000-0000-0000-0000-000000000032,Kira O'sullivan,kosullivan@example.com,trey research,What Our Last Incident Taught Us,Security,Technical Deep Dive,45,2026-05-20,Reformed consultant.,Intermediate,No
+00000000-0000-0000-0000-00000000002f,Kira O'Sullivan,kosullivan@example.com,trey research,Multi-Cloud Without the Pain,Cloud,Strategy,60,2026-05-06,"Talks fast, ships faster.",Beginner,No
+00000000-0000-0000-0000-000000000030,Kira O'Sullivan,kosullivan@example.com,TreyResearch,Refactoring Legacy Systems for the Cloud,Cloud,Workshop,30,2026-03-19,Hands-on leader who still reads the logs.,Beginner,Yes
+00000000-0000-0000-0000-000000000031,Kira O'Sullivan,kosullivan@example.com,TreyResearch,When the Single Source of Truth Lies,Data,Technical Deep Dive,45,2026-02-12,"Builder, breaker, and recovering perfectionist.",Advanced,No
+00000000-0000-0000-0000-000000000032,Kira O'Sullivan,kosullivan@example.com,trey research,What Our Last Incident Taught Us,Security,Technical Deep Dive,45,2026-05-20,Reformed consultant.,Intermediate,No
 00000000-0000-0000-0000-000000000033,Leo Ramirez,lramirez@example.com,Proseware Media,Refactoring Legacy Systems for the Cloud,Cloud,Strategy,60,2026-04-12,Hands-on leader who still reads the logs.,Advanced,Yes
 00000000-0000-0000-0000-000000000034,Leo Ramirez,lramirez@example.com,proseware media,Leading Through a Reorg,Leadership,Technical Deep Dive,60,2026-02-22,Spent more time in postmortems than they would like.,Beginner,Yes
 00000000-0000-0000-0000-000000000035,Dr. Leo Ramirez,lramirez@example.com,Proseware Media,What Our Last Incident Taught Us,Security,Technical Deep Dive,30,2026-04-25,Believes the boring answer is usually correct.,Advanced,No
