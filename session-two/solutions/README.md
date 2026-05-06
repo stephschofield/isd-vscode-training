@@ -4,15 +4,16 @@
 > you to.** These are the canonical answers — reading them before doing
 > the synthesis breaks the exercise.
 
-The lab in [`../lab/02-synthesis.md`](../lab/02-synthesis.md) will tell
-you exactly when (and how) to open each file in here. Until then, stay
-out.
+The lab in [`../lab/02-synthesis.md`](../lab/02-synthesis.md) tells you
+exactly when to open these files — see **Part 6 — Finalize**, where
+you'll compare your own `outputs/` against this folder. Until the lab
+tells you to, stay out.
 
 ## What's in here (after the lab)
 
 - `themes.md` — the canonical theme set with evidence quotes and counts.
 - `theme-session-map.csv` — every cleaned submission mapped to the
-  theme(s) it supports.
+  theme it supports (one assigned theme per row).
 - `options-memo.md` — a 1-page strategic memo with a recommendation.
 
 ## Late joiner / cross-check use
