@@ -265,7 +265,7 @@ You now have a complete Markdown briefing. Time to turn it into the two
 files an exec actually opens — a Word doc and a PowerPoint deck — then
 land the lesson.
 
-**Step 6a — Build the deck outline (5 min).** Open
+**Step 6a — Build the deck outline (3 min).** Open
 `templates/deck-outline-template.md` side-by-side with your filled
 `templates/briefing-template.md`. Paste your full briefing into Copilot
 Chat with this prompt:
@@ -295,23 +295,27 @@ Two new files appear in the project root: `briefing.docx` and
 `deck.pptx`. If you see `error: pandoc is not on PATH`, install Pandoc
 from <https://pandoc.org/installing.html> and re-run.
 
-**Step 6c — Open and confirm (5 min).** In the VS Code file explorer,
+**Step 6c — Open and confirm (2 min).** In the VS Code file explorer,
 right-click `deck.pptx` → **Reveal in File Explorer** (Windows) /
 **Reveal in Finder** (macOS) → double-click to open in PowerPoint.
 Same for `briefing.docx` in Word. Skim both. Note **one thing** you'd
 polish in PowerPoint after the session — that's your take-away
 follow-up.
 
-Read the briefing out loud at a normal pace. Time yourself. **Target:
-under 5 minutes.** If you ran over, paste it back into Copilot with:
+**Step 6d — Read aloud and tighten (5 min).** Read the briefing out
+loud at a normal pace. Time yourself. **Target: under 5 minutes.** If
+you ran over, paste it back into Copilot with:
 
 ```
 Cut this briefing by 30%. Tell me what you cut and why.
 ```
 
-Then put back anything you actually needed.
+Then put back anything you actually needed. (If you want a refreshed
+`briefing.docx` after editing, re-run
+`scripts/build-deliverables.{sh,ps1}` after the session — don't burn
+the lab clock on a second build.)
 
-**Step 6d — Reflection (2 min).** Close all your tabs except this one.
+**Step 6e — Reflection (2 min).** Close all your tabs except this one.
 The lead will pose a reflection question and ask you to sit in silence
 for 30 seconds before anyone shares. The question is:
 
