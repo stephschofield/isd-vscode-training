@@ -121,20 +121,22 @@ Then jump into [`lab/03-briefing.md`](lab/03-briefing.md).
 - A **GitHub account** — sign up at <https://github.com/signup> if you
   don't have one
 - **GitHub Copilot** access provisioned (you'll see the Copilot chat
-  icon in the VS Code sidebar)
-- The 1-hour intro **VS Code training** (sent separately)
-- **Pandoc** installed — download from
-  <https://pandoc.org/installing.html>. This is what turns your
-  Markdown briefing into the `.docx` and `.pptx` deliverables in
-  Part 6. One install, no other tooling needed.
+  icon in the VS Code sidebar — same setup as Labs 1 and 2)
+- The 1-hour intro **VS Code training** (sent separately before Lab 1)
+- A working **browser**. The Codespace includes **Pandoc** preinstalled —
+  that's what turns your Markdown briefing into the `.docx` and `.pptx`
+  deliverables in Part 6, no install required.
 
 **Day-of setup:**
 
-1. **Clone this repo** to your machine
-2. **Open it in VS Code**
-3. Confirm **GitHub Copilot Chat** is signed in (chat bubble icon in
+1. **Open the Codespace.** From the [training hub](https://stephschofield.github.io/isd-vscode-training/),
+   click *Open in Codespaces* on the Session 3 tile, or use this direct link:
+   [open Session 3 in Codespaces ↗](https://codespaces.new/stephschofield/isd-vscode-training/tree/main?devcontainer_path=session-three/.devcontainer/devcontainer.json&quickstart=1).
+   The Codespace boots with `session-three/` as the workspace, Copilot
+   pre-installed, and Pandoc ready to go.
+2. Confirm **GitHub Copilot Chat** is signed in (chat bubble icon in
    the **left sidebar** of VS Code)
-4. Open [`lab/03-briefing.md`](lab/03-briefing.md) and toggle the
+3. Open [`lab/03-briefing.md`](lab/03-briefing.md) and toggle the
    Markdown preview side-by-side. **On Windows/Linux:** press
    **Ctrl+K**, release, then **V**. **On macOS:** press **⌘ K**, then
    **⌘ V** (keep ⌘ held for the second press too). (If the shortcut
@@ -143,6 +145,10 @@ Then jump into [`lab/03-briefing.md`](lab/03-briefing.md).
 
 If your Copilot icon shows a red dot, ask one of the leads — that's a
 2-minute fix and it should not block you from starting.
+
+> Prefer working locally? You can clone the repo, open `session-three/`
+> in desktop VS Code, and install [Pandoc](https://pandoc.org/installing.html)
+> yourself. The Codespace path is the recommended one.
 
 ---
 

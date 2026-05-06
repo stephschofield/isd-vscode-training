@@ -2,6 +2,7 @@
   "name": "Meridian Summit — Session 3 (Communicate)",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}/session-three",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y --no-install-recommends pandoc && sudo rm -rf /var/lib/apt/lists/*",
   "customizations": {
     "vscode": {
       "extensions": [
