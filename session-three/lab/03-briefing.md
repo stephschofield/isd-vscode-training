@@ -1,8 +1,9 @@
 # Lab 3 — From Strategy to Executive Story
 
-> **Goal:** In ~88 minutes, turn the Lab 2 themes and recommendation into
-> a polished, executive-ready briefing your COO could read in 5 minutes
-> and act on. Copilot is your editor today, not your author.
+> **Goal:** In 60 minutes, turn the Lab 2 themes and recommendation into
+> two polished, executive-ready deliverables — a `.docx` overview and a
+> `.pptx` deck — that your COO could read in 5 minutes and act on.
+> Copilot is your editor today, not your author.
 
 ## Before you begin
 
@@ -15,23 +16,27 @@ You are **advocating for** the recommendation in
 `from-previous-session/options-memo.md` — not re-deciding among the three
 options. Lab 2 made the call; today you make the case.
 
+The Markdown briefing you author is the **authoring intermediate**. In
+Part 6 you'll convert it (plus a one-page slide outline) into a
+`briefing.docx` and `deck.pptx` you can hand to a real exec.
+
 ---
 
-## Part 0 — Set up your workspace (5 min)
+## Part 0 — Set up your workspace (3 min)
 
 1. You already cloned this repo. In VS Code, open these files in
    side-by-side tabs:
    - `templates/exec-persona.md`
    - `templates/briefing-template.md`
    - `from-previous-session/options-memo.md`
-   - `from-previous-session/themes.md`
-2. Read `templates/exec-persona.md` aloud once — or just listen if a lead
-   reads it to the room. It sets the voice you'll write in for the next
-   ~80 minutes.
+2. The lead reads `templates/exec-persona.md` aloud once. Listen — it
+   sets the voice you'll write in for the next 60 minutes.
 3. Open the **Copilot Chat** panel (the chat bubble icon in the left
    sidebar of VS Code).
 4. Open the Markdown preview for `templates/briefing-template.md`
-   side-by-side: press **Ctrl/Cmd + K**, then release, then press **V**.
+   side-by-side. **On Windows/Linux:** press **Ctrl+K**, release, then
+   press **V**. **On macOS:** press **⌘ K**, then **⌘ V** (keep ⌘ held
+   for the second press too).
    (This is *not* the same as Ctrl/Cmd + Shift + V — that opens preview
    in the same pane and hides your draft.) If the keyboard shortcut
    doesn't work, right-click the file in the file explorer and pick
@@ -42,7 +47,7 @@ and Copilot Chat ready. Don't write anything yet.
 
 ---
 
-## Part 1 — Draft the TL;DR (12 min)
+## Part 1 — Draft the TL;DR (8 min)
 
 The TL;DR is the only thing Alex will read if they only have 20 seconds.
 You'll write it in **three sentences**, total **60 words or less**: what
@@ -73,7 +78,7 @@ placeholder in your template with the final version.
 
 ---
 
-## Part 2 — Draft the Recommendation (12 min)
+## Part 2 — Draft the Recommendation (7 min)
 
 Now the Recommendation paragraph. This is where Alex finds out what
 decision you're asking for. Hedging here destroys the briefing.
@@ -108,15 +113,15 @@ Replace the placeholder in your template with the sharpened version.
 
 ---
 
-## Part 3 — Build the Why-this-program-shape narrative (18 min)
+## Part 3 — Build the Why-this-program-shape narrative (12 min)
 
 This is the most important section of the briefing — and the most
 common one to get wrong. The instinct is to make it a bullet list.
 **Don't.** Executives skip bulleted "why" sections because they don't
-tell a story. Yours will be three short paragraphs of prose, written
+tell a story. Yours will be **two short paragraphs of prose**, written
 one at a time.
 
-**Per-loop budget: ~6 min each** (2–3 min drafting bullets, 1–2 min for
+**Per-loop budget: ~6 min each** (2 min drafting bullets, 2 min for
 the Copilot round-trip, 2 min reading aloud and assessing fidelity).
 If you fall behind, compress bullet drafting (fewer bullets, rougher
 phrasing) — but do **not** skip the read-aloud step. That step is where
@@ -129,7 +134,7 @@ is arrangement around it.
 convert them to prose, then paste the prose up into the **Why this
 program shape** section.
 
-Do this loop **three times** — once per paragraph. Each loop is the same
+Do this loop **twice** — once per paragraph. Each loop is the same
 shape: bullets in your scratch area → Copilot prompt → paragraph in the
 Why section.
 
@@ -153,24 +158,21 @@ Read the output aloud. **Does it actually say more than the bullets, or
 does it just sound fancier?** If it's the second, push back: *"That's
 flowery. Tighten to 60 words and use the same words my bullets used."*
 The canonical Why section in `final/briefing.md` lands at ~60-70 words
-for paragraphs 1 and 2; paragraph 3 (the forward-looking "what would
-we learn" beat) is intentionally shorter at ~30-40 words. Paste the
-final version into the Why section as paragraph 1.
+for paragraph 1. Paste the final version into the Why section as
+paragraph 1.
 
-**Loop 2 — Paragraph 2: Why does this shape serve those signals?**
-New set of bullets in your scratch area. Same prompt. Same review.
-Paste in as paragraph 2.
+**Loop 2 — Paragraph 2: Why does this shape serve those signals, and
+what would we learn from running it?** New set of bullets in your
+scratch area. Same prompt. Same review. Close this paragraph with one
+sentence on what we'd learn — fold it in rather than running a third
+loop. Paste in as paragraph 2.
 
-**Loop 3 — Paragraph 3: What would we learn from running it?**
-Same loop, third time. Paste in as paragraph 3.
-
-Your Why section is now three paragraphs, ~150-180 words total
-(~60-70 each for P1 and P2, ~30-40 for P3). Delete the scratch area
-when you're done.
+Your Why section is now two paragraphs, ~120-140 words total. Delete
+the scratch area when you're done.
 
 ---
 
-## Part 4 — Themes section + the Timeline (15 min)
+## Part 4 — Themes section + the Timeline (10 min)
 
 You now need to fill the Themes section of the briefing and the
 Timeline table. Both pull from
@@ -217,26 +219,21 @@ Then open `templates/timeline-template.md` and:
    for table readability. You should do the same — keep the session ID
    and speaker name verbatim, but trim the title to the shortest form
    that still says what the session is about.
-3. **Add a lightning block row** before the closing recap, e.g.,
-   `| 16:00–16:30 | Lightning block (all-hands) — DX & Eng Leadership: 3 × 10 min | (all-hands) | (all-hands) |`.
+3. **Add a lightning block row** before the closing recap:
+   `| 16:00–16:30 | Lightning block (all-hands) — DX & Eng Leadership: [Surname A], [Surname B], [Surname C] (3 × 10 min) | (all-hands) | (all-hands) |`.
+   The `[Surname …]` tokens are placeholders — Step 5 fills them in.
    (GFM tables don't support colspan — write the full label in Track A
    and `(all-hands)` in Tracks B and C, matching the keynote and
-   closing rows already in the template.) The lightning block is in
-   the recommendation but not in the template — you're adding it.
-4. **Shift the existing closing recap row** from `16:00–17:00` to
-   `16:30–17:00`. The template ships with the closing row at
-   `16:00–17:00`; if you only do step 3 and skip this step, you'll
-   end up with two overlapping rows and Markdown will silently render
-   both.
+   closing rows already in the template.)
+4. **Shift the closing row to `16:30–17:00`** so it follows the new
+   lightning block. Easy to forget — this is its own numbered step on
+   purpose. If you only do step 3 and skip this step, you'll end up
+   with two overlapping rows and Markdown will silently render both.
 5. Pull 3 lightning-block speakers from `theme-session-map.csv` whose
    primary theme is Developer experience or Engineering leadership
    **AND** whose `duration_minutes` is 45 (so they fit a 10-minute
-   lightning slot without re-pacing). Among the remaining candidates,
-   prioritize speakers whose titles best represent the breadth of those
-   themes — onboarding, APIs, team structure, productivity. The
-   canonical picks Karras (S007), Adebayo (S016), and Lin (S013); other
-   defensible picks exist, and you should be able to defend yours when
-   you compare to canonical in Part 6.
+   lightning slot without re-pacing). Replace the `[Surname A/B/C]`
+   placeholders in the row you added in Step 3.
 
 When the timeline is filled, copy the table into the **Event timeline**
 section of the briefing. (Don't link to it — paste it inline. Alex won't
@@ -244,7 +241,7 @@ click links.)
 
 ---
 
-## Part 5 — Risks and "What we need from you" (12 min)
+## Part 5 — Risks and "What we need from you" (5 min)
 
 Two short sections. Both are bullets — these are the only sections in
 the briefing that should be bullets.
@@ -253,42 +250,60 @@ the briefing that should be bullets.
 what could still go wrong, what you'd accept losing if you had to. Be
 honest. Hand-wavy risks make Alex distrust the whole briefing.
 
-Run this prompt to pressure-test:
-
-```
-Critique these risks like Alex Chen (see exec-persona.md) would. Which
-ones are real? Which ones are CYA filler? Which obvious risks am I
-dodging?
-
-[paste your risks]
-```
-
 **What we need from you.** 2–3 bullets. Each starts with a verb —
 *Approve,* *Assign,* *Confirm,* *Greenlight.* These are decisions, not
 "support." Pull from the "What we need to decide" list at the bottom of
 `from-previous-session/options-memo.md`.
 
+You're done with the Markdown briefing. Time to convert it.
+
 ---
 
-## Part 6 — Final sharpen + read aloud + reflection (17 min)
+## Part 6 — Build the deliverables, read aloud, reflect (15 min)
 
-You now have a complete draft. Time to land it.
+You now have a complete Markdown briefing. Time to turn it into the two
+files an exec actually opens — a Word doc and a PowerPoint deck — then
+land the lesson.
 
-**Step 1 — Final sharpen pass (5 min).** Run this on the whole briefing:
+**Step 6a — Build the deck outline (5 min).** Open
+`templates/deck-outline-template.md` side-by-side with your filled
+`templates/briefing-template.md`. Paste your full briefing into Copilot
+Chat with this prompt:
 
 ```
-Read this whole briefing as Alex Chen would. Where does it lose me?
-Where does it sound like marketing? What's the weakest paragraph?
-Don't rewrite it — just point.
+Map this briefing into the 7-slide outline below. For each slide, give
+me a 1-line title (use the heading already in the template) and 3-5
+short bullets. Don't add content I didn't write. Keep each bullet to
+one short line.
 
-[paste full briefing]
+[paste the deck-outline-template skeleton, then paste the full briefing]
 ```
 
-Fix the weakest paragraph. Don't try to fix everything.
+Review the output. Replace each `> [Replace…]` placeholder in
+`templates/deck-outline-template.md` with the matching slide content.
+**Don't** add or remove `#` headings — the deck has 7 slides by
+design. **Don't** add `##` headings inside a slide — Pandoc reads them
+as new slide breaks.
 
-**Step 2 — Read aloud and time it (5 min).** Read the briefing out loud
-at a normal pace. Time yourself. **Target: under 5 minutes.** If you
-went over, run:
+**Step 6b — Run the conversion (3 min).** Open the integrated terminal
+in VS Code: **Ctrl/Cmd + ` ** (backtick). Run:
+
+- **macOS / Linux:** `bash scripts/build-deliverables.sh`
+- **Windows:** `powershell -ExecutionPolicy Bypass -File scripts\build-deliverables.ps1`
+
+Two new files appear in the project root: `briefing.docx` and
+`deck.pptx`. If you see `error: pandoc is not on PATH`, install Pandoc
+from <https://pandoc.org/installing.html> and re-run.
+
+**Step 6c — Open and confirm (5 min).** In the VS Code file explorer,
+right-click `deck.pptx` → **Reveal in File Explorer** (Windows) /
+**Reveal in Finder** (macOS) → double-click to open in PowerPoint.
+Same for `briefing.docx` in Word. Skim both. Note **one thing** you'd
+polish in PowerPoint after the session — that's your take-away
+follow-up.
+
+Read the briefing out loud at a normal pace. Time yourself. **Target:
+under 5 minutes.** If you ran over, paste it back into Copilot with:
 
 ```
 Cut this briefing by 30%. Tell me what you cut and why.
@@ -296,12 +311,7 @@ Cut this briefing by 30%. Tell me what you cut and why.
 
 Then put back anything you actually needed.
 
-**Step 3 — Compare to canonical (2 min).** Open `final/briefing.md`
-side-by-side with yours. **Don't copy from it.** Just notice three
-differences — one yours does better, two it does better. That's your
-list of moves to take into your real job.
-
-**Step 4 — Reflection (5 min).** Close all your tabs except this one.
+**Step 6d — Reflection (2 min).** Close all your tabs except this one.
 The lead will pose a reflection question and ask you to sit in silence
 for 30 seconds before anyone shares. The question is:
 
@@ -314,10 +324,14 @@ when the lead invites the room to share.
 
 ## You're done.
 
-You have a polished executive briefing in `templates/briefing-template.md`,
-a populated timeline in `templates/timeline-template.md`, and a moment
-of clarity about where this goes next. That's the whole series:
-**clean → synthesize → communicate.**
+You have a polished `briefing.docx` and `deck.pptx` on your machine —
+two files you could plausibly walk into your real leadership meeting
+with. The Markdown source lives in `templates/`; the canonical "what
+good looks like" reference lives in `final/` (`final/briefing.md`,
+`final/timeline.md`, `final/deck-outline.md`, `final/briefing.docx`,
+`final/deck.pptx`) for self-review after the session.
+
+That's the whole series: **clean → synthesize → communicate.**
 
 Pick the one Copilot prompt you used today that surprised you the most.
 That's the one you'll use tomorrow.

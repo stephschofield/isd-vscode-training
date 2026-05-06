@@ -67,12 +67,6 @@ lightning block.
 
 ## Event timeline at a glance
 
-> Session titles below are **abbreviated** for table readability — the
-> full conference-program titles live in
-> `from-previous-session/clean_submissions.csv` (`session_title`
-> column) and `from-previous-session/theme-session-map.csv`. The
-> session ID and speaker name are verbatim; only the title is trimmed.
-
 | Time         | Track A: Platform engineering | Track B: Production AI | Track C: Reliability and security |
 |--------------|-------------------------------|-------------------------|------------------------------------|
 | 9:00–10:00   | Opening keynote (all-hands)                       | (all-hands)                                       | (all-hands)                                       |

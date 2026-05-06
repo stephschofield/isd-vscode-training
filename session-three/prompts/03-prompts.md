@@ -111,6 +111,20 @@ case without weakening the recommendation?
 [paste full briefing]
 ```
 
+## Convert briefing → deck outline
+
+For mapping a finished briefing into a slide-shaped outline that
+Pandoc can convert into PowerPoint. Used in Part 6a.
+
+```
+Map this briefing into the 7-slide outline below. For each slide, give
+me a 1-line title (use the heading already in the template) and 3-5
+short bullets. Don't add content I didn't write. Keep each bullet to
+one short line.
+
+[paste the deck-outline-template skeleton, then paste the full briefing]
+```
+
 ## Stretch prompts
 
 For after the lab, when you want to push further.
