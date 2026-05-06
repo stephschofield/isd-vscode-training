@@ -286,6 +286,7 @@ design. **Don't** add `##` headings inside a slide — Pandoc reads them
 as new slide breaks.
 
 **Step 6b — Run the conversion (3 min).** Open the integrated terminal
+<!-- markdownlint-disable-next-line MD037 -->
 in VS Code: **Ctrl/Cmd + backtick** (`` ` ``). Run:
 
 - **macOS / Linux:** `bash scripts/build-deliverables.sh`

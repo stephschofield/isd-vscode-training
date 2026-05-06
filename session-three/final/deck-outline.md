@@ -1,3 +1,7 @@
+<!-- markdownlint-disable MD025 -->
+<!-- Each H1 is one Pandoc slide (--slide-level=1). Multiple top-level
+     headings are intentional in this deck source. -->
+
 # Meridian Innovation Summit — Program Recommendation
 
 - Innovation Programs Team
