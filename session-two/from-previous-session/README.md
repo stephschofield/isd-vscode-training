@@ -11,8 +11,10 @@ Intelligence"), mixed date formats, conflicting session lengths for the
 same talks, and rogue out-of-window dates. Attendees used Copilot Chat as
 a junior analyst — prompting it to surface duplicates, normalize the topic
 taxonomy down to six canonical categories, standardize dates and session
-lengths, and flag the two-or-three out-of-window submissions for human
-review rather than silently dropping them.
+lengths, and surface the two-or-three out-of-window submissions for human
+review rather than silently dropping them. After review, the out-of-window
+rows were excluded from the cleaned snapshot you see here — they are not
+present in `clean_submissions.csv`.
 
 The lesson: AI is great at the *mechanical* work humans hate doing (dedup,
 normalization, format wrangling) — *if* the human stays in the loop and
