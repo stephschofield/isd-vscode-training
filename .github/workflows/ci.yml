@@ -43,16 +43,17 @@ jobs:
       - run: pip install ruff==0.14.5
       - run: ruff check .
 
-  python-smoke:
-    name: Python script smoke test
+  dataset-smoke:
+    name: Session 1 dataset smoke test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Run regenerate_clean.py
-        working-directory: session-one/data
-        run: python regenerate_clean.py
-      - name: Verify clean_submissions.csv was produced
-        run: test -s session-one/data/clean_submissions.csv
+      # The upstream sync (commit 00f804b) moved clean_submissions.csv from
+      # session-one/data/ to session-one/solutions/ and dropped the
+      # regenerate_clean.py script (it lives in the source repo, not here).
+      # Both CSVs are now committed, so we just verify they exist and are
+      # non-empty — guards against accidental deletion.
+      - name: Verify session-one/data/raw_submissions.csv exists
+        run: test -s session-one/data/raw_submissions.csv
+      - name: Verify session-one/solutions/clean_submissions.csv exists
+        run: test -s session-one/solutions/clean_submissions.csv
