@@ -1,10 +1,14 @@
 # Lab 1 — Copilot Prompt Library
 
-> Every prompt the walkthrough asks you to use is also here. If you fall
-> behind during the lab, grab the right one from this page and paste it
-> into Copilot Chat. Every prompt below appears verbatim in
-> [`../lab/01-cleanup.md`](../lab/01-cleanup.md) — grab it from whichever
-> file is most convenient.
+> **For attendees:** every prompt the walkthrough asks you to use is also
+> here. If you fall behind during the lab, grab the right one from this
+> page and paste it into Copilot Chat.
+>
+> **For maintainers:** these prompts are the same words used in
+> [`../lab/01-cleanup.md`](../lab/01-cleanup.md). If you change a prompt
+> there, change it here too. The dry-run parity check (`check_prompt_parity.py`)
+> lives in the upstream source repo (`stephschofield/isd-vscode-session1`,
+> private) and verifies the two files agree.
 
 How to use a prompt: click the small **copy** button in the top-right of
 the code block, then paste it into Copilot Chat. If the prompt mentions a
@@ -110,22 +114,10 @@ For each one:
 
 ### "Apply the canonical email choices"
 
-> Use this **after** you've reviewed Copilot's email picks and agree.
-> Run as the first of two prompts — never bundle the email rewrite and
-> the dedup pass into one. Autonomous deletion needs a review gate.
+> Use this after you've reviewed Copilot's email picks and agree.
 
 ```text
-OK, apply those choices. Update every row for those speakers to use the canonical email. Show me the changes first; don't apply yet.
-```
-
-### "Remove the rows that became exact duplicates after the email change"
-
-> Use this **after** the email rewrite is reviewed and applied. This is
-> the second half of the lab Part 3 Step 1 workflow — the review gate
-> between rewrite and delete is load-bearing.
-
-```text
-Now remove rows that became exact duplicates after the email change. "Exact duplicate" means all 12 columns are identical, case-sensitive. Show me which rows you'd delete before removing them.
+OK, apply those choices. Update every row for those speakers to use the canonical email, and remove rows that become exact duplicates after the email change.
 ```
 
 ### "Find duplicate talk submissions"
@@ -145,16 +137,12 @@ For each duplicate set, suggest which row to keep — usually the most complete 
 ### "Reconcile conflicting session lengths"
 
 > Use this in Part 4 to pick one session length per talk and convert
-> non-numeric values to numbers. Scope is the same speaker submitting
-> the same talk twice with different lengths — different speakers who
-> happened to propose the same talk title are independent submissions.
+> non-numeric values to numbers.
 
 ```text
-In data/raw_submissions.csv, find every case where the SAME speaker_name has more than one distinct session_length_min for the SAME talk_title across rows.
+In data/raw_submissions.csv, find every talk_title that has more than one distinct session_length_min value across rows.
 
 For each one, recommend which length to keep — use the most recent submission_date as the tiebreaker. Show me the list before changing anything.
-
-If a talk_title appears under different speakers with different session_length_min values, that's a valid distinct submission — leave those alone.
 
 Also: convert any non-numeric length values (like "30 min", "thirty", "1 hour") into pure numbers (30, 45, 60). All values should end up as 30, 45, or 60.
 ```
@@ -203,7 +191,7 @@ In data/raw_submissions.csv, the requires_av column has values like Yes, No, TRU
 > Use this in Part 5. Honest comparison, no soft-pedalling.
 
 ```text
-Compare data/raw_submissions.csv (which I just cleaned) against data/clean_submissions.csv (the reference answer).
+Compare data/raw_submissions.csv (which I just cleaned) against solutions/clean_submissions.csv (the reference answer).
 
 Tell me:
 1. How many rows each file has.

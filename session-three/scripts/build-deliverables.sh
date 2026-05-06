@@ -2,8 +2,11 @@
 # Build the Lab 3 deliverables: briefing.docx and deck.pptx
 #
 # Reads from templates/ (where attendees fill in their own content).
-# Writes to the project root by default. Late joiners can copy
-# final/briefing.md and final/deck-outline.md over the templates first.
+# Writes to final/ — overwrites the canonical baked-in copies of
+# briefing.docx and deck.pptx locally. Restore them with:
+#   git restore final/briefing.docx final/deck.pptx
+# Late joiners can copy final/briefing.md and final/deck-outline.md
+# over the templates first.
 #
 # Requires: pandoc (https://pandoc.org/installing.html)
 set -eu
@@ -19,8 +22,8 @@ fi
 
 BRIEFING_SRC="templates/briefing-template.md"
 DECK_SRC="templates/deck-outline-template.md"
-BRIEFING_OUT="briefing.docx"
-DECK_OUT="deck.pptx"
+BRIEFING_OUT="final/briefing.docx"
+DECK_OUT="final/deck.pptx"
 
 if [[ ! -f "$BRIEFING_SRC" ]]; then
     echo "error: $BRIEFING_SRC not found. run from the repo root." >&2

@@ -18,7 +18,7 @@ options. Lab 2 made the call; today you make the case.
 
 The Markdown briefing you author is the **authoring intermediate**. In
 Part 6 you'll convert it (plus a one-page slide outline) into a
-`briefing.docx` and `deck.pptx` you can hand to a real exec.
+`final/briefing.docx` and `final/deck.pptx` you can hand to a real exec.
 
 ---
 
@@ -35,8 +35,8 @@ Part 6 you'll convert it (plus a one-page slide outline) into a
    sidebar of VS Code).
 4. Open the Markdown preview for `templates/briefing-template.md`
    side-by-side. **On Windows/Linux:** press **Ctrl+K**, release, then
-   press **V**. **On macOS:** press **⌘ K**, release, then press **V**
-   (plain V — no modifier on the second press; ⌘V is Paste).
+   press **V**. **On macOS:** press **⌘ K**, then **⌘ V** (keep ⌘ held
+   for the second press too).
    (This is *not* the same as Ctrl/Cmd + Shift + V — that opens preview
    in the same pane and hides your draft.) If the keyboard shortcut
    doesn't work, right-click the file in the file explorer and pick
@@ -265,7 +265,7 @@ You now have a complete Markdown briefing. Time to turn it into the two
 files an exec actually opens — a Word doc and a PowerPoint deck — then
 land the lesson.
 
-**Step 6a — Build the deck outline (3 min).** Open
+**Step 6a — Build the deck outline (5 min).** Open
 `templates/deck-outline-template.md` side-by-side with your filled
 `templates/briefing-template.md`. Paste your full briefing into Copilot
 Chat with this prompt:
@@ -286,36 +286,38 @@ design. **Don't** add `##` headings inside a slide — Pandoc reads them
 as new slide breaks.
 
 **Step 6b — Run the conversion (3 min).** Open the integrated terminal
-in VS Code: **Ctrl/Cmd + ` ** (backtick). Run:
+in VS Code: **Ctrl/Cmd + backtick** (`` ` ``). Run:
 
 - **macOS / Linux:** `bash scripts/build-deliverables.sh`
 - **Windows:** `powershell -ExecutionPolicy Bypass -File scripts\build-deliverables.ps1`
 
-Two new files appear in the project root: `briefing.docx` and
-`deck.pptx`. If you see `error: pandoc is not on PATH`, install Pandoc
-from <https://pandoc.org/installing.html> and re-run.
+Two files appear in `final/`: `final/briefing.docx` and
+`final/deck.pptx`. These overwrite the pre-baked canonical copies of
+those two files in your local clone — that's expected. The Markdown
+reference files in `final/` (`briefing.md`, `timeline.md`,
+`deck-outline.md`) are untouched. Run
+`git restore final/briefing.docx final/deck.pptx` later if you want
+the canonical PowerPoint and Word back. If you see
+`error: pandoc is not on PATH`, install Pandoc from
+<https://pandoc.org/installing.html> and re-run.
 
-**Step 6c — Open and confirm (2 min).** In the VS Code file explorer,
-right-click `deck.pptx` → **Reveal in File Explorer** (Windows) /
+**Step 6c — Open and confirm (5 min).** In the VS Code file explorer,
+right-click `final/deck.pptx` → **Reveal in File Explorer** (Windows) /
 **Reveal in Finder** (macOS) → double-click to open in PowerPoint.
-Same for `briefing.docx` in Word. Skim both. Note **one thing** you'd
-polish in PowerPoint after the session — that's your take-away
+Same for `final/briefing.docx` in Word. Skim both. Note **one thing**
+you'd polish in PowerPoint after the session — that's your take-away
 follow-up.
 
-**Step 6d — Read aloud and tighten (5 min).** Read the briefing out
-loud at a normal pace. Time yourself. **Target: under 5 minutes.** If
-you ran over, paste it back into Copilot with:
+Read the briefing out loud at a normal pace. Time yourself. **Target:
+under 5 minutes.** If you ran over, paste it back into Copilot with:
 
 ```
 Cut this briefing by 30%. Tell me what you cut and why.
 ```
 
-Then put back anything you actually needed. (If you want a refreshed
-`briefing.docx` after editing, re-run
-`scripts/build-deliverables.{sh,ps1}` after the session — don't burn
-the lab clock on a second build.)
+Then put back anything you actually needed.
 
-**Step 6e — Reflection (2 min).** Close all your tabs except this one.
+**Step 6d — Reflection (2 min).** Close all your tabs except this one.
 The lead will pose a reflection question and ask you to sit in silence
 for 30 seconds before anyone shares. The question is:
 
@@ -328,12 +330,16 @@ when the lead invites the room to share.
 
 ## You're done.
 
-You have a polished `briefing.docx` and `deck.pptx` on your machine —
-two files you could plausibly walk into your real leadership meeting
-with. The Markdown source lives in `templates/`; the canonical "what
-good looks like" reference lives in `final/` (`final/briefing.md`,
-`final/timeline.md`, `final/deck-outline.md`, `final/briefing.docx`,
-`final/deck.pptx`) for self-review after the session.
+You have a polished `final/briefing.docx` and `final/deck.pptx` on
+your machine — two files you could plausibly walk into your real
+leadership meeting with. The Markdown source lives in `templates/`;
+the canonical "what good looks like" reference lives in `final/`
+(`final/briefing.md`, `final/timeline.md`, `final/deck-outline.md`,
+`final/briefing.docx`, `final/deck.pptx`) for self-review after the
+session. Step 6b overwrote `final/briefing.docx` and `final/deck.pptx`
+with your work — run
+`git restore final/briefing.docx final/deck.pptx` if you want the
+canonical examples back.
 
 That's the whole series: **clean → synthesize → communicate.**
 

@@ -46,6 +46,11 @@
 
 # Risks + What we need from you
 
+<!-- markdownlint-disable MD036 -->
+<!-- Bold-as-heading is intentional here: this is slide 7, and any "##" or "###"
+     subheading inside a slide would tell Pandoc (--slide-level=1) to split the
+     slide. Keep these as bold labels. -->
+
 **Risks**
 
 - Under-serving Developer Experience and Engineering Leadership content beyond the lightning block — accepted tradeoff for Year 1
@@ -56,3 +61,4 @@
 - **Approve** the one-day, three-track program shape
 - **Assign** one curator per track by end of next week
 - **Confirm** the lightning-block format as 3 × 10 min (recommended)
+<!-- markdownlint-enable MD036 -->

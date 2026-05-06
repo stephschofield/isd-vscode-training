@@ -1,7 +1,5 @@
 # Meridian Solutions Innovation Summit — Session 1
 
-*[← back to series overview](../README.md)*
-
 > The fictional **Meridian Solutions Innovation Summit** is coming up, and the
 > speaker submissions are a mess. You're going to clean them up — with
 > GitHub Copilot as your "+1."
@@ -18,7 +16,7 @@ The whole lab takes **60 minutes**, in six short parts.
 
 ## What you need
 
-- A **GitHub account** — sign up free at [github.com/signup](https://github.com/signup) if you don't have one yet. You need it to sign in to Copilot. (Cloning this public repo with `Git: Clone` works without an account, but Copilot won't.)
+- A **GitHub account** — sign up free at [github.com/signup](https://github.com/signup) if you don't have one yet. Everything in this lab is gated on it (it's how you sign in to Copilot and how VS Code's `Git: Clone` reaches this repo).
 - **VS Code** installed.
 - **GitHub Copilot** extension installed and signed in. Parts 2–5 use **Agent mode**; Ask mode alone won't let Copilot edit files. If you only see Ask mode, flag your facilitator at the door.
 - **Git** installed locally (VS Code's `Git: Clone` shells out to it). If you don't have it, install from [git-scm.com/downloads](https://git-scm.com/downloads), or ask your facilitator for the pre-cloned folder fallback.
@@ -36,14 +34,15 @@ Keep that file open in VS Code's preview pane on one side, and the data file (`d
 
 | Folder | What's in it |
 |--------|--------------|
-| [`lab/`](lab/) | Six-part step-by-step walkthrough (60 minutes, hands-on with Copilot) |
+| [`lab/`](lab/) | Your step-by-step walkthrough for today |
 | [`data/`](data/) | The messy submissions file you'll clean, plus a "good answer" reference |
 | [`prompts/`](prompts/) | A copy/paste bank of every Copilot prompt used in the session |
+| [`solutions/`](solutions/) | The cleaned reference dataset (the "good answer" used in Part 5) |
 
 ## I missed Lab 1 — I'm here for Lab 2
 
-Welcome. You don't need to do this lab to keep up. The cleaned dataset for Lab 2 will be prepared for you in `../session-two/` once that session ships. If you'd like a quick look at where Lab 2 picks up, open [`data/clean_submissions.csv`](data/clean_submissions.csv) — that's the same file you'll start Lab 2 with.
+Welcome. You don't need to do this lab to keep up. The cleaned dataset for Lab 2 is already prepared for you in the Session 2 repo. If you'd like a quick look at where Lab 2 picks up, open [`solutions/clean_submissions.csv`](solutions/clean_submissions.csv) — that's the same file you'll start Lab 2 with.
 
 ## A note on the scenario
 
-Meridian Solutions, the Innovation Summit, the speakers, the talks, and the companies are all made up. Any resemblance to real people or events is coincidental.
+Meridian Solutions, the Innovation Summit, the speakers, the talks, and the companies are all made up. Any resemblance to real people or events is coincidental. The mess in the data, however, is depressingly realistic.

@@ -1,6 +1,8 @@
 # Data — Lab 1
 
-This folder contains the synthetic speaker submissions dataset used in Lab 1.
+This folder contains the messy starting dataset for Lab 1. The cleaned
+reference answer lives in [`../solutions/`](../solutions/) — a deliberate
+split so the answer key isn't sitting next to attendees' working surface.
 
 > **Attendees:** you don't need to read this file. Open
 > [`../lab/01-cleanup.md`](../lab/01-cleanup.md) and follow the walkthrough.
@@ -10,12 +12,14 @@ This folder contains the synthetic speaker submissions dataset used in Lab 1.
 | File | Purpose |
 |------|---------|
 | `raw_submissions.csv` | The intentionally messy starting dataset. ~177 rows. This is what attendees clean. |
-| `clean_submissions.csv` | The canonical "good answer" — what the dataset looks like after cleanup. **168 rows** — a few `(revised)` resubmissions legitimately survive dedup, exactly as called out in the lab's Part 5 "168–174 range is also fine" hint. Used as the Part 5 sanity-check reference and as the handoff into Session 2. |
-| `regenerate_clean.py` | Deterministic regenerator that produces `clean_submissions.csv` from `raw_submissions.csv` by applying **only** the cleanup steps the lab walkthrough teaches — nothing more. Run `python3 regenerate_clean.py` after any change to the lab's teaching to keep canonical aligned. |
+
+The canonical cleaned dataset (`clean_submissions.csv`, ~162 rows) lives
+in [`../solutions/`](../solutions/README.md) and is used as the Part 5
+sanity-check reference and the handoff into Session 2.
 
 ## Schema
 
-Both CSVs share the same 12 columns:
+The raw CSV (and the cleaned CSV in `../solutions/`) share the same 12 columns:
 
 | Column | Notes |
 |--------|-------|
@@ -23,7 +27,7 @@ Both CSVs share the same 12 columns:
 | `speaker_name` | Full name. Raw has case drift, trailing whitespace, and `Dr.` / `Dr` prefix variants. |
 | `speaker_email` | Primary contact email. Raw has ~6 speakers with two different emails (dup signal). |
 | `company` | Speaker's company. Raw has inconsistent capitalization and abbreviations. |
-| `talk_title` | Proposed talk title. Raw has 13–15 duplicate submission rows across ~5 distinct talks, some appearing under 3 different `submission_id`s. There are also 6 `(revised)` re-submissions paired with `.work` email variants. |
+| `talk_title` | Proposed talk title. Raw has ~5 duplicate talk submissions and ~5 talks with conflicting session lengths. |
 | `topic_tag` | Free-text topic. Raw has ~26 surface forms across 6 canonical topics (`AI`, `Cloud`, `Data`, `Security`, `DevOps`, `Leadership`). |
 | `track_preference` | `Technical Deep Dive` / `Strategy` / `Workshop`. Raw has typos and blank fields. |
 | `session_length_min` | `30`, `45`, or `60`. Raw has `"30 min"`, `"thirty"`, `"1 hour"`, etc. |
@@ -32,61 +36,64 @@ Both CSVs share the same 12 columns:
 | `experience_level` | `Beginner` / `Intermediate` / `Advanced`. Raw has `novice`, `expert`, blanks. |
 | `requires_av` | `Yes` / `No`. Raw has `TRUE` / `FALSE` / `1` / `0` / `Y` / `N` / blank. |
 
-## What's messy in the raw file
+## Mess injected into raw
 
-The raw dataset deliberately includes every kind of mess you'd realistically
-find in a submissions inbox:
+The raw dataset deliberately includes every mess category from the
+Session 1 data-cleanup lab plan (Unit 2). The numbers below are the
+actual counts in the current dataset; the plan's `~N` figures are
+guidance, and the `verify_dataset.py` script in the upstream source
+repo (`stephschofield/isd-vscode-session1`, private) is the
+authoritative contract (it asserts "at least N" thresholds for each
+category).
 
-1. ~6 speakers submitting under two different emails (same person, different `speaker_email`). One of each pair uses a `.work` suffix variant.
-2. 13–15 duplicate talk submission rows across ~5 distinct talks (e.g., Aarav Patel has 4 talks each appearing under 3 submission_ids; Bianca Rossi's "What Our Last Incident Taught Us" has 3 submissions). 6 of those duplicates are `(revised)` re-submissions tied to the `.work` email variants in #1 — these survive both dedup passes (the `(revised)` suffix in `talk_title` keeps them from being exact-duplicate rows after email canonicalization, and it also keeps them out of the same-speaker-same-title pass), so they intentionally remain in the canonical 168-row file. The lab does not teach a separate `(revised)` merge pass — they're treated as legitimately distinct revisions of the original talk.
+1. ~6 speakers submitting under two different emails (same person, different `speaker_email`).
+2. ~5 duplicate talk submissions (same `talk_title`, same speaker, two `submission_id`s).
 3. Mixed date formats — ISO, US slash, and long-form all coexist.
-4. ~26 topic surface forms collapsing down to 6 canonical topics.
+4. ~26 topic surface forms collapsing to 6 canonical topics.
 5. ~24 rows (across the seeded duplicates) where `session_length_min` conflicts for the same `talk_title`.
 6. ~12 blank cells across `track_preference` and `experience_level` (split evenly).
 7. 3 rows with submission dates outside the 2026 program window.
 8. ~10 surface forms for `requires_av` (`Yes` / `No` / `TRUE` / `FALSE` / `1` / `0` / `Y` / `N` / blank).
 
 The first 30 rows are arranged so the topic chaos is visible on first
-scroll — you'll see the problem space immediately when you open the file.
+scroll — attendees see the problem space immediately when they open the file.
 
 ## How this was generated
 
-**`raw_submissions.csv`** was generated once during prep using GitHub
-Copilot in agent mode against a deterministic prompt (see the appendix
-below). It is committed to the repo as a frozen, stable starting point
-for the lab.
+Both CSVs (`data/raw_submissions.csv` and `solutions/clean_submissions.csv`)
+are produced by a deterministic generator (`generate_dataset.py`, fixed
+seed `SEED = 20260430`) that lives in the upstream source repo
+(`stephschofield/isd-vscode-session1`, private). They are committed to
+`main` here so attendees work from a known, stable starting point.
 
-**`clean_submissions.csv`** is regenerated deterministically from
-`raw_submissions.csv` by `regenerate_clean.py`, which applies only the
-cleanup steps that `lab/01-cleanup.md` actually teaches:
-
-- Topic-tag normalization (Part 2 Step 1) → the 6 canonical topics.
-- Date normalization (Part 2 Step 2) → ISO `YYYY-MM-DD`. Out-of-window
-  2025 dates are **kept**, not silently dropped (Part 4 Step 3).
-- Speaker name tidy (Part 2 Step 3) → trimmed, title-cased, `Dr. `
-  prefix preserved with period and space.
-- Email canonicalization + exact-duplicate dedup (Part 3 Step 1).
-- Same-speaker-same-title dedup (Part 3 Step 2).
-- Conflicting session lengths (Part 4 Step 1) → most recent date wins;
-  word forms (`forty-five`, `1 hour`) become numeric.
-- Missing track / experience (Part 4 Step 2) → marked `Unknown` rather
-  than guessed.
-- `requires_av` standardization (Part 4 Step 4) → `Yes` / `No`; blanks
-  default to `No`.
-
-It does **not** touch the `company` or `bio_short` columns — the lab
-never asks attendees to clean those.
-
-If the lab's teaching changes, re-run the regenerator:
+To regenerate, clone the source repo and run its `scripts/`:
 
 ```bash
-python3 session-one/data/regenerate_clean.py
+python3 scripts/generate_dataset.py
+python3 scripts/verify_dataset.py
 ```
 
-During the session, you **will** modify `raw_submissions.csv` in place —
-that's the whole point of the lab. Don't modify `clean_submissions.csv`;
-it's the reference answer used in Part 5. Everything is git-tracked, so
-you can revert any change you don't like via the Source Control panel.
+Per plan 001: **do not regenerate between dry-run and live session.**
+Attendees should see the same data as the dry-run validated against.
+
+## How this is verified
+
+The `verify_dataset.py` script in the upstream source repo is the
+prep-time acceptance check for the leads. It reads `data/raw_submissions.csv`
+and `solutions/clean_submissions.csv` and asserts:
+
+- Raw row count is 150–250
+- Every injected mess category is present at the expected magnitude
+- Mess is visible in the first 30 rows
+- Clean has fewer rows than raw (dedup happened)
+- Clean uses a single ISO date format
+- Clean topics are exactly the 6 canonical values
+- Clean has zero blank required fields
+- Clean has no duplicate speakers and no duplicate talks per speaker
+- All clean dates are inside the 2026 program window
+
+If you change the generator, run the verifier — both must stay green
+before you commit.
 
 ## Generation prompt (the one we'd use with Copilot)
 
@@ -120,5 +127,6 @@ blank required fields.
 Companies, speakers, talks, and bios should all be fictional.
 ```
 
-This prompt is here as a reference — both for the curious, and for any
-future lead who wants to understand what shape of data the lab assumes.
+Use this as a fallback if the script ever rots. The script is the source
+of truth; this prompt documents the intent so it can be reproduced from
+scratch.
