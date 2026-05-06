@@ -8,7 +8,7 @@
 > on your laptop, and a working mental model of what it feels like to do
 > real strategy work alongside AI.
 >
-> **Time:** 75–90 minutes. Six short parts. Each ends with a visible win.
+> **Time:** 60 minutes. Six short parts. Each ends with a visible win.
 
 ---
 
@@ -16,6 +16,7 @@
 
 You should have:
 
+- A **GitHub account** — sign up free at [github.com/signup](https://github.com/signup) if you don't have one yet. You need it to sign in to Copilot. (Cloning this public repo with `Git: Clone` works without an account, but Copilot won't.)
 - VS Code open (you already did the intro session).
 - GitHub Copilot signed in (your facilitator confirmed this at the door).
 - **Git installed** on your laptop — VS Code's built-in `Git: Clone` command shells out to it. If you don't have it, install from [git-scm.com/downloads](https://git-scm.com/downloads), or ask your facilitator for the pre-cloned folder fallback.
@@ -29,7 +30,7 @@ If anything in this list isn't true, raise your hand — the facilitator will ge
 
 ## Part 0 — Set up your workspace
 
-**Time:** ~10 minutes
+**Time:** ~7 minutes
 
 ### What you're doing
 Getting this folder onto your laptop, opening it in VS Code, and getting Copilot Chat ready in a side panel.
@@ -92,7 +93,7 @@ You're set up. The hard part is over.
 
 ## Part 1 — Get oriented
 
-**Time:** ~10 minutes
+**Time:** ~8 minutes
 
 ### What you're doing
 Asking Copilot to look at the data file and tell you, in plain English, what's in it and what looks wrong.
@@ -136,7 +137,7 @@ You have a list of problems, in your own words, before you've changed a single c
 
 ## Part 2 — Normalize the easy stuff
 
-**Time:** ~15 minutes
+**Time:** ~13 minutes
 
 ### What you're doing
 Tackling three forms of mess that have one obvious right answer: **topic tags**, **date formats**, and **trailing whitespace in names**.
@@ -210,7 +211,7 @@ Three columns are clean. The pattern is: ask, review, approve.
 
 ## Part 3 — Find and resolve duplicates
 
-**Time:** ~15 minutes
+**Time:** ~12 minutes
 
 ### What you're doing
 Hunting down two flavors of duplicate: **speakers who submitted under two different emails**, and **the same talk submitted twice**.
@@ -268,7 +269,7 @@ The data is now smaller and more honest. No phantom speakers.
 
 ## Part 4 — Resolve conflicts and gaps
 
-**Time:** ~15 minutes
+**Time:** ~12 minutes
 
 ### What you're doing
 Three remaining pockets of mess: **conflicting session lengths**, **missing required fields**, and **out-of-window dates**.
@@ -337,7 +338,7 @@ The cleanup is essentially done. Time to sanity check.
 
 ## Part 5 — Sanity check + save
 
-**Time:** ~10 minutes
+**Time:** ~8 minutes
 
 ### What you're doing
 Comparing your cleaned file to the canonical "good answer" we shipped with this repo, and learning what *good* looks like — without expecting an exact match.

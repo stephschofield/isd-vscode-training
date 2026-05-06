@@ -14,6 +14,16 @@
 
 You won't write any code. You won't run any scripts. You'll mostly point, click, read, and prompt.
 
+The whole lab takes **60 minutes**, in six short parts.
+
+## What you need
+
+- A **GitHub account** — sign up free at [github.com/signup](https://github.com/signup) if you don't have one yet. You need it to sign in to Copilot. (Cloning this public repo with `Git: Clone` works without an account, but Copilot won't.)
+- **VS Code** installed.
+- **GitHub Copilot** extension installed and signed in. Parts 2–5 use **Agent mode**; Ask mode alone won't let Copilot edit files. If you only see Ask mode, flag your facilitator at the door.
+- **Git** installed locally (VS Code's `Git: Clone` shells out to it). If you don't have it, install from [git-scm.com/downloads](https://git-scm.com/downloads), or ask your facilitator for the pre-cloned folder fallback.
+- About **60 minutes** of focus and a willingness to argue with Copilot.
+
 ## Start here
 
 Open the lab walkthrough and follow it step-by-step:
@@ -26,7 +36,7 @@ Keep that file open in VS Code's preview pane on one side, and the data file (`d
 
 | Folder | What's in it |
 |--------|--------------|
-| [`lab/`](lab/) | Your step-by-step walkthrough for today |
+| [`lab/`](lab/) | Six-part step-by-step walkthrough (60 minutes, hands-on with Copilot) |
 | [`data/`](data/) | The messy submissions file you'll clean, plus a "good answer" reference |
 | [`prompts/`](prompts/) | A copy/paste bank of every Copilot prompt used in the session |
 
