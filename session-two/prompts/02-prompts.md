@@ -6,6 +6,12 @@
 > **Tip:** Always attach the relevant input files with `#file:` before
 > sending a synthesis prompt. Synthesis without sources is
 > hallucination.
+>
+> **Two folders to keep straight:** prompts that write files target
+> `outputs/` — that's **your** working folder, created during the
+> lab, and what Lab 3 reads from. Canonical reference answers live in
+> [`../solutions/`](../solutions/); don't open them until Part 6 of
+> the lab walkthrough tells you to compare against them.
 
 ---
 
