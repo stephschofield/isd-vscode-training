@@ -57,3 +57,12 @@ jobs:
         run: test -s session-one/data/raw_submissions.csv
       - name: Verify session-one/solutions/clean_submissions.csv exists
         run: test -s session-one/solutions/clean_submissions.csv
+
+  framing-smoke:
+    name: VS Code Desktop framing smoke test
+    runs-on: ubuntu-latest
+    # Catches editorial regressions that re-introduce "in your browser"
+    # framing into the labs or README. See .tests/test-vscode-desktop-framing.sh.
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash .tests/test-vscode-desktop-framing.sh
