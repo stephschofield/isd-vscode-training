@@ -135,6 +135,13 @@
       vertical-align: baseline;
       overflow: visible;
     }
+    .hero h1 em.period {
+      background: none;
+      -webkit-background-clip: initial; background-clip: initial;
+      color: var(--fg);
+      margin-right: 0;
+      padding-left: 0;
+    }
     .hero .lede {
       margin: 0;
       max-width: 60ch;
@@ -396,7 +403,7 @@
 
     <header class="hero">
       <p class="eyebrow">Three sessions</p>
-      <h1>Turn messy data into an <em>executive story</em>.</h1>
+      <h1>Turn messy data into an <em>executive story</em><em class="period">.</em></h1>
       <p class="lede">A guided, hands-on lab series in VS Code. Pick your session, open it in the browser, and follow along — no setup required.</p>
     </header>
 
