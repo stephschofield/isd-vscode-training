@@ -43,7 +43,7 @@ In VS Code:
 
 1. Press `Ctrl+Shift+P` (Windows/Linux) / `⌘+Shift+P` (macOS) to open the **Command Palette**.
 2. Type `Git: Clone` and pick it.
-3. Paste this URL: `https://github.com/stephschofield/isd-vscode-session1.git`
+3. Paste this URL: `https://github.com/stephschofield/isd-vscode-training.git`
 4. Pick a folder on your laptop to clone into (Documents is fine).
 5. When VS Code asks "Open the cloned repository?", click **Open**.
 
