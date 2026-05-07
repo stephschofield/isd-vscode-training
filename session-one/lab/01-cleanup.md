@@ -46,7 +46,7 @@ In VS Code:
 3. Paste this URL: `https://github.com/stephschofield/isd-vscode-training.git`
 4. Pick a folder on your laptop to clone into (Documents is fine).
 5. When VS Code asks "Open the cloned repository?", click **Open**.
-6. **Open `session-one/` as the workspace folder.** Use **File → Open Folder…** (Windows/Linux) or **File → Open…** (macOS), navigate into the cloned `isd-vscode-training` folder, and pick `session-one`. The Explorer on the left should now show `data/`, `lab/`, `prompts/`, `solutions/` at its root — those are the paths every step below references.
+6. **Open `session-one/` as the workspace folder.** Use **File → Open Folder…** (same menu label on Windows, Linux, and macOS), navigate into the cloned `isd-vscode-training` folder, and pick `session-one`. The Explorer on the left should now show `data/`, `lab/`, `prompts/`, `solutions/` at its root — those are the paths every step below references.
 
 > **No git, no terminal, no problem.** This is the only "git" thing you'll do today. Everything else is point-and-click.
 
