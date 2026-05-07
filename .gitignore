@@ -10,9 +10,7 @@ Thumbs.db
 .idea/
 .context/
 
-# Planning / ops content does not belong in this published repo.
-# Training-repo plans live in stephschofield/isd-vscode-session1 under
-# docs/plans/training-repo/. The smoke test in that repo
-# (scripts/smoke_test_training_publish.sh) enforces that docs/ never
-# lands here on main.
-docs/
+# Planning / ops content lives in the maintainers' private source repo,
+# not here. Anchored to the repo root so a future session-level docs/
+# subtree (e.g. session-two/docs/) is not silently ignored.
+/docs/
