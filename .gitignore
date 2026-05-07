@@ -9,3 +9,8 @@ Thumbs.db
 .vscode/
 .idea/
 .context/
+
+# Planning / ops content lives in the maintainers' private source repo,
+# not here. Anchored to the repo root so a future session-level docs/
+# subtree (e.g. session-two/docs/) is not silently ignored.
+/docs/

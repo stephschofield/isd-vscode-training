@@ -41,10 +41,9 @@ The raw CSV (and the cleaned CSV in `../solutions/`) share the same 12 columns:
 The raw dataset deliberately includes every mess category from the
 Session 1 data-cleanup lab plan (Unit 2). The numbers below are the
 actual counts in the current dataset; the plan's `~N` figures are
-guidance, and the `verify_dataset.py` script in the upstream source
-repo (`stephschofield/isd-vscode-session1`, private) is the
-authoritative contract (it asserts "at least N" thresholds for each
-category).
+guidance, and a `verify_dataset.py` script (lives in the maintainers'
+private source repo) is the authoritative contract — it asserts
+"at least N" thresholds for each category.
 
 1. ~6 speakers submitting under two different emails (same person, different `speaker_email`).
 2. ~5 duplicate talk submissions (same `talk_title`, same speaker, two `submission_id`s).
@@ -62,11 +61,11 @@ scroll — attendees see the problem space immediately when they open the file.
 
 Both CSVs (`data/raw_submissions.csv` and `solutions/clean_submissions.csv`)
 are produced by a deterministic generator (`generate_dataset.py`, fixed
-seed `SEED = 20260430`) that lives in the upstream source repo
-(`stephschofield/isd-vscode-session1`, private). They are committed to
-`main` here so attendees work from a known, stable starting point.
+seed `SEED = 20260430`) that lives in the maintainers' private source
+repo. They are committed to `main` here so attendees work from a known,
+stable starting point.
 
-To regenerate, clone the source repo and run its `scripts/`:
+To regenerate, the maintainers run their source-repo `scripts/`:
 
 ```bash
 python3 scripts/generate_dataset.py
@@ -78,8 +77,8 @@ Attendees should see the same data as the dry-run validated against.
 
 ## How this is verified
 
-The `verify_dataset.py` script in the upstream source repo is the
-prep-time acceptance check for the leads. It reads `data/raw_submissions.csv`
+The `verify_dataset.py` script in the maintainers' private source repo
+is the prep-time acceptance check for the leads. It reads `data/raw_submissions.csv`
 and `solutions/clean_submissions.csv` and asserts:
 
 - Raw row count is 150–250
