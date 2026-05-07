@@ -24,16 +24,24 @@ Part 6 you'll convert it (plus a one-page slide outline) into a
 
 ## Part 0 — Set up your workspace (3 min)
 
-1. You already cloned this repo. In VS Code, open these files in
-   side-by-side tabs:
+1. **Open `session-three/` as your workspace folder.** Codespaces opens
+   the whole repo by default — use **File → Open Folder…** and pick
+   `session-three/`. Every path in this walkthrough is relative to that
+   folder, so the Explorer should show `final/`, `from-previous-session/`,
+   `lab/`, `prompts/`, `scripts/`, and `templates/` at its root. (Want to run
+   locally instead? Clone `https://github.com/stephschofield/isd-vscode-training.git`
+   and open the `session-three/` folder in VS Code. You'll also need to
+   install [Pandoc](https://pandoc.org/installing.html) — it's
+   pre-installed in the Codespace but required by Step 6b's build script.)
+2. Open these files in side-by-side tabs:
    - `templates/exec-persona.md`
    - `templates/briefing-template.md`
    - `from-previous-session/options-memo.md`
-2. The lead reads `templates/exec-persona.md` aloud once. Listen — it
+3. The lead reads `templates/exec-persona.md` aloud once. Listen — it
    sets the voice you'll write in for the next 60 minutes.
-3. Open the **Copilot Chat** panel (the chat bubble icon in the left
+4. Open the **Copilot Chat** panel (the chat bubble icon in the left
    sidebar of VS Code).
-4. Open the Markdown preview for `templates/briefing-template.md`
+5. Open the Markdown preview for `templates/briefing-template.md`
    side-by-side. **On Windows/Linux:** press **Ctrl+K**, release, then
    press **V**. **On macOS:** press **⌘ K**, then **⌘ V** (keep ⌘ held
    for the second press too).

@@ -16,51 +16,37 @@
 
 You should have:
 
-- A **GitHub account** — sign up free at [github.com/signup](https://github.com/signup) if you don't have one yet. It's how Copilot signs you in and how VS Code's `Git: Clone` reaches this repo.
-- VS Code open (you already did the intro session).
-- GitHub Copilot signed in (your facilitator confirmed this at the door).
-- This file open in **preview mode** on the right side of your screen.
-
-**Open this file in preview:** click the small "Open Preview" icon in the top-right of the editor tab (it looks like a magnifying glass over a page). Or press `Ctrl+Shift+V` (Windows/Linux) / `⌘+Shift+V` (macOS). Preview makes the formatting nicer to read while you work.
+- This Codespace open in your browser (the facilitator confirmed this at the door).
+- GitHub Copilot signed in.
+- This file open in **preview mode** on the right side of your screen — press `Ctrl+Shift+V` (Windows/Linux) / `⌘+Shift+V` (macOS), or click the "Open Preview" icon in the top-right of the editor tab.
 
 If anything in this list isn't true, raise your hand — the facilitator will get you sorted.
+
+> **Want to run this locally instead?** You can clone `https://github.com/stephschofield/isd-vscode-training.git` and open the `session-one/` folder in VS Code. Codespaces is the path of least friction for today.
 
 ---
 
 ## Part 0 — Set up your workspace
 
-**Time:** ~8 minutes
+**Time:** ~3 minutes
 
 ### What you're doing
-Getting this folder onto your laptop, opening it in VS Code, and getting Copilot Chat ready in a side panel.
+Getting the messy data file open and Copilot Chat ready in a side panel.
 
 ### Why it matters
 You're going to spend the rest of the session pointing Copilot at a real file and watching it propose changes. Your screen layout matters.
 
-### Step 1 — Clone this repository
+### Step 1 — Open `session-one/` as your workspace folder
 
-In VS Code:
+Codespaces opens the whole repo by default. Today's lab lives in just one subfolder, and every path in this walkthrough is written relative to it.
 
-1. Press `Ctrl+Shift+P` (Windows/Linux) / `⌘+Shift+P` (macOS) to open the **Command Palette**.
-2. Type `Git: Clone` and pick it.
-3. Paste this URL: `https://github.com/stephschofield/isd-vscode-training.git`
-4. Pick a folder on your laptop to clone into (Documents is fine).
-5. When VS Code asks "Open the cloned repository?", click **Open**.
-6. **Open `session-one/` as the workspace folder.** Use **File → Open Folder…** (same menu label on Windows, Linux, and macOS), navigate into the cloned `isd-vscode-training` folder, and pick `session-one`. The Explorer on the left should now show `data/`, `lab/`, `prompts/`, `solutions/` at its root — those are the paths every step below references.
+Use **File → Open Folder…**, pick `session-one/`, and reload. The Explorer on the left should now show `data/`, `lab/`, `prompts/`, `solutions/` at its root.
 
-> **No git, no terminal, no problem.** This is the only "git" thing you'll do today. Everything else is point-and-click.
+> **Why?** This repo holds three sessions side by side. Opening just `session-one/` keeps the Explorer focused on today's lab and makes the relative paths in this walkthrough match what you see in VS Code. (Sessions 2 and 3 do the same — open `session-two/` for Lab 2, `session-three/` for Lab 3.)
 
-> **Why open the subfolder?** This repo holds three sessions side by side (`session-one/`, `session-two/`, `session-three/`). Opening just `session-one/` keeps the Explorer focused on today's lab and makes the relative paths in this walkthrough match what you see in VS Code.
+### Step 2 — Open the data file
 
-### Step 2 — Open the right files side by side
-
-You want three things visible:
-
-1. **This walkthrough** (`lab/01-cleanup.md`) in **preview** on the right.
-2. **The messy data** (`data/raw_submissions.csv`) in the editor on the left.
-3. **Copilot Chat** open in a panel.
-
-Click `data/raw_submissions.csv` in the **Explorer** (left sidebar). VS Code will open it as a table — that's the built-in CSV preview. Drag this walkthrough's tab to the right side of the screen if it isn't already there.
+Click `data/raw_submissions.csv` in the **Explorer**. VS Code opens it as a table — that's the built-in CSV preview. Make sure this walkthrough's preview tab is still visible on the right.
 
 ### Step 3 — Open Copilot Chat
 
