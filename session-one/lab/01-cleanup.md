@@ -16,13 +16,13 @@
 
 You should have:
 
-- This Codespace open in your browser (the facilitator confirmed this at the door).
+- **VS Code Desktop** open on your laptop, connected to today's Codespace (the facilitator confirmed this at the door). The "Open in Codespaces" link launches the Codespace and hands it off to VS Code Desktop automatically — if it opens the web editor instead, that's fine, the rest of these steps still work.
 - GitHub Copilot signed in.
 - This file open in **preview mode** on the right side of your screen — press `Ctrl+Shift+V` (Windows/Linux) / `⌘+Shift+V` (macOS), or click the "Open Preview" icon in the top-right of the editor tab.
 
 If anything in this list isn't true, raise your hand — the facilitator will get you sorted.
 
-> **Want to run this locally instead?** You can clone `https://github.com/stephschofield/isd-vscode-training.git` and open the `session-one/` folder in VS Code. Codespaces is the path of least friction for today.
+> **Want to run this fully locally instead (no Codespace)?** Clone `https://github.com/stephschofield/isd-vscode-training.git` and open the `session-one/` folder in VS Code Desktop. Today's default — Codespace + VS Code Desktop — is the path of least friction.
 
 ---
 

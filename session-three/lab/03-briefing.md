@@ -24,13 +24,15 @@ Part 6 you'll convert it (plus a one-page slide outline) into a
 
 ## Part 0 — Set up your workspace (3 min)
 
-1. **Open `session-three/` as your workspace folder.** Codespaces opens
-   the whole repo by default — use **File → Open Folder…** and pick
-   `session-three/`. Every path in this walkthrough is relative to that
-   folder, so the Explorer should show `final/`, `from-previous-session/`,
-   `lab/`, `prompts/`, `scripts/`, and `templates/` at its root. (Want to run
-   locally instead? Clone `https://github.com/stephschofield/isd-vscode-training.git`
-   and open the `session-three/` folder in VS Code. You'll also need to
+1. **Open `session-three/` as your workspace folder.** You should be in
+   **VS Code Desktop** (the Codespace launch handed off to the desktop
+   app). Codespaces opens the whole repo by default — use
+   **File → Open Folder…** and pick `session-three/`. Every path in
+   this walkthrough is relative to that folder, so the Explorer should
+   show `final/`, `from-previous-session/`, `lab/`, `prompts/`, `scripts/`,
+   and `templates/` at its root. (Want to run fully locally instead,
+   with no Codespace? Clone `https://github.com/stephschofield/isd-vscode-training.git`
+   and open the `session-three/` folder in VS Code Desktop. You'll also need to
    install [Pandoc](https://pandoc.org/installing.html) — it's
    pre-installed in the Codespace but required by Step 6b's build script.)
 2. Open these files in side-by-side tabs:

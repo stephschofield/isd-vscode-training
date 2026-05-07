@@ -27,7 +27,7 @@ aren't supported by anything. The setup matters.
 
 **Try this:**
 
-1. **Open `session-two/` as your workspace folder.** Codespaces opens the whole repo by default — use **File → Open Folder…** and pick `session-two/`. Every path in this walkthrough is relative to that folder, so the Explorer should show `data/`, `from-previous-session/`, `inputs/`, `lab/`, `prompts/`, and `solutions/` at its root. (Want to run locally instead? Clone `https://github.com/stephschofield/isd-vscode-training.git` and open the `session-two/` folder in VS Code.)
+1. **Open `session-two/` as your workspace folder.** You should be in **VS Code Desktop** (the Codespace launch handed off to the desktop app). Codespaces opens the whole repo by default — use **File → Open Folder…** and pick `session-two/`. Every path in this walkthrough is relative to that folder, so the Explorer should show `data/`, `from-previous-session/`, `inputs/`, `lab/`, `prompts/`, and `solutions/` at its root. (Want to run fully locally instead, with no Codespace? Clone `https://github.com/stephschofield/isd-vscode-training.git` and open the `session-two/` folder in VS Code Desktop.)
 2. Open these files in tabs (you'll attach them to prompts shortly):
    - [`from-previous-session/clean_submissions.csv`](../from-previous-session/clean_submissions.csv)
    - [`inputs/transcripts/exec-sponsor-jane.md`](../inputs/transcripts/exec-sponsor-jane.md)
