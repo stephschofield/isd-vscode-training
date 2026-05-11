@@ -19,16 +19,20 @@ that on purpose.
 ## Part 0 — Set up your workspace (3 min)
 
 **What you're doing:** Get the repo open, the inputs in front of you,
-and Copilot Chat ready to receive files.
+and Copilot Chat in Agent mode so it can read the workspace and write
+files.
 
-**Why:** Today's work is grounded synthesis. Without the source files
-attached, Copilot will hallucinate themes that sound plausible and
-aren't supported by anything. The setup matters.
+**Why:** Today's work is grounded synthesis. The Summit themes have to
+come from what stakeholders actually said, not from Copilot's training
+data. In Agent mode, Copilot has workspace-wide visibility — it can
+pull in files by name or by folder when you reference them. The setup
+matters because if Copilot can't see the inputs, it will invent themes
+that sound plausible and aren't supported by anything.
 
 **Try this:**
 
 1. **Open `session-two/` as your workspace folder.** You should be in **VS Code Desktop** (the Codespace launch handed off to the desktop app). Codespaces opens the whole repo by default — use **File → Open Folder…** and pick `session-two/`. Every path in this walkthrough is relative to that folder, so the Explorer should show `data/`, `from-previous-session/`, `inputs/`, `lab/`, `prompts/`, and `solutions/` at its root. (Want to run fully locally instead, with no Codespace? Clone `https://github.com/stephschofield/isd-vscode-training.git` and open the `session-two/` folder in VS Code Desktop.)
-2. Open these files in tabs (you'll attach them to prompts shortly):
+2. Skim the inputs so you know what's in the room:
    - [`from-previous-session/clean_submissions.csv`](../from-previous-session/clean_submissions.csv)
    - [`inputs/transcripts/exec-sponsor-jane.md`](../inputs/transcripts/exec-sponsor-jane.md)
    - [`inputs/transcripts/program-lead-marcus.md`](../inputs/transcripts/program-lead-marcus.md)
@@ -37,12 +41,16 @@ aren't supported by anything. The setup matters.
    - [`inputs/notes/sponsor-1on1-notes.md`](../inputs/notes/sponsor-1on1-notes.md)
    - [`inputs/whiteboard/strategy-offsite-whiteboard.md`](../inputs/whiteboard/strategy-offsite-whiteboard.md)
 3. Open Copilot Chat. **macOS:** `⌃⌘I`. **Windows / Linux:**
-   `Ctrl+Alt+I`. Set the chat mode to **Ask** for now (we'll switch to
-   **Agent** later when we want to write files).
+   `Ctrl+Alt+I`. Set the chat mode to **Agent** and leave it there for
+   the whole lab. Agent mode gives Copilot workspace-wide visibility
+   (it can read any file in `session-two/` you reference by name or
+   folder) and lets it write outputs back to disk when we get to Part
+   3. You don't need to attach files one by one — referencing them in
+   the prompt (e.g., "the transcripts in `inputs/`") is enough.
 
 **What to look for:** You should see the files in your sidebar and
-Copilot Chat open in a side panel. You should be able to type `#file:`
-in the chat input and see autocomplete for the input files.
+Copilot Chat open in a side panel with the mode dropdown showing
+**Agent**.
 
 **Make it your own:** Skim the inputs folder for two minutes. Don't
 read carefully — just get a sense of who said what.
@@ -59,11 +67,12 @@ directly but clearly want.
 the room. The risk if you skip this: you bring your own assumptions
 into the next step and call them "themes."
 
-**Try this prompt** (with all three transcripts and both notes files
-attached via `#file:`):
+**Try this prompt** (Agent mode will pull the files in from the
+workspace — just point it at the folders):
 
-> For each of the three transcripts and the two notes files, give me a
-> 4-bullet summary in this exact shape:
+> Read every file under `inputs/transcripts/` and `inputs/notes/`. For
+> each transcript and each notes file, give me a 4-bullet summary in
+> this exact shape:
 >
 > - Who is speaking and what role they're playing
 > - The 2–3 things they explicitly want from the Summit
@@ -100,7 +109,8 @@ the Summit, with evidence quotes and submission counts attached.
 themes?" and accept whatever Copilot says. We're going to do it twice —
 once badly, once well — so the contrast is undeniable.
 
-**First, the bad version. Try this in a new chat (no files attached):**
+**First, the bad version. Try this in a new chat (no workspace
+context — type the prompt cold, with no folder or file references):**
 
 > What are some good themes for a 2026 corporate innovation summit?
 
@@ -108,13 +118,13 @@ Read what comes back. You'll get something like *AI, Cloud,
 Sustainability, Future of Work, Digital Transformation*. Generic mush.
 This is what happens when you ask Copilot to think without inputs.
 
-**Now the good version. Open a fresh chat and attach all three
-transcripts, both notes files, the whiteboard transcription, *and*
-[`from-previous-session/clean_submissions.csv`](../from-previous-session/clean_submissions.csv).
-Then try this:**
+**Now the good version. Open a fresh chat and try this:**
 
-> Using only the attached files, identify 5–8 themes for the Meridian
-> Innovation Summit. For each theme, give me:
+> Read every file under `inputs/transcripts/`, `inputs/notes/`,
+> `inputs/whiteboard/`, and the file
+> `from-previous-session/clean_submissions.csv`. Using only what's in
+> those files, identify 5–8 themes for the Meridian Innovation Summit.
+> For each theme, give me:
 >
 > 1. A short, specific name (5 words or fewer — no "AI", no "Cloud",
 >    something that means something)
@@ -157,7 +167,8 @@ theme it belongs to (or flag it as `unassigned`). Output is a CSV.
 thinking. Sessions without themes are orphans we may need to cut. The
 map makes both visible.
 
-**Switch Copilot Chat to Agent mode** so it can write files. Then try:
+You should already be in Agent mode from Part 0 — confirm the mode
+dropdown still says **Agent** so Copilot can write the CSV. Then try:
 
 > Using the themes we just produced and `clean_submissions.csv`, create
 > `solutions/theme-session-map.csv` with these columns:

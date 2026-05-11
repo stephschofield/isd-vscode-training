@@ -42,7 +42,10 @@ Part 6 you'll convert it (plus a one-page slide outline) into a
 3. The lead reads `templates/exec-persona.md` aloud once. Listen — it
    sets the voice you'll write in for the next 60 minutes.
 4. Open the **Copilot Chat** panel (the chat bubble icon in the left
-   sidebar of VS Code).
+   sidebar of VS Code). Set the chat mode dropdown to **Agent** and
+   leave it there for the whole lab — Agent mode gives Copilot
+   workspace-wide visibility (it can read the persona, template, and
+   options memo by name) and lets it edit files when we ask it to.
 5. Open the Markdown preview for `templates/briefing-template.md`
    side-by-side. **On Windows/Linux:** press **Ctrl+K**, release, then
    press **V**. **On macOS:** press **⌘ K**, then **⌘ V** (keep ⌘ held
