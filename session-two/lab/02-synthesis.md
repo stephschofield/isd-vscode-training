@@ -173,7 +173,8 @@ map makes both visible.
 You should already be in Agent mode from Part 0 — confirm the mode
 dropdown still says **Agent** so Copilot can write the CSV. Then try:
 
-> Using the themes we just produced and `clean_submissions.csv`, create
+> Using the themes we just produced and
+> `from-previous-session/clean_submissions.csv`, create
 > `solutions/theme-session-map.csv` with these columns:
 >
 > `submission_id, talk_title, assigned_theme, confidence, notes`

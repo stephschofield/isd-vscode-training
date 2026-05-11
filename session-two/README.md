@@ -62,5 +62,5 @@ is your source of truth for today.
   [github.com/signup](https://github.com/signup) if you don't have one
   yet. Everything in this lab requires it.
 - **GitHub Copilot** provisioned on your account (set up before Lab 1).
-- A working **browser**. The lab opens in a [GitHub Codespace](https://codespaces.new/stephschofield/isd-vscode-training/tree/main?devcontainer_path=session-two/.devcontainer/devcontainer.json&quickstart=1) — full VS Code in your browser, no install required, Copilot pre-installed. (Prefer working locally? Cloning the repo and opening `session-two/` in desktop VS Code still works.)
+- A working **browser** and **VS Code Desktop** installed. The lab opens in a [GitHub Codespace](https://codespaces.new/stephschofield/isd-vscode-training/tree/main?devcontainer_path=session-two/.devcontainer/devcontainer.json&quickstart=1) that hands off to **VS Code Desktop** on your laptop — Copilot is pre-installed in the Codespace, no setup required. (Prefer working fully locally? Cloning the repo and opening `session-two/` in VS Code Desktop still works as a fallback.)
 - About **60 minutes** of focus and a willingness to argue with Copilot.
