@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # test-vscode-desktop-framing.sh
 #
-# Asserts the editorial change documented in PR #22
-# (https://github.com/stephschofield/isd-vscode-training/pull/22):
-# the four learner-facing docs frame Codespaces as opening in VS Code Desktop,
-# not "in your browser."
+# Asserts an editorial invariant: the four learner-facing docs frame
+# Codespaces as opening in VS Code Desktop, not "in your browser."
+# Attendees are told at the door their Codespace will hand off to the
+# desktop app, so the labs must consistently reflect that framing.
 #
 # This is a grep-based smoke test, not a behavioural test. It exists to catch
 # editorial regressions where the old "in your browser" framing is

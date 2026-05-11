@@ -137,7 +137,10 @@ Then jump into [`lab/03-briefing.md`](lab/03-briefing.md).
 2. Confirm **GitHub Copilot Chat** is signed in (chat bubble icon in
    the **left sidebar** of VS Code), and set the chat mode dropdown to
    **Agent** — you'll stay in Agent mode for the whole lab so Copilot
-   can read your draft and edit files when asked.
+   can read your draft and edit files when asked. If the **Agent**
+   option isn't in the dropdown (or your Copilot icon shows a red
+   dot), ask one of the leads before you start — see Part 0 of the
+   lab for more on the setup.
 3. Open [`lab/03-briefing.md`](lab/03-briefing.md) and toggle the
    Markdown preview side-by-side. **On Windows/Linux:** press
    **Ctrl+K**, release, then **V**. **On macOS:** press **⌘ K**, then

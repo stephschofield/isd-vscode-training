@@ -46,7 +46,10 @@ that sound plausible and aren't supported by anything.
    (it can read any file in `session-two/` you reference by name or
    folder) and lets it write outputs back to disk when we get to Part
    3. You don't need to attach files one by one — referencing them in
-   the prompt (e.g., "the transcripts in `inputs/`") is enough.
+   the prompt (e.g., "the transcripts in `inputs/`") is enough. If
+   you don't see the **Agent** option in the mode dropdown, or VS
+   Code Desktop didn't launch from the Codespace, flag a facilitator
+   — don't try to grind through in Ask mode.
 
 **What to look for:** You should see the files in your sidebar and
 Copilot Chat open in a side panel with the mode dropdown showing

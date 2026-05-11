@@ -46,6 +46,8 @@ Part 6 you'll convert it (plus a one-page slide outline) into a
    leave it there for the whole lab — Agent mode gives Copilot
    workspace-wide visibility (it can read the persona, template, and
    options memo by name) and lets it edit files when we ask it to.
+   If the **Agent** option isn't in the dropdown, or VS Code Desktop
+   didn't launch from the Codespace, flag a lead before you start.
 5. Open the Markdown preview for `templates/briefing-template.md`
    side-by-side. **On Windows/Linux:** press **Ctrl+K**, release, then
    press **V**. **On macOS:** press **⌘ K**, then **⌘ V** (keep ⌘ held
