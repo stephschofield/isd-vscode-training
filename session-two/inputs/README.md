@@ -25,5 +25,8 @@ arrived in the same window.
 
 Skim, don't read end-to-end. The lab walkthrough
 ([`../lab/02-synthesis.md`](../lab/02-synthesis.md)) tells you when to come
-back to which file. Your first job is to attach the right files into a
-Copilot Chat prompt — not to memorize the content.
+back to which file. You'll be running Lab 2 in Copilot **Agent mode**,
+so you don't need to attach files one by one — referencing them by
+name or folder in your prompt (e.g., "the transcripts in `inputs/`")
+is enough. Your job is to know what's in the room, not to memorize
+the content.

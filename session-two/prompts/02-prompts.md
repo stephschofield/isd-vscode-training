@@ -3,20 +3,24 @@
 > Copy-paste prompts for the Lab 2 walkthrough. Same shape as Lab 1's
 > prompt library so attendees know exactly where to find things.
 >
-> **Tip:** Always attach the relevant input files with `#file:` before
-> sending a synthesis prompt. Synthesis without sources is
-> hallucination.
+> **Tip:** Run the whole lab in **Agent mode**. In Agent mode Copilot
+> has workspace-wide visibility — reference files or folders by name
+> (e.g., "the transcripts in `inputs/`") and Copilot will read them.
+> No need to attach anything one by one. Synthesis without sources is
+> hallucination, so always point Copilot at the inputs before asking
+> for themes.
 
 ---
 
 ## Get oriented — summarize each input
 
-Use after Part 0, before Part 2. Attach all three transcripts and both
-notes files.
+Use after Part 0, before Part 2. Agent mode will read the files
+straight from the workspace.
 
 ```
-For each of the three transcripts and the two notes files, give me a
-4-bullet summary in this exact shape:
+Read every file under `inputs/transcripts/` and `inputs/notes/`. For
+each transcript and each notes file, give me a 4-bullet summary in
+this exact shape:
 
 - Who is speaking and what role they're playing
 - The 2–3 things they explicitly want from the Summit
@@ -39,8 +43,8 @@ one talks about the Summit?
 
 ## Extract themes — ungrounded (the "bad" version, for contrast)
 
-Run this in a *new chat with no files attached* during Part 2. The
-output is the demo of how *not* to do it.
+Run this in a *new chat with no workspace context referenced* during
+Part 2. The output is the demo of how *not* to do it.
 
 ```
 What are some good themes for a 2026 corporate innovation summit?
@@ -50,12 +54,15 @@ What are some good themes for a 2026 corporate innovation summit?
 
 ## Extract themes — grounded
 
-Run in a fresh chat. Attach all three transcripts, both notes files,
-the whiteboard transcription, and `from-previous-session/clean_submissions.csv`.
+Run in a fresh chat. Agent mode will pull the inputs from the
+workspace — just point it at the folders and CSV.
 
 ```
-Using only the attached files, identify 5–8 themes for the Meridian
-Innovation Summit. For each theme, give me:
+Read every file under `inputs/transcripts/`, `inputs/notes/`,
+`inputs/whiteboard/`, and the file
+`from-previous-session/clean_submissions.csv`. Using only what's in
+those files, identify 5–8 themes for the Meridian Innovation Summit.
+For each theme, give me:
 
 1. A short, specific name (5 words or fewer — no "AI", no "Cloud",
    something that means something)
@@ -74,17 +81,17 @@ why.
 ### Follow-up — challenge a single theme
 
 ```
-Convince me [Theme N] isn't real. Use only the attached evidence. If
-the evidence holds up, say so and explain why. If it doesn't, tell me
-what's missing.
+Convince me [Theme N] isn't real. Use only the evidence in the
+workspace inputs. If the evidence holds up, say so and explain why.
+If it doesn't, tell me what's missing.
 ```
 
 ---
 
 ## Map themes to sessions
 
-Switch Copilot Chat to **Agent mode** so it can write files. Same
-context as the themes prompt above.
+Stay in **Agent mode** (you've been in it since Part 0) so Copilot can
+write the CSV. Same context as the themes prompt above.
 
 ```
 Using the themes we just produced and `clean_submissions.csv`, create
@@ -231,9 +238,11 @@ These are different from Lab 1's principles (which were about scoping
 and reviewing AI-suggested edits). Synthesis work has its own
 discipline:
 
-- **Always attach the source files with `#file:`.** Synthesis without
-  sources is hallucination. If you forget to attach, the model will
-  invent themes that sound plausible and aren't supported by anything.
+- **Always point Copilot at the source files.** In Agent mode, name
+  the folder or file in the prompt (e.g., "read every file under
+  `inputs/transcripts/`"). Synthesis without sources is hallucination
+  — if you don't reference the inputs, the model will invent themes
+  that sound plausible and aren't supported by anything.
 - **Ask for evidence per claim — quotes, file names, row counts.**
   "Why" without citation is decoration.
 - **When the answer feels too good, ask Copilot to argue against
