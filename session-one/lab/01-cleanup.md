@@ -28,17 +28,25 @@ If anything in this list isn't true, raise your hand — the facilitator will ge
 
 ## Part 0 — Open Copilot Chat
 
-**Time:** ~2 minutes
+**Time:** ~3 minutes
 
 ### What you're doing
-Getting Copilot Chat open in a side panel so you can talk to it about the data file.
+Opening `session-one/` as your workspace so the lab's relative paths resolve, then getting Copilot Chat open in a side panel.
 
 ### Why it matters
-You're going to spend the rest of the session pointing Copilot at a real file and watching it propose changes. The chat panel is your workbench.
+You're going to spend the rest of the session pointing Copilot at a real file and watching it propose changes. The chat panel is your workbench, and every path below (`data/raw_submissions.csv`, `solutions/clean_submissions.csv`, …) is written relative to `session-one/`.
 
-### Open Copilot Chat
+### Step 1 — Open `session-one/` as your workspace folder
 
-Press `Ctrl+Alt+I` (Windows/Linux) / `⌘+Alt+I` (macOS).
+Codespaces opens the whole repo by default. Today's lab lives in just one subfolder, and every path in this walkthrough is written relative to it.
+
+Use **File → Open Folder…**, pick `session-one/`, and reload. The Explorer on the left should now show `data/`, `lab/`, `prompts/`, `solutions/` at its root.
+
+> **Why?** This repo holds three sessions side by side. Opening just `session-one/` keeps the Explorer focused on today's lab and makes the relative paths in this walkthrough match what you see in VS Code. (Sessions 2 and 3 do the same.)
+
+### Step 2 — Open Copilot Chat
+
+Press `Ctrl+Alt+I` (Windows/Linux) / `⌃⌘I` (macOS).
 
 A chat panel opens. Make sure the mode dropdown at the top of the chat says **Agent** (not Ask). Agent mode is what lets Copilot actually edit files when you ask it to. If you only see Ask mode, that's fine for now — the facilitator will switch you over when needed.
 

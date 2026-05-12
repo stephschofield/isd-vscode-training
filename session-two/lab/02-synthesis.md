@@ -55,14 +55,6 @@ that sound plausible and aren't supported by anything.
 Copilot Chat open in a side panel with the mode dropdown showing
 **Agent**.
 
-- [`from-previous-session/clean_submissions.csv`](../from-previous-session/clean_submissions.csv)
-- [`inputs/transcripts/exec-sponsor-jane.md`](../inputs/transcripts/exec-sponsor-jane.md)
-- [`inputs/transcripts/program-lead-marcus.md`](../inputs/transcripts/program-lead-marcus.md)
-- [`inputs/transcripts/eng-director-priya.md`](../inputs/transcripts/eng-director-priya.md)
-- [`inputs/notes/kickoff-meeting-notes.md`](../inputs/notes/kickoff-meeting-notes.md)
-- [`inputs/notes/sponsor-1on1-notes.md`](../inputs/notes/sponsor-1on1-notes.md)
-- [`inputs/whiteboard/strategy-offsite-whiteboard.md`](../inputs/whiteboard/strategy-offsite-whiteboard.md)
-
 **Make it your own:** Skim the inputs folder for two minutes. Don't read carefully — just get a sense of who said what.
 
 ---
