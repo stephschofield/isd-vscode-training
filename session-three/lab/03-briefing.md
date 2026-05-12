@@ -22,7 +22,7 @@ Part 6 you'll convert it (plus a one-page slide outline) into a
 
 ---
 
-## Part 0 — Set up your workspace (3 min)
+## Part 0 — Open Copilot Chat (2 min)
 
 1. **Open `session-three/` as your workspace folder.** You should be in
    **VS Code Desktop** (the Codespace launch handed off to the desktop

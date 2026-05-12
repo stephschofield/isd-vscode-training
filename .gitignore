@@ -9,6 +9,8 @@ Thumbs.db
 .vscode/
 .idea/
 .context/
+.claude/
+.remember/
 
 # Planning / ops content lives in the maintainers' private source repo,
 # not here. Anchored to the repo root so a future session-level docs/
