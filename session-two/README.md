@@ -1,8 +1,7 @@
 # Meridian Innovation Summit — Lab 2: Find the Signal
 
-Welcome back. You're here to do the work that, until recently, only humans
-could do: take a pile of noisy stakeholder input, pull real themes out of
-it, and pressure-test those themes out loud — with Copilot as your
+Welcome back. You're here to take the now-cleaned speaker submissions data, pull real themes out of
+it, and pressure-test those themes out loud — with GitHub Copilot as your
 thinking partner, not your decision maker.
 
 In Lab 1, you cleaned the speaker submissions dataset. Today, you'll use
@@ -25,7 +24,7 @@ By the end of the session you'll have a 1-page strategic options memo —
 two or three program directions, with stated tradeoffs — that you could
 hand to leadership tomorrow.
 
-## How to start
+## Start here
 
 > Open [`lab/02-synthesis.md`](lab/02-synthesis.md) in the VS Code editor.
 
