@@ -16,20 +16,7 @@ that on purpose.
 
 ---
 
-## Part 0 — Open Copilot Chat (1 min)
-
-**What you're doing:** Get the repo open, the inputs in front of you,
-and Copilot Chat in Agent mode so it can read the workspace and write
-files.
-
-**Why:** Today's work is grounded synthesis. The Summit themes have to
-come from what stakeholders actually said, not from Copilot's training
-data. In Agent mode, Copilot has workspace-wide visibility — it can
-pull in files by name or by folder when you reference them. The setup
-matters because if Copilot can't see the inputs, it will invent themes
-that sound plausible and aren't supported by anything.
-
-**Try this:**
+## Start here
 
 1. **Open `session-two/` as your workspace folder.** You should be in **VS Code Desktop** (the Codespace launch handed off to the desktop app). Codespaces opens the whole repo by default — use **File → Open Folder…** and pick `session-two/`. Every path in this walkthrough is relative to that folder, so the Explorer should show `data/`, `from-previous-session/`, `inputs/`, `lab/`, `prompts/`, and `solutions/` at its root. (Want to run fully locally instead, with no Codespace? Clone `https://github.com/stephschofield/isd-vscode-training.git` and open the `session-two/` folder in VS Code Desktop.)
 2. Skim the inputs so you know what's in the room:
@@ -343,16 +330,14 @@ Better to find the holes here.
   line under each theme based on what you learned. (At least 2 themes
   should have a non-empty counter-argument by the end.)
 
-**Finalize:**
+**Finalize + check your work:**
 
-1. Save `solutions/themes.md`, `solutions/theme-session-map.csv`, and
-   `solutions/options-memo.md`.
-2. Compare your outputs to the canonical files in `solutions/` (which
+1. Compare your outputs to the canonical files in `solutions/` (which
    were committed before this session). Where do you agree? Where do
    you differ? *Different is allowed.* The canonical answer isn't the
    only good answer; it's *an* answer that survived its own pressure-
    test.
-3. Read `solutions/options-memo.md` aloud. Does it make a recommendation
+2. Read `solutions/options-memo.md` aloud. Does it make a recommendation
    you'd actually defend in a leadership meeting? If yes, you're done.
 
 ---
