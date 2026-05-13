@@ -1,15 +1,5 @@
 # isd-vscode-session3
 
-> **🔒 INTERNAL repo.** This is the source-of-truth and planning workspace
-> for Lab 3 — facilitator script, planning docs, tests, and backlog live
-> here. The **attendee-facing copy** will be published to
-> [`stephschofield/isd-vscode-training/session-three/`](https://github.com/stephschofield/isd-vscode-training/tree/feat/initial-publish-session-three/session-three)
-> (currently on the `feat/initial-publish-session-three` branch, pending
-> merge of [`isd-vscode-training#1`](https://github.com/stephschofield/isd-vscode-training/pull/1);
-> the repo is also still private until the publish lands).
-> Edit lab content here, then **manually republish** to the training repo
-> after edits land. Do not point attendees at this repo.
-
 ## Lab 3 — From Strategy to Executive Story
 
 Part of the **ISD +1 Campaign** hands-on lab series:
