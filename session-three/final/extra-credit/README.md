@@ -8,10 +8,11 @@
 > renderer.
 
 This is a **stretch path, after the main lab is complete**. Don't start
-here. The main lab (`lab/03-briefing.md`) is where you learned the
-editing loop and produced the canonical `final/briefing.docx` and
-`final/deck.pptx`. This is what you do with the last 20–30 minutes if
-you have them, or after the workshop on your own machine.
+here. The main lab ([`lab/03-briefing.md`](../../lab/03-briefing.md)) is
+where you learned the editing loop and produced the canonical
+[`final/briefing.docx`](../briefing.docx) and
+[`final/deck.pptx`](../deck.pptx). This is what you do with the last
+20–30 minutes if you have them, or after the workshop on your own machine.
 
 The arguments in your deck are already yours. This step makes the
 *presentation* match the *thinking*.
@@ -166,7 +167,8 @@ like.
 
 Open [`meridian-innovation-summit-deck.html`](./meridian-innovation-summit-deck.html)
 in your browser. That's a finished extra-credit pass on this same
-content — same 7 slides, same persona, same recommendation.
+content — the 7 outline slides plus a cover scene (8 sections total),
+same persona, same recommendation.
 
 What you're looking for in that example:
 
