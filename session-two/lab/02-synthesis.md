@@ -16,7 +16,7 @@ that on purpose.
 
 ---
 
-## Part 0 — Set up your workspace (3 min)
+## Part 0 — Open Copilot Chat (1 min)
 
 **What you're doing:** Get the repo open, the inputs in front of you,
 and Copilot Chat in Agent mode so it can read the workspace and write
@@ -55,8 +55,7 @@ that sound plausible and aren't supported by anything.
 Copilot Chat open in a side panel with the mode dropdown showing
 **Agent**.
 
-**Make it your own:** Skim the inputs folder for two minutes. Don't
-read carefully — just get a sense of who said what.
+**Make it your own:** Skim the inputs folder for two minutes. Don't read carefully — just get a sense of who said what.
 
 ---
 

@@ -26,15 +26,15 @@ If anything in this list isn't true, raise your hand — the facilitator will ge
 
 ---
 
-## Part 0 — Set up your workspace
+## Part 0 — Open Copilot Chat
 
 **Time:** ~3 minutes
 
 ### What you're doing
-Getting the messy data file open and Copilot Chat ready in a side panel.
+Opening `session-one/` as your workspace so the lab's relative paths resolve, then getting Copilot Chat open in a side panel.
 
 ### Why it matters
-You're going to spend the rest of the session pointing Copilot at a real file and watching it propose changes. Your screen layout matters.
+You're going to spend the rest of the session pointing Copilot at a real file and watching it propose changes. The chat panel is your workbench, and every path below (`data/raw_submissions.csv`, `solutions/clean_submissions.csv`, …) is written relative to `session-one/`.
 
 ### Step 1 — Open `session-one/` as your workspace folder
 
@@ -42,22 +42,17 @@ Codespaces opens the whole repo by default. Today's lab lives in just one subfol
 
 Use **File → Open Folder…**, pick `session-one/`, and reload. The Explorer on the left should now show `data/`, `lab/`, `prompts/`, `solutions/` at its root.
 
-> **Why?** This repo holds three sessions side by side. Opening just `session-one/` keeps the Explorer focused on today's lab and makes the relative paths in this walkthrough match what you see in VS Code. (Sessions 2 and 3 do the same — open `session-two/` for Lab 2, `session-three/` for Lab 3.)
+> **Why?** This repo holds three sessions side by side. Opening just `session-one/` keeps the Explorer focused on today's lab and makes the relative paths in this walkthrough match what you see in VS Code. (Sessions 2 and 3 do the same.)
 
-### Step 2 — Open the data file
+### Step 2 — Open Copilot Chat
 
-Click `data/raw_submissions.csv` in the **Explorer**. VS Code opens it as a table — that's the built-in CSV preview. Make sure this walkthrough's preview tab is still visible on the right.
-
-### Step 3 — Open Copilot Chat
-
-Press `Ctrl+Alt+I` (Windows/Linux) / `⌘+Alt+I` (macOS).
+Press `Ctrl+Alt+I` (Windows/Linux) / `⌃⌘I` (macOS).
 
 A chat panel opens. Make sure the mode dropdown at the top of the chat says **Agent** (not Ask). Agent mode is what lets Copilot actually edit files when you ask it to. If you only see Ask mode, that's fine for now — the facilitator will switch you over when needed.
 
 ### What to look for
-- Three things visible at once: walkthrough, data, chat.
-- The CSV looks like a table, not a wall of commas.
-- Copilot Chat has a blinking cursor in its input box.
+- Copilot Chat is open in a side panel with a blinking cursor in its input box.
+- The mode dropdown reads **Agent** (preferred) or **Ask**.
 
 ### ✅ Win
 You're set up. The hard part is over.
@@ -89,12 +84,14 @@ Don't change the file. Just describe what you see.
 ```
 
 ### What to look for
-- Copilot should call out **topic_tag** chaos (e.g., `AI`, `A.I.`, `Artificial Intelligence` all coexist).
-- It should mention **mixed date formats** in `submission_date`.
-- It should flag at least one duplicate or out-of-window submission.
-- The numbers should be roughly: ~177 rows, 12 columns.
 
-If Copilot's summary feels generic or hand-wavy, push back. Try:
+Copilot's exact wording will vary every run — that's normal. You're looking for a summary that surfaces the kinds of mess you'd expect in a real submissions inbox, for example:
+
+- Inconsistent values in **topic_tag** (the same topic written several different ways).
+- **Mixed date formats** in `submission_date`.
+- Possible duplicates, blanks, or rows from outside the submission window.
+
+If Copilot's summary feels vague, generic, or hand-wavy — or if it skips straight to recommendations without describing what's actually in the file — push back. Try:
 
 ```text
 Be more specific. Give me three concrete examples from the actual rows.
@@ -171,8 +168,8 @@ Show me 5 example changes before applying.
 ```
 
 ### What to look for
-- After all three: your `topic_tag` column has only 6 distinct values, your `submission_date` column is all `YYYY-MM-DD`, and `speaker_name` looks consistent.
-- The Source Control panel shows ~150+ line changes. That's expected.
+- After all three: your `topic_tag` column should only contain values from your canonical list, your `submission_date` column should be uniform `YYYY-MM-DD`, and `speaker_name` should look consistent row to row.
+- The Source Control panel shows a lot of changed lines. Skim a handful — they should all look like the kind of normalization you asked for, not surprises.
 
 ### Make it your own (optional stretch)
 Ask Copilot to do the same kind of normalization on the `track_preference` column (canonical values: `Technical Deep Dive`, `Strategy`, `Workshop`).
@@ -203,7 +200,7 @@ For each one:
 3. Don't change anything yet — just show me the list.
 ```
 
-Copilot should find ~6 speakers. Look at its proposal. Real call: usually you'd keep the email that appears most often, or the simpler one (no `.work` or `.consulting` suffix).
+Look at the list Copilot returns. Real call: usually you'd keep the email that appears most often, or the simpler one (no `.work` or `.consulting` suffix). If something looks off — say a name match that's clearly two different people — push back before approving.
 
 When you're happy with the picks:
 
@@ -222,7 +219,7 @@ For each duplicate set, suggest which row to keep — usually the most complete 
 Review. Approve.
 
 ### What to look for
-- Row count should drop by ~10–15 rows.
+- Your row count should drop noticeably — the exact number depends on how many duplicates Copilot found and which ones you approved.
 - The Source Control panel now shows deleted lines (red) as well as edits.
 - Every speaker_name should now match exactly one speaker_email.
 
@@ -317,9 +314,9 @@ In the Explorer, click `solutions/clean_submissions.csv`. Open it side-by-side w
 
 ### Check four things
 
-1. **Row count.** Yours should be within ~5% of the canonical's row count.
-2. **Column names and order.** Identical to the canonical.
-3. **Standardized formats.** All dates ISO. All topics in the canonical 6. All `requires_av` is `Yes` or `No`.
+1. **Row count.** Yours should be in the same ballpark as the canonical — not identical, just close enough that you didn't accidentally drop or duplicate large chunks of data.
+2. **Column names and order.** Should match the canonical.
+3. **Standardized formats.** Dates in ISO. Topics drawn from your canonical list. `requires_av` is `Yes` or `No`.
 4. **No obvious duplicates.** No two rows share a `speaker_name` + `talk_title` pair.
 
 ### Try this prompt

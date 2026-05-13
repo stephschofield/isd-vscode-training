@@ -22,7 +22,7 @@ Part 6 you'll convert it (plus a one-page slide outline) into a
 
 ---
 
-## Part 0 — Set up your workspace (3 min)
+## Part 0 — Set up your workspace and Copilot Chat (5 min)
 
 1. **Open `session-three/` as your workspace folder.** You should be in
    **VS Code Desktop** (the Codespace launch handed off to the desktop
@@ -50,8 +50,8 @@ Part 6 you'll convert it (plus a one-page slide outline) into a
    didn't launch from the Codespace, flag a lead before you start.
 5. Open the Markdown preview for `templates/briefing-template.md`
    side-by-side. **On Windows/Linux:** press **Ctrl+K**, release, then
-   press **V**. **On macOS:** press **⌘ K**, then **⌘ V** (keep ⌘ held
-   for the second press too).
+   press **V**. **On macOS:** press **⌘ K**, release ⌘, then press **V**
+   (no modifier on the second key).
    (This is *not* the same as Ctrl/Cmd + Shift + V — that opens preview
    in the same pane and hides your draft.) If the keyboard shortcut
    doesn't work, right-click the file in the file explorer and pick
