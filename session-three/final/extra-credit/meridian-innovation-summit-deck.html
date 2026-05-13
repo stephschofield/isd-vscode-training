@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Meridian Innovation Summit — Reel</title>
+<style>
+  :root {
+    --bg: #08090a;
+    --bg-2: #0b0c0e;
+    --surface: #0e0f12;
+    --surface-2: #13141a;
+    --line: rgba(255,255,255,0.06);
+    --line-2: rgba(255,255,255,0.10);
+    --text-1: #f7f8f8;
+    --text-2: #c7cbd1;
+    --text-3: #8b8f98;
+    --accent: #7170ff;
+    --accent-2: #5e6ad2;
+    --warn: #f97373;
+    --ok: #6ee7b7;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --scene: 7000ms;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100%; width: 100%;
+    background: var(--bg);
+    color: var(--text-1);
+    font-family: "Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    letter-spacing: -0.011em;
+  }
+
+  /* ----- background grain + vignette ----- */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(1200px 700px at 50% 50%, rgba(113,112,255,0.06), transparent 70%),
+      radial-gradient(800px 500px at 80% 20%, rgba(94,106,210,0.05), transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.35;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 2;
+  }
+
+  /* ----- stage ----- */
+  .stage {
+    position: relative;
+    width: 100vw; height: 100vh;
+    overflow: hidden;
+    z-index: 3;
+  }
+
+  .scene {
+    position: absolute; inset: 0;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 900ms var(--ease), visibility 0s linear 900ms;
+    padding: clamp(24px, 4vw, 72px);
+  }
+  .scene.is-live {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 900ms var(--ease), visibility 0s;
+  }
+
+  .frame {
+    width: min(1280px, 96vw);
+    height: min(720px, 80vh);
+    position: relative;
+    border-radius: 18px;
+    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--line);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.04) inset,
+      0 30px 80px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(113,112,255,0.06);
+    overflow: hidden;
+  }
+
+  /* eyebrow + page chrome */
+  .chrome-top {
+    position: absolute; top: 28px; left: 36px; right: 36px;
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--text-3);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .chrome-top .dot {
+    display: inline-block; width: 6px; height: 6px; border-radius: 999px;
+    background: var(--accent);
+    margin-right: 10px; vertical-align: middle;
+    box-shadow: 0 0 12px rgba(113,112,255,0.6);
+  }
+  .chrome-bottom {
+    position: absolute; bottom: 24px; left: 36px; right: 36px;
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--text-3);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+
+  /* ----- typography ----- */
+  .display {
+    font-family: "Inter Display", "Inter", system-ui;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    color: var(--text-1);
+  }
+  .display.xxl { font-size: clamp(48px, 6.4vw, 92px); }
+  .display.xl  { font-size: clamp(40px, 5vw, 68px); }
+  .display.l   { font-size: clamp(28px, 3vw, 42px); }
+  .body {
+    color: var(--text-2);
+    font-size: clamp(15px, 1.1vw, 17px);
+    line-height: 1.55;
+    max-width: 65ch;
+  }
+  .mono {
+    font-family: "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--text-3);
+    letter-spacing: 0.02em;
+  }
+
+  /* ----- reveal animations ----- */
+  .reveal { opacity: 0; transform: translateY(14px); filter: blur(6px); }
+  .scene.is-live .reveal { animation: reveal 900ms var(--ease) forwards; }
+  .scene.is-live .r1 { animation-delay: 180ms; }
+  .scene.is-live .r2 { animation-delay: 380ms; }
+  .scene.is-live .r3 { animation-delay: 580ms; }
+  .scene.is-live .r4 { animation-delay: 780ms; }
+  .scene.is-live .r5 { animation-delay: 980ms; }
+  .scene.is-live .r6 { animation-delay: 1180ms; }
+  .scene.is-live .r7 { animation-delay: 1380ms; }
+  .scene.is-live .r8 { animation-delay: 1580ms; }
+  @keyframes reveal {
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+
+  /* hairline underline sweep */
+  .hairline {
+    height: 1px; background: var(--line-2);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+  }
+  .scene.is-live .hairline { animation: sweep 1400ms var(--ease) forwards; animation-delay: 200ms; }
+  @keyframes sweep { to { transform: scaleX(1); } }
+
+  /* ken burns container */
+  .kenburns {
+    position: absolute; inset: 0;
+    transform-origin: 50% 50%;
+  }
+  .scene.is-live .kenburns { animation: kenburns var(--scene) var(--ease) forwards; }
+  @keyframes kenburns {
+    from { transform: scale(1.04) translate(-1%, -1%); }
+    to   { transform: scale(1.00) translate(0, 0); }
+  }
+
+  /* ===== Scene 1: Title ===== */
+  .s1 .bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(700px 380px at 78% 18%, rgba(113,112,255,0.18), transparent 60%),
+      radial-gradient(500px 320px at 18% 82%, rgba(94,106,210,0.14), transparent 60%),
+      linear-gradient(180deg, #0a0b0f 0%, #0e1024 100%);
+  }
+  .s1 .grid-lines {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+  }
+  .s1 .content {
+    position: absolute; left: 80px; right: 80px; top: 50%;
+    transform: translateY(-50%);
+  }
+  .s1 .lockup {
+    display: flex; align-items: center; gap: 14px;
+    color: var(--text-3); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .s1 .lockup .pip { width: 22px; height: 1px; background: var(--accent); }
+  .s1 h1 { margin: 0; }
+  .s1 .sub { margin-top: 24px; color: var(--text-2); font-size: 22px; max-width: 720px; line-height: 1.4; }
+  .s1 .meta {
+    position: absolute; left: 80px; right: 80px; bottom: 60px;
+    display: flex; gap: 48px;
+    color: var(--text-3); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  }
+  .s1 .meta b { color: var(--text-1); font-weight: 500; letter-spacing: 0.02em; text-transform: none; font-size: 14px; display: block; margin-top: 6px; }
+
+  /* ===== Scene 2: Method / Stats ===== */
+  .s2 .header { position: absolute; top: 70px; left: 60px; right: 60px; }
+  .s2 .stats {
+    position: absolute; left: 60px; right: 60px; top: 50%;
+    transform: translateY(-40%);
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+  }
+  .stat {
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    border-radius: 14px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat .label {
+    color: var(--text-3); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 500;
+  }
+  .stat .num {
+    font-family: "Inter Display", "Inter", system-ui;
+    font-weight: 600;
+    font-size: clamp(40px, 4.6vw, 64px);
+    line-height: 1.0;
+    margin-top: 18px;
+    letter-spacing: -0.03em;
+    background: linear-gradient(180deg, #fff 0%, #b8bbc6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .stat .foot { color: var(--text-3); font-size: 12px; margin-top: 14px; }
+  .stat::after {
+    content: "";
+    position: absolute; left: 24px; right: 24px; bottom: 12px; height: 1px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+  }
+  .scene.is-live .stat::after { animation: sweep 1200ms var(--ease) forwards; animation-delay: 800ms; }
+
+  /* ===== Scene 3: Signal / bars ===== */
+  .s3 .header { position: absolute; top: 70px; left: 60px; right: 60px; }
+  .s3 .chart {
+    position: absolute; left: 60px; right: 60px; top: 180px; bottom: 140px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  }
+  .bars { display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+  .bar-row { display: grid; grid-template-columns: 120px 1fr 50px; align-items: center; gap: 16px; }
+  .bar-label { color: var(--text-2); font-size: 14px; font-weight: 500; }
+  .bar-track {
+    height: 10px; background: rgba(255,255,255,0.04); border-radius: 999px; overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-2), var(--accent));
+    width: 0;
+    border-radius: 999px;
+    box-shadow: 0 0 18px rgba(113,112,255,0.4);
+  }
+  .scene.is-live .bar-fill { animation: barFill 1400ms var(--ease) forwards; animation-delay: 700ms; }
+  @keyframes barFill { to { width: var(--w, 60%); } }
+  .bar-val { color: var(--text-3); font-size: 13px; font-variant-numeric: tabular-nums; text-align: right; }
+
+  .insights { display: grid; grid-template-rows: repeat(4, 1fr); gap: 12px; }
+  .insight {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.012);
+  }
+  .insight .k { color: var(--text-3); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .insight .v { color: var(--text-1); font-size: 14px; margin-top: 6px; line-height: 1.45; }
+
+  /* ===== Scene 4: Recommendation / Tracks ===== */
+  .s4 .header { position: absolute; top: 70px; left: 60px; right: 60px; }
+  .tracks {
+    position: absolute; left: 60px; right: 60px; top: 180px; bottom: 140px;
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+  }
+  .track {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 18px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    position: relative;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .track .num-pill {
+    color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  }
+  .track .name { color: var(--text-1); font-size: 18px; font-weight: 600; margin-top: 14px; line-height: 1.25; letter-spacing: -0.012em; }
+  .track .count {
+    font-family: "Inter Display", "Inter", system-ui;
+    font-size: 44px; font-weight: 600; letter-spacing: -0.03em;
+    margin-top: 16px; color: var(--text-1);
+  }
+  .track .count em { color: var(--text-3); font-style: normal; font-size: 14px; font-weight: 400; margin-left: 6px; letter-spacing: 0; }
+  .track .desc { color: var(--text-3); font-size: 12.5px; line-height: 1.5; margin-top: 14px; }
+  .track::before {
+    content: "";
+    position: absolute; left: 18px; right: 18px; top: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+  }
+  .scene.is-live .track::before { animation: sweep 1100ms var(--ease) forwards; animation-delay: calc(600ms + var(--i, 0) * 90ms); }
+
+  /* ===== Scene 5: Narrative ===== */
+  .s5 .header { position: absolute; top: 70px; left: 60px; right: 60px; }
+  .beats {
+    position: absolute; left: 60px; right: 60px; top: 200px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .beat { border-top: 1px solid var(--line-2); padding-top: 22px; position: relative; }
+  .beat .ord { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; }
+  .beat h3 { color: var(--text-1); font-size: 22px; margin: 14px 0 0 0; font-weight: 600; letter-spacing: -0.012em; }
+  .beat p { color: var(--text-2); font-size: 14px; line-height: 1.55; margin: 12px 0 0 0; }
+  .s5 .band {
+    position: absolute; left: 60px; right: 60px; bottom: 90px;
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--accent);
+    border-radius: 10px;
+    padding: 18px 22px;
+    background: linear-gradient(90deg, rgba(113,112,255,0.06), transparent);
+  }
+  .s5 .band .k { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+  .s5 .band .v { color: var(--text-1); font-size: 16px; margin-top: 6px; }
+
+  /* ===== Scene 6: Risks ===== */
+  .s6 .header { position: absolute; top: 70px; left: 60px; right: 60px; }
+  .risks {
+    position: absolute; left: 60px; right: 60px; top: 180px; bottom: 90px;
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px;
+  }
+  .risk {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px 24px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    position: relative;
+  }
+  .risk::before {
+    content: ""; position: absolute; left: 0; top: 0; right: 0; height: 2px;
+    background: var(--warn);
+    border-radius: 12px 12px 0 0;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+  }
+  .scene.is-live .risk::before { animation: sweep 1000ms var(--ease) forwards; animation-delay: calc(500ms + var(--i, 0) * 110ms); }
+  .risk .ord { display: block; color: var(--warn); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+  .risk .title { display: block; color: var(--text-1); font-size: 17px; font-weight: 600; margin-top: 12px; letter-spacing: -0.01em; line-height: 1.25; }
+  .risk .mit { display: block; color: var(--text-2); font-size: 13.5px; line-height: 1.55; margin-top: 14px; }
+
+  /* ===== Scene 7: Decision ===== */
+  .s7 .bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(700px 420px at 22% 80%, rgba(113,112,255,0.16), transparent 60%),
+      linear-gradient(180deg, #0a0b0f 0%, #0e1024 100%);
+  }
+  .s7 .header { position: absolute; top: 70px; left: 60px; right: 60px; z-index: 2; }
+  .asks {
+    position: absolute; left: 60px; right: 60px; top: 240px;
+    display: grid; gap: 20px;
+  }
+  .ask {
+    display: grid; grid-template-columns: 60px 1fr; gap: 24px; align-items: start;
+    padding: 18px 0;
+    border-top: 1px solid var(--line-2);
+  }
+  .ask .n {
+    font-family: "Inter Display", "Inter", system-ui;
+    font-size: 44px; font-weight: 600; line-height: 1; letter-spacing: -0.03em;
+    color: var(--accent);
+  }
+  .ask .body-block { padding-top: 6px; }
+  .ask .title { color: var(--text-1); font-size: 22px; font-weight: 600; letter-spacing: -0.012em; }
+  .ask .by { color: var(--text-3); font-size: 13px; margin-top: 6px; letter-spacing: 0.04em; }
+  .s7 .sign {
+    position: absolute; left: 60px; right: 60px; bottom: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--text-3); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  }
+  .s7 .sign b { color: var(--text-1); font-weight: 500; letter-spacing: 0.02em; text-transform: none; font-size: 14px; }
+
+  /* ===== Scene 8: Cinematic outro ===== */
+  .s8 .bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(900px 600px at 50% 60%, rgba(113,112,255,0.18), transparent 65%),
+      linear-gradient(180deg, #08090a 0%, #0c0e18 100%);
+  }
+  .s8 .content {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    text-align: center;
+    padding: 0 60px;
+  }
+  .s8 .wordmark {
+    font-family: "Inter Display", "Inter", system-ui;
+    font-size: clamp(56px, 7vw, 110px);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 0.96;
+    background: linear-gradient(180deg, #fff 0%, #9ea1ad 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .s8 .cap { color: var(--text-3); font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; margin-top: 28px; }
+
+  /* ----- player chrome ----- */
+  .player {
+    position: fixed; left: 50%; bottom: 24px;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(14,15,18,0.78);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    padding: 8px 14px 8px 8px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+  }
+  .player button {
+    appearance: none; background: var(--text-1); color: #0a0b0f;
+    border: 0; border-radius: 999px;
+    width: 32px; height: 32px;
+    display: grid; place-items: center;
+    cursor: pointer;
+    transition: transform 200ms var(--ease);
+  }
+  .player button:hover { transform: scale(1.05); }
+  .player .scrub {
+    width: 280px; height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 999px; overflow: hidden;
+    position: relative;
+  }
+  .player .scrub-fill {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    background: linear-gradient(90deg, var(--accent-2), var(--accent));
+    width: 0%;
+    transition: width 200ms linear;
+  }
+  .player .time { color: var(--text-3); font-size: 11px; font-variant-numeric: tabular-nums; letter-spacing: 0.05em; }
+  .player .nav { display: flex; gap: 4px; }
+  .player .nav button {
+    width: 26px; height: 26px;
+    background: rgba(255,255,255,0.08);
+    color: var(--text-1);
+  }
+  .player .nav button:hover { background: rgba(255,255,255,0.14); }
+  .player svg { width: 14px; height: 14px; fill: currentColor; }
+  .player .label {
+    color: var(--text-3); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    margin-right: 6px;
+  }
+
+  /* dot indicator */
+  .dots {
+    position: fixed; right: 28px; top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .dots b {
+    display: block; width: 8px; height: 8px; border-radius: 999px;
+    background: rgba(255,255,255,0.14);
+    transition: all 300ms var(--ease);
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+  }
+  .dots b.is-live {
+    background: var(--accent);
+    transform: scale(1.4);
+    box-shadow: 0 0 12px rgba(113,112,255,0.7);
+  }
+
+  /* logo lockup top left */
+  .brand {
+    position: fixed; top: 24px; left: 28px; z-index: 10;
+    display: flex; align-items: center; gap: 10px;
+    color: var(--text-3); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  }
+  .brand .mark {
+    width: 14px; height: 14px;
+    background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent));
+    border-radius: 4px;
+  }
+  .brand b { color: var(--text-1); font-weight: 500; letter-spacing: 0.04em; text-transform: none; font-size: 13px; }
+
+  @media (max-width: 720px) {
+    .frame { height: min(640px, 86vh); }
+    .s1 .content, .s1 .meta { left: 32px; right: 32px; }
+    .s2 .header, .s3 .header, .s4 .header, .s5 .header, .s6 .header, .s7 .header { left: 32px; right: 32px; top: 56px; }
+    .s2 .stats { left: 32px; right: 32px; grid-template-columns: 1fr 1fr; }
+    .s3 .chart { left: 32px; right: 32px; grid-template-columns: 1fr; gap: 30px; top: 160px; bottom: 100px; }
+    .tracks { left: 32px; right: 32px; grid-template-columns: 1fr 1fr; }
+    .beats { left: 32px; right: 32px; grid-template-columns: 1fr; gap: 16px; top: 170px; }
+    .risks { left: 32px; right: 32px; }
+    .asks { left: 32px; right: 32px; top: 200px; }
+    .display.xxl { font-size: 44px; }
+    .display.xl { font-size: 32px; }
+    .player .scrub { width: 160px; }
+    .dots { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scene, .reveal, .bar-fill, .stat::after, .track::before, .risk::before, .hairline, .kenburns {
+      animation: none !important;
+      transition: opacity 200ms linear !important;
+    }
+    .reveal { opacity: 1; transform: none; filter: none; }
+    .bar-fill { width: var(--w, 60%); }
+  }
+</style>
+</head>
+<body>
+
+<div class="brand">
+  <span class="mark"></span>
+  <b>Meridian</b> · Innovation Summit Reel
+</div>
+
+<div class="stage" id="stage">
+
+  <!-- ============ Scene 1: Title ============ -->
+  <section class="scene s1 is-live" data-scene="0" data-duration="6500">
+    <div class="frame">
+      <div class="bg kenburns"></div>
+      <div class="grid-lines"></div>
+      <div class="chrome-top">
+        <span><span class="dot"></span>Reel 01 · Title</span>
+        <span>MERIDIAN · 2026</span>
+      </div>
+      <div class="content">
+        <div class="lockup reveal r1"><span class="pip"></span> Innovation Summit 2026</div>
+        <h1 class="display xxl reveal r2">Meridian<br/>Innovation Summit</h1>
+        <p class="sub reveal r3">An agenda recommendation distilled from 93 talk proposals into five tracks and one narrative arc.</p>
+      </div>
+      <div class="meta">
+        <span class="reveal r5">For<b>Executive Sponsor</b></span>
+        <span class="reveal r6">Prepared by<b>Programs Office</b></span>
+        <span class="reveal r7">Decision needed<b>By Friday</b></span>
+      </div>
+      <div class="chrome-bottom">
+        <span>01 / 08</span>
+        <span>5 min read · 8 scenes</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Scene 2: Method ============ -->
+  <section class="scene s2" data-scene="1" data-duration="7000">
+    <div class="frame">
+      <div class="chrome-top">
+        <span><span class="dot"></span>Reel 02 · Method</span>
+        <span>SCOPE OF THE WORK</span>
+      </div>
+      <div class="header">
+        <div class="reveal r1" style="color: var(--accent); font-size: 11px; letter-spacing: 0.2em; font-weight: 600;">METHOD</div>
+        <h2 class="display xl reveal r2" style="margin: 10px 0 0 0;">From 93 submissions to one defensible plan.</h2>
+        <div class="hairline" style="margin-top: 24px;"></div>
+      </div>
+      <div class="stats">
+        <div class="stat reveal r3">
+          <div class="label">Inputs · Outputs</div>
+          <div class="num">93 → 89</div>
+          <div class="foot">Talks after cleaning</div>
+        </div>
+        <div class="stat reveal r4">
+          <div class="label">Field corrections</div>
+          <div class="num">426</div>
+          <div class="foot">Normalizations applied</div>
+        </div>
+        <div class="stat reveal r5">
+          <div class="label">Duplicates removed</div>
+          <div class="num">4</div>
+          <div class="foot">Title + speaker collisions</div>
+        </div>
+        <div class="stat reveal r6">
+          <div class="label">Out of window</div>
+          <div class="num">1</div>
+          <div class="foot">Outside event timeframe</div>
+        </div>
+      </div>
+      <div class="chrome-bottom">
+        <span>02 / 08</span>
+        <span>LAB 1 · CLEAN</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Scene 3: Signal ============ -->
+  <section class="scene s3" data-scene="2" data-duration="8000">
+    <div class="frame">
+      <div class="chrome-top">
+        <span><span class="dot"></span>Reel 03 · Signal</span>
+        <span>WHERE THE MARKET IS</span>
+      </div>
+      <div class="header">
+        <div class="reveal r1" style="color: var(--accent); font-size: 11px; letter-spacing: 0.2em; font-weight: 600;">SIGNAL</div>
+        <h2 class="display xl reveal r2" style="margin: 10px 0 0 0;">Six topics carry the conversation.</h2>
+        <div class="hairline" style="margin-top: 20px;"></div>
+      </div>
+      <div class="chart">
+        <div class="bars reveal r3">
+          <div class="bar-row"><div class="bar-label">AI</div><div class="bar-track"><div class="bar-fill" style="--w: 100%;"></div></div><div class="bar-val">18</div></div>
+          <div class="bar-row"><div class="bar-label">Data</div><div class="bar-track"><div class="bar-fill" style="--w: 94%;"></div></div><div class="bar-val">17</div></div>
+          <div class="bar-row"><div class="bar-label">Leadership</div><div class="bar-track"><div class="bar-fill" style="--w: 94%;"></div></div><div class="bar-val">17</div></div>
+          <div class="bar-row"><div class="bar-label">Cloud</div><div class="bar-track"><div class="bar-fill" style="--w: 94%;"></div></div><div class="bar-val">17</div></div>
+          <div class="bar-row"><div class="bar-label">Security</div><div class="bar-track"><div class="bar-fill" style="--w: 72%;"></div></div><div class="bar-val">13</div></div>
+          <div class="bar-row"><div class="bar-label">DevOps</div><div class="bar-track"><div class="bar-fill" style="--w: 39%;"></div></div><div class="bar-val">7</div></div>
+        </div>
+        <div class="insights">
+          <div class="insight reveal r4">
+            <div class="k">Audience</div>
+            <div class="v">Practitioners outnumber executives 3 to 1.</div>
+          </div>
+          <div class="insight reveal r5">
+            <div class="k">Session shape</div>
+            <div class="v">45-minute talks dominate; workshops are scarce.</div>
+          </div>
+          <div class="insight reveal r6">
+            <div class="k">Speaker mix</div>
+            <div class="v">5 companies supply 22% of all proposals.</div>
+          </div>
+          <div class="insight reveal r7">
+            <div class="k">Themes</div>
+            <div class="v">5 themes capture 89 of 89 talks cleanly.</div>
+          </div>
+        </div>
+      </div>
+      <div class="chrome-bottom">
+        <span>03 / 08</span>
+        <span>LAB 2 · SYNTHESIZE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Scene 4: Recommendation ============ -->
+  <section class="scene s4" data-scene="3" data-duration="8500">
+    <div class="frame">
+      <div class="chrome-top">
+        <span><span class="dot"></span>Reel 04 · Recommendation</span>
+        <span>FIVE TRACKS, 29 TALKS</span>
+      </div>
+      <div class="header">
+        <div class="reveal r1" style="color: var(--accent); font-size: 11px; letter-spacing: 0.2em; font-weight: 600;">RECOMMENDATION</div>
+        <h2 class="display xl reveal r2" style="margin: 10px 0 0 0;">Five tracks. 29 talks. One narrative.</h2>
+        <div class="hairline" style="margin-top: 20px;"></div>
+      </div>
+      <div class="tracks">
+        <div class="track reveal r3" style="--i: 0;">
+          <span class="num-pill">Track 01</span>
+          <div class="name">AI in Production</div>
+          <div class="count">8<em>talks</em></div>
+          <div class="desc">From proof-of-concept to revenue. Pattern libraries, eval, governance.</div>
+        </div>
+        <div class="track reveal r4" style="--i: 1;">
+          <span class="num-pill">Track 02</span>
+          <div class="name">Cloud at Scale</div>
+          <div class="count">6<em>talks</em></div>
+          <div class="desc">Cost, latency, and reliability when you can&rsquo;t add headcount.</div>
+        </div>
+        <div class="track reveal r5" style="--i: 2;">
+          <span class="num-pill">Track 03</span>
+          <div class="name">Trust &amp; Operations</div>
+          <div class="count">6<em>talks</em></div>
+          <div class="desc">Security, resilience, and the unglamorous work that compounds.</div>
+        </div>
+        <div class="track reveal r6" style="--i: 3;">
+          <span class="num-pill">Track 04</span>
+          <div class="name">Data Foundations</div>
+          <div class="count">5<em>talks</em></div>
+          <div class="desc">The substrate everything else depends on — pipelines, contracts, lineage.</div>
+        </div>
+        <div class="track reveal r7" style="--i: 4;">
+          <span class="num-pill">Track 05</span>
+          <div class="name">Leadership Craft</div>
+          <div class="count">4<em>talks</em></div>
+          <div class="desc">How senior people make decisions when the answers aren&rsquo;t in the data.</div>
+        </div>
+      </div>
+      <div class="chrome-bottom">
+        <span>04 / 08</span>
+        <span>LAB 2 · SYNTHESIZE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Scene 5: Narrative ============ -->
+  <section class="scene s5" data-scene="4" data-duration="7500">
+    <div class="frame">
+      <div class="chrome-top">
+        <span><span class="dot"></span>Reel 05 · Narrative</span>
+        <span>THREE BEATS</span>
+      </div>
+      <div class="header">
+        <div class="reveal r1" style="color: var(--accent); font-size: 11px; letter-spacing: 0.2em; font-weight: 600;">NARRATIVE</div>
+        <h2 class="display xl reveal r2" style="margin: 10px 0 0 0;">Open with ambition. Close with rigor.</h2>
+        <div class="hairline" style="margin-top: 24px;"></div>
+      </div>
+      <div class="beats">
+        <div class="beat reveal r3">
+          <div class="ord">OPEN</div>
+          <h3>The promise</h3>
+          <p>Lead with AI in Production. Audiences arrive looking for the headline. Give it to them — and ground it in real systems.</p>
+        </div>
+        <div class="beat reveal r4">
+          <div class="ord">MID</div>
+          <h3>The substrate</h3>
+          <p>Cloud, Data, and Operations underneath. The work that lets the headline survive contact with production.</p>
+        </div>
+        <div class="beat reveal r5">
+          <div class="ord">CLOSE</div>
+          <h3>The judgment</h3>
+          <p>Leadership Craft last. Decisions over diagrams. Trade-offs over taxonomies. Send people home thinking.</p>
+        </div>
+      </div>
+      <div class="band reveal r6">
+        <div class="k">Cross-cutting thread</div>
+        <div class="v">Trust &amp; Operations runs underneath every track — the boring work that quietly compounds.</div>
+      </div>
+      <div class="chrome-bottom">
+        <span>05 / 08</span>
+        <span>LAB 3 · COMMUNICATE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Scene 6: Risks ============ -->
+  <section class="scene s6" data-scene="5" data-duration="8000">
+    <div class="frame">
+      <div class="chrome-top">
+        <span><span class="dot"></span>Reel 06 · Risks</span>
+        <span>WHAT COULD GO WRONG</span>
+      </div>
+      <div class="header">
+        <div class="reveal r1" style="color: var(--warn); font-size: 11px; letter-spacing: 0.2em; font-weight: 600;">RISKS &amp; MITIGATIONS</div>
+        <h2 class="display xl reveal r2" style="margin: 10px 0 0 0;">Four things to watch before we lock the schedule.</h2>
+        <div class="hairline" style="margin-top: 20px;"></div>
+      </div>
+      <div class="risks">
+        <div class="risk reveal r3" style="--i: 0;">
+          <span class="ord">Risk 01</span>
+          <span class="title">Speaker concentration</span>
+          <span class="mit">Five companies supply 22% of proposals. Cap any single company at three speakers across the program.</span>
+        </div>
+        <div class="risk reveal r4" style="--i: 1;">
+          <span class="ord">Risk 02</span>
+          <span class="title">Leadership depth</span>
+          <span class="mit">Only 4 strong leadership submissions. Curate 2 keynote slots and recruit 2 more by closed invitation.</span>
+        </div>
+        <div class="risk reveal r5" style="--i: 2;">
+          <span class="ord">Risk 03</span>
+          <span class="title">Out-of-window proposal</span>
+          <span class="mit">One submission targets a date outside the event. Decline politely, suggest a virtual session, preserve the relationship.</span>
+        </div>
+        <div class="risk reveal r6" style="--i: 3;">
+          <span class="ord">Risk 04</span>
+          <span class="title">AV &amp; demo load</span>
+          <span class="mit">AI-in-Production talks lean on live demos. Confirm bandwidth, backup recordings, and run-of-show rehearsal two days prior.</span>
+        </div>
+      </div>
+      <div class="chrome-bottom">
+        <span>06 / 08</span>
+        <span>LAB 3 · COMMUNICATE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Scene 7: Decision ============ -->
+  <section class="scene s7" data-scene="6" data-duration="8000">
+    <div class="frame">
+      <div class="bg kenburns"></div>
+      <div class="chrome-top">
+        <span><span class="dot"></span>Reel 07 · Decision</span>
+        <span>WHAT WE NEED FROM YOU</span>
+      </div>
+      <div class="header">
+        <div class="reveal r1" style="color: var(--accent); font-size: 11px; letter-spacing: 0.2em; font-weight: 600;">THE ASK</div>
+        <h2 class="display xl reveal r2" style="margin: 10px 0 0 0;">Three decisions. One signature.</h2>
+        <div class="hairline" style="margin-top: 20px;"></div>
+      </div>
+      <div class="asks">
+        <div class="ask reveal r3">
+          <div class="n">01</div>
+          <div class="body-block">
+            <div class="title">Approve the five-track structure as the working backbone for the program.</div>
+            <div class="by">Owner · Programs Office · Needed by Friday</div>
+          </div>
+        </div>
+        <div class="ask reveal r4">
+          <div class="n">02</div>
+          <div class="body-block">
+            <div class="title">Authorize 2 invited leadership keynotes outside the open call.</div>
+            <div class="by">Owner · Executive Sponsor · Needed by next Tuesday</div>
+          </div>
+        </div>
+        <div class="ask reveal r5">
+          <div class="n">03</div>
+          <div class="body-block">
+            <div class="title">Confirm the speaker concentration cap so notifications can go out this week.</div>
+            <div class="by">Owner · Programs Office + Sponsor · Needed by Friday</div>
+          </div>
+        </div>
+      </div>
+      <div class="sign">
+        <span class="reveal r6">Read time · <b>5 minutes</b></span>
+        <span class="reveal r7">Decision deadline · <b>Friday, end of day</b></span>
+      </div>
+      <div class="chrome-bottom" style="z-index: 2;">
+        <span>07 / 08</span>
+        <span>EXECUTIVE BRIEFING</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Scene 8: Outro ============ -->
+  <section class="scene s8" data-scene="7" data-duration="5500">
+    <div class="frame">
+      <div class="bg kenburns"></div>
+      <div class="content">
+        <div>
+          <div class="reveal r1" style="color: var(--text-3); font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase;">A Programs Office Production</div>
+          <div class="wordmark reveal r2" style="margin-top: 28px;">Meridian<br/>Innovation Summit</div>
+          <div class="cap reveal r3">2026 · Agenda Recommendation · End of Reel</div>
+        </div>
+      </div>
+      <div class="chrome-bottom">
+        <span>08 / 08</span>
+        <span>FIN</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- right-side dots -->
+<div class="dots" id="dots"></div>
+
+<!-- player chrome -->
+<div class="player" id="player">
+  <button id="playBtn" aria-label="Play / Pause" title="Play / Pause">
+    <svg id="playIcon" viewBox="0 0 24 24" style="display:none;"><path d="M8 5v14l11-7L8 5z"/></svg>
+    <svg id="pauseIcon" viewBox="0 0 24 24"><path d="M6 5h4v14H6V5zm8 0h4v14h-4V5z"/></svg>
+  </button>
+  <div class="nav">
+    <button id="prevBtn" aria-label="Previous" title="Previous"><svg viewBox="0 0 24 24"><path d="M15.5 4l-9 8 9 8V4z"/></svg></button>
+    <button id="nextBtn" aria-label="Next" title="Next"><svg viewBox="0 0 24 24"><path d="M8.5 4v16l9-8-9-8z"/></svg></button>
+  </div>
+  <span class="label">Scene <b id="sceneNum" style="color:var(--text-1)">1</b> / <span id="sceneTotal">8</span></span>
+  <div class="scrub"><div class="scrub-fill" id="scrubFill"></div></div>
+  <span class="time" id="time">0:00 / 1:00</span>
+</div>
+
+<script>
+(function () {
+  const scenes = Array.from(document.querySelectorAll(".scene"));
+  const dotsRoot = document.getElementById("dots");
+  const scrubFill = document.getElementById("scrubFill");
+  const timeEl = document.getElementById("time");
+  const sceneNumEl = document.getElementById("sceneNum");
+  const playBtn = document.getElementById("playBtn");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const playIcon = document.getElementById("playIcon");
+  const pauseIcon = document.getElementById("pauseIcon");
+  document.getElementById("sceneTotal").textContent = scenes.length;
+
+  // build dots
+  scenes.forEach((_, i) => {
+    const b = document.createElement("b");
+    b.dataset.idx = i;
+    if (i === 0) b.classList.add("is-live");
+    b.addEventListener("click", () => go(i));
+    dotsRoot.appendChild(b);
+  });
+  const dots = Array.from(dotsRoot.children);
+
+  let current = 0;
+  let playing = true;
+  let elapsed = 0; // ms in current scene
+  let lastTs = null;
+  const totalDuration = scenes.reduce((s, el) => s + Number(el.dataset.duration || 6000), 0);
+
+  function fmt(ms) {
+    const s = Math.floor(ms / 1000);
+    return Math.floor(s/60) + ":" + String(s%60).padStart(2,"0");
+  }
+
+  function setScene(i) {
+    scenes.forEach((s, idx) => s.classList.toggle("is-live", idx === i));
+    dots.forEach((d, idx) => d.classList.toggle("is-live", idx === i));
+    sceneNumEl.textContent = i + 1;
+    current = i;
+    elapsed = 0;
+    // restart child animations by toggling a class-less reflow
+    void scenes[i].offsetWidth;
+  }
+
+  function go(i) {
+    if (i < 0) i = scenes.length - 1;
+    if (i >= scenes.length) i = 0;
+    setScene(i);
+  }
+
+  function setPlaying(p) {
+    playing = p;
+    playIcon.style.display = playing ? "none" : "block";
+    pauseIcon.style.display = playing ? "block" : "none";
+    if (playing) lastTs = null;
+  }
+
+  playBtn.addEventListener("click", () => setPlaying(!playing));
+  prevBtn.addEventListener("click", () => go(current - 1));
+  nextBtn.addEventListener("click", () => go(current + 1));
+  document.addEventListener("keydown", e => {
+    if (e.code === "Space") { e.preventDefault(); setPlaying(!playing); }
+    if (e.code === "ArrowRight") go(current + 1);
+    if (e.code === "ArrowLeft") go(current - 1);
+  });
+
+  function tick(ts) {
+    if (!lastTs) lastTs = ts;
+    const dt = ts - lastTs;
+    lastTs = ts;
+    if (playing) {
+      elapsed += dt;
+      const dur = Number(scenes[current].dataset.duration || 6000);
+      if (elapsed >= dur) {
+        const next = current + 1;
+        if (next >= scenes.length) {
+          // loop back to start
+          setScene(0);
+        } else {
+          setScene(next);
+        }
+      }
+      // global progress
+      let prog = 0;
+      for (let i = 0; i < current; i++) prog += Number(scenes[i].dataset.duration || 6000);
+      prog += elapsed;
+      scrubFill.style.width = (100 * prog / totalDuration).toFixed(2) + "%";
+      timeEl.textContent = fmt(prog) + " / " + fmt(totalDuration);
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>
